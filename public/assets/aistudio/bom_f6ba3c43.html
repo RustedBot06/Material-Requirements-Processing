@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BOM - Chips MRP</title>
+</head>
+
+<body>
+
+    <h1>Bill of Materials (BOM)</h1>
+
+    <!-- ADD NEW BOM ENTRY -->
+
+    <h2>Add BOM Entry</h2>
+
+    <form method="POST">
+
+        <label>Product:</label>
+
+        <select name="product_id" required>
+            <option value="">Select Product</option>
+
+            {% for product in products %}
+                <option value="{{ product['id'] }}">
+                    {{ product['name'] }} - {{ product['packet_size'] }}g
+                </option>
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+        <label>Raw Material:</label>
+
+        <select name="material_id" required>
+            <option value="">Select Raw Material</option>
+
+            {% for material in materials %}
+                <option value="{{ material['id'] }}">
+                    {{ material['material_name'] }} ({{ material['unit'] }})
+                </option>
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+        <label>Quantity Required Per Packet (in selected material's unit)</label>
+
+        <input type="number"
+               name="qty_required"
+               min="0.000001"
+               step="any"
+               required>
+
+        <br><br>
+
+        <button type="submit">Add BOM Entry</button>
+
+    </form>
+
+    <hr>
+
+    <!-- DISPLAY AND EDIT BOM -->
+
+    <h2>Current BOM Entries</h2>
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>ID</th>
+            <th>Product</th>
+            <th>Raw Material</th>
+            <th>Unit</th>
+            <th>Qty. Required per Packet</th>
+            <th>Cost per Unit</th>
+            <th>BOM Cost</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for entry in bom_entries %}
+
+        <tr>
+
+            <td>
+
+                <form id="edit-{{ entry['id'] }}"
+                      method="POST"
+                      action="{{ url_for('update_bom_route', bom_id=entry['id']) }}">
+                </form>
+
+                {{ entry['id'] }}
+
+            </td>
+
+            
+
+            <td>{{ entry.product_name }} - {{ entry.packet_size }}g</td>
+
+            <td>{{ entry['material_name'] }}</td>
+
+            <td>{{ entry['unit'] }}</td>
+
+            <td>
+                <input form="edit-{{ entry['id'] }}"
+                       type="number"
+                       name="qty_required"
+                       value="{{ entry['qty_required'] }}"
+                       min="0.000001"
+                       step="any"
+                       required>
+            </td>
+
+            <td>
+                ₹{{ "%.2f"|format(entry['cost_per_unit']) }}
+            </td>
+
+            <td>
+                ₹{{ "%.2f"|format(entry['cost']) }}
+            </td>
+
+            <td>
+
+                <button type="submit"
+                        form="edit-{{ entry['id'] }}">
+                    Update
+                </button>
+
+                <form method="POST"
+                      action="{{ url_for('delete_bom_route', bom_id=entry['id']) }}"
+                      onsubmit="return confirm('Delete this BOM entry?');">
+
+                    <button type="submit">Delete</button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <a href="{{ url_for('products') }}">Products</a> |
+    <a href="{{ url_for('materials') }}">Raw Materials</a>
+
+</body>
+</html>

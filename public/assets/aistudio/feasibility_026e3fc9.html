@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Material Feasibility Report</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #eee;
+        }
+
+        .shortage {
+            color: red;
+            font-weight: bold;
+        }
+
+        .sufficient {
+            color: green;
+        }
+
+        .warning {
+            color: #b07800;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Production Feasibility Report</h1>
+
+    <p>
+        Check whether current raw-material inventory can
+        fulfil the remaining planned production.
+    </p>
+
+    <form method="GET" action="{{ url_for('feasibility') }}">
+
+        <label>Start Date:</label>
+        <input
+            type="date"
+            name="start_date"
+            value="{{ start_date }}"
+            required
+        >
+
+        <label>End Date:</label>
+        <input
+            type="date"
+            name="end_date"
+            value="{{ end_date }}"
+            required
+        >
+
+        <button type="submit">Generate Report</button>
+
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+
+    {% if report is not none %}
+
+        <h2>Raw Material Requirements</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th>Available Stock</th>
+                    <th>Remaining Requirement</th>
+                    <th>Shortage</th>
+                    <th>Surplus</th>
+                    <th>Suggested Procurement</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for item in report %}
+
+                    <tr>
+                        <td>
+                            {{ item.material_name }}
+                        </td>
+
+                        <td>
+                            {{ "%.2f"|format(item.available_stock) }}
+                            {{ item.unit }}
+                        </td>
+
+                        <td>
+                            {{ "%.2f"|format(item.required_qty) }}
+                            {{ item.unit }}
+                        </td>
+
+                        <td>
+                            {{ "%.2f"|format(item.shortage) }}
+                            {{ item.unit }}
+                        </td>
+
+                        <td>
+                            {{ "%.2f"|format(item.surplus) }}
+                            {{ item.unit }}
+                        </td>
+
+                        <td>
+                            {{ "%.2f"|format(item.procurement_qty) }}
+                            {{ item.unit }}
+                        </td>
+
+                        <td>
+                            {% if item.status == "Procurement required" %}
+                                <span class="shortage">
+                                    {{ item.status }}
+                                </span>
+
+                            {% elif item.status == "Exactly sufficient - no buffer" %}
+                                <span class="warning">
+                                    {{ item.status }}
+                                </span>
+
+                            {% else %}
+                                <span class="sufficient">
+                                    {{ item.status }}
+                                </span>
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% if not report %}
+            <p>No raw materials found in the database.</p>
+        {% endif %}
+
+    {% endif %}
+
+    <br>
+
+    <a href="{{ url_for('home') }}">Back to Dashboard</a>
+
+</body>
+</html>

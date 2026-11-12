@@ -1,0 +1,279 @@
+{% extends "base.html" %}
+
+{% set active_page = "bom" %}
+
+{% block title %}Bill of Materials (BOM){% endblock %}
+{% block page_title %}Bill of Materials (Recipes){% endblock %}
+{% block page_tag %}RECIPE & UNIT PRODUCTION COST{% endblock %}
+
+{% block header_actions %}
+<button type="button" class="btn btn-primary btn-sm" onclick="openModal('addBomModal')">
+    <span>+ Register BOM Recipe Line</span>
+</button>
+{% endblock %}
+
+{% block content %}
+<!-- Recipe & Cost Analysis Metrics -->
+<div class="stats-grid">
+    <div class="stat-card primary">
+        <div class="stat-label">BOM Recipe Entries</div>
+        <div class="stat-value">{{ bom_entries | length }}</div>
+        <div class="stat-helper">
+            <span>Material-to-product mapping lines</span>
+        </div>
+    </div>
+
+    {% set distinct_products = [] %}
+    {% set total_bom_cost = namespace(value=0) %}
+    {% for entry in bom_entries %}
+        {% if entry['product_id'] not in distinct_products %}
+            {% set _ = distinct_products.append(entry['product_id']) %}
+        {% endif %}
+        {% set total_bom_cost.value = total_bom_cost.value + entry['cost'] %}
+    {% endfor %}
+
+    <div class="stat-card info">
+        <div class="stat-label">Configured Products</div>
+        <div class="stat-value">{{ distinct_products | length }} / {{ products | length }}</div>
+        <div class="stat-helper">
+            <span>Products with active BOM recipes</span>
+        </div>
+    </div>
+
+    <div class="stat-card success">
+        <div class="stat-label">Avg BOM Cost / Packet</div>
+        <div class="stat-value">
+            {% if distinct_products | length > 0 %}
+            ₹{{ "%.2f"|format(total_bom_cost.value / distinct_products | length) }}
+            {% else %}
+            ₹0.00
+            {% endif %}
+        </div>
+        <div class="stat-helper">
+            <span>Raw material cost per finished pouch</span>
+        </div>
+    </div>
+
+    <div class="stat-card warning">
+        <div class="stat-label">Available Raw Materials</div>
+        <div class="stat-value">{{ materials | length }}</div>
+        <div class="stat-helper">
+            <span>Usable for recipe formulation</span>
+        </div>
+    </div>
+</div>
+
+<!-- BOM Recipe Table Card -->
+<div class="card">
+    <div class="card-header">
+        <div>
+            <h3 class="card-title">
+                <span>Active Bill of Materials (Per-Packet Formulas)</span>
+            </h3>
+            <div class="card-subtitle">
+                Quantities explicitly define the exact material required to manufacture <strong>1 finished packet</strong>
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="openModal('addBomModal')">
+            + Quick Add Line
+        </button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 70px;">Line ID</th>
+                    <th>Finished Product SKU</th>
+                    <th>Raw Material Ingredient</th>
+                    <th>Unit</th>
+                    <th class="col-right">Qty Required / Packet</th>
+                    <th class="col-right">Material Cost / Unit</th>
+                    <th class="col-right">BOM Cost / Packet</th>
+                    <th style="text-align: center; width: 150px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if not bom_entries %}
+                <tr>
+                    <td colspan="8">
+                        <div class="empty-state">
+                            <div class="empty-title">No BOM Entries Defined</div>
+                            <div class="empty-desc">Formulate product recipes by specifying the raw material requirements (e.g. 0.08 kg raw potatoes for a 25g finished chip pouch).</div>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="openModal('addBomModal')">
+                                Register First Recipe Line
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                {% for entry in bom_entries %}
+                <tr>
+                    <td class="col-mono" style="color: var(--color-text-muted);">#{{ entry['id'] }}</td>
+                    <td>
+                        <strong style="color: var(--color-primary); font-size: 13px;">
+                            {{ entry.product_name }} - {{ entry.packet_size }}g
+                        </strong>
+                    </td>
+                    <td>
+                        <strong>{{ entry['material_name'] }}</strong>
+                    </td>
+                    <td>
+                        <span class="badge badge-neutral">{{ entry['unit'] }}</span>
+                    </td>
+                    <td class="col-mono col-right">
+                        <strong>{{ entry['qty_required'] }}</strong>
+                        <span style="font-size: 11px; color: var(--color-text-muted);">{{ entry['unit'] }}/pkt</span>
+                    </td>
+                    <td class="col-mono col-right">
+                        ₹{{ "%.2f"|format(entry['cost_per_unit']) }}
+                    </td>
+                    <td class="col-mono col-right" style="color: #16a34a; font-weight: 700;">
+                        ₹{{ "%.2f"|format(entry['cost']) }}
+                    </td>
+                    <td style="text-align: center;">
+                        <div class="action-group" style="justify-content: center;">
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="openModal('editBomModal-{{ entry['id'] }}')">
+                                Edit
+                            </button>
+
+                            <button type="button" class="btn btn-ghost btn-sm" style="color: #dc2626;" onclick="openModal('deleteBomModal-{{ entry['id'] }}')">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block modals %}
+<!-- Add BOM Modal -->
+<div class="modal-backdrop" id="addBomModal">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span>Register BOM Recipe Line</span>
+            </h4>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('addBomModal')">✕</button>
+        </div>
+        <form method="POST" action="{{ url_for('bom') }}">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="add_bom_product">Finished Product (SKU) <span class="required">*</span></label>
+                    <select id="add_bom_product" name="product_id" class="form-control" required>
+                        <option value="">-- Select Product with Packet Size --</option>
+                        {% for prod in products %}
+                        <option value="{{ prod['id'] }}">
+                            {{ prod['name'] }} - {{ prod['packet_size'] }}g (MRP: ₹{{ "%.2f"|format(prod['mrp']) }})
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="add_bom_material">Raw Material Ingredient <span class="required">*</span></label>
+                    <select id="add_bom_material" name="material_id" class="form-control" required>
+                        <option value="">-- Select Raw Material --</option>
+                        {% for mat in materials %}
+                        <option value="{{ mat['id'] }}">
+                            {{ mat['material_name'] }} ({{ mat['unit'] }} @ ₹{{ "%.2f"|format(mat['cost_per_unit']) }}/{{ mat['unit'] }})
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="add_qty_required">
+                        Quantity Required Per Packet (in material unit) <span class="required">*</span>
+                    </label>
+                    <input type="number" id="add_qty_required" name="qty_required" class="form-control mono" min="0.000001" step="any" placeholder="e.g. 0.08" required>
+                    <div style="font-size: 11px; color: var(--color-text-muted);">
+                        Specify the exact quantity consumed to produce 1 packet (e.g. 0.075 kg potatoes per 25g pouch accounting for peeling & frying loss).
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('addBomModal')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save BOM Entry</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Edit BOM Modals for Each Record -->
+{% for entry in bom_entries %}
+<div class="modal-backdrop" id="editBomModal-{{ entry['id'] }}">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span>Update Recipe Entry #{{ entry['id'] }}</span>
+            </h4>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('editBomModal-{{ entry['id'] }}')">✕</button>
+        </div>
+        <form method="POST" action="{{ url_for('update_bom_route', bom_id=entry['id']) }}">
+            <div class="modal-body">
+                <div style="background: var(--color-surface-dim); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 12px;">
+                    <div style="font-size: 11px; color: var(--color-text-muted); text-transform: uppercase;">Product & Material</div>
+                    <div style="font-weight: 700; color: var(--color-primary); font-size: 14px; margin-top: 2px;">
+                        {{ entry.product_name }} - {{ entry.packet_size }}g
+                    </div>
+                    <div style="font-size: 12px; color: var(--color-text-secondary); margin-top: 2px;">
+                        Ingredient: <strong>{{ entry['material_name'] }}</strong> (Unit: {{ entry['unit'] }})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="edit_qty_{{ entry['id'] }}">
+                        Quantity Required Per Packet ({{ entry['unit'] }}) <span class="required">*</span>
+                    </label>
+                    <input type="number" id="edit_qty_{{ entry['id'] }}" name="qty_required" class="form-control mono" value="{{ entry['qty_required'] }}" min="0.000001" step="any" required>
+                    <div style="font-size: 11px; color: var(--color-text-muted);">
+                        BOM cost per packet will automatically recalculate using current material cost (₹{{ "%.2f"|format(entry['cost_per_unit']) }}/{{ entry['unit'] }}).
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('editBomModal-{{ entry['id'] }}')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update Quantity</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Formal In-App Delete Confirmation Modal for Each Recipe Line -->
+<div class="modal-backdrop" id="deleteBomModal-{{ entry['id'] }}">
+    <div class="modal-dialog danger">
+        <div class="modal-header">
+            <h4 class="modal-title">Confirm BOM Recipe Line Deletion</h4>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('deleteBomModal-{{ entry['id'] }}')">✕</button>
+        </div>
+        <form method="POST" action="{{ url_for('delete_bom_route', bom_id=entry['id']) }}">
+            <div class="modal-body">
+                <p style="font-size: 14px; color: var(--color-text-main);">
+                    Are you sure you want to remove this recipe ingredient mapping?
+                </p>
+
+                <div class="modal-item-highlight">
+                    <div>Product: <strong>{{ entry.product_name }} - {{ entry.packet_size }}g</strong></div>
+                    <div>Ingredient: <strong>{{ entry['material_name'] }}</strong> ({{ entry['qty_required'] }} {{ entry['unit'] }}/packet)</div>
+                </div>
+
+                <div class="modal-warning-box">
+                    <strong>MRP Simulation Impact Rule</strong>
+                    Deleting this recipe line removes the ingredient consumption calculation for this product. Material Feasibility and procurement projections will no longer budget this material for scheduled runs of this SKU.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('deleteBomModal-{{ entry['id'] }}')">Cancel</button>
+                <button type="submit" class="btn btn-danger">Confirm Delete Line</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

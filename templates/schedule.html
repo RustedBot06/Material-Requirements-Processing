@@ -1,0 +1,314 @@
+{% extends "base.html" %}
+
+{% set active_page = "schedule" %}
+
+{% block title %}Production Schedule{% endblock %}
+{% block page_title %}Production Schedule & Execution{% endblock %}
+{% block page_tag %}DAILY PACKET TARGETS & YIELDS{% endblock %}
+
+{% block header_actions %}
+<button type="button" class="btn btn-primary btn-sm" onclick="openModal('addScheduleModal')">
+    <span>+ Schedule Production Run</span>
+</button>
+{% endblock %}
+
+{% block content %}
+<!-- Schedule Metrics -->
+<div class="stats-grid">
+    {% set total_planned = namespace(value=0) %}
+    {% set total_actual = namespace(value=0) %}
+    {% set total_shortfall = namespace(value=0) %}
+    {% for rec in records %}
+        {% set total_planned.value = total_planned.value + rec['planned_qty'] %}
+        {% set total_actual.value = total_actual.value + rec['actual_qty'] %}
+        {% set sf = rec['planned_qty'] - rec['actual_qty'] %}
+        {% if sf > 0 %}
+            {% set total_shortfall.value = total_shortfall.value + sf %}
+        {% endif %}
+    {% endfor %}
+
+    <div class="stat-card primary">
+        <div class="stat-label">Total Planned Output</div>
+        <div class="stat-value">{{ "{:,}".format(total_planned.value) }}</div>
+        <div class="stat-helper">
+            <span class="badge badge-neutral">Target</span>
+            <span>Total target packets</span>
+        </div>
+    </div>
+
+    <div class="stat-card success">
+        <div class="stat-label">Total Actual Manufactured</div>
+        <div class="stat-value">{{ "{:,}".format(total_actual.value) }}</div>
+        <div class="stat-helper">
+            <span class="badge badge-sufficient">Output</span>
+            <span>Packets completed on line</span>
+        </div>
+    </div>
+
+    <div class="stat-card {% if total_shortfall.value > 0 %}danger{% else %}info{% endif %}">
+        <div class="stat-label">Cumulative Shortfall</div>
+        <div class="stat-value" style="color: {% if total_shortfall.value > 0 %}#dc2626{% else %}#16a34a{% endif %};">
+            {{ "{:,}".format(total_shortfall.value) }}
+        </div>
+        <div class="stat-helper">
+            {% if total_shortfall.value > 0 %}
+            <span class="badge badge-shortage">Deficit</span>
+            <span>Planned − Actual packets</span>
+            {% else %}
+            <span class="badge badge-sufficient">Zero Lag</span>
+            <span>Production on or ahead of plan</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="stat-card info">
+        <div class="stat-label">Target Achievement Rate</div>
+        <div class="stat-value">
+            {% if total_planned.value > 0 %}
+            {{ "%.1f"|format((total_actual.value / total_planned.value) * 100) }}%
+            {% else %}
+            0.0%
+            {% endif %}
+        </div>
+        <div class="stat-helper">
+            <span>Overall floor execution efficiency</span>
+        </div>
+    </div>
+</div>
+
+<!-- Production Schedule Table Card -->
+<div class="card">
+    <div class="card-header">
+        <div>
+            <h3 class="card-title">
+                <span>Production Run Log & Target Tracking</span>
+            </h3>
+            <div class="card-subtitle">
+                Monitors daily target packets vs actual manufactured packets and calculates operational shortfall
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="openModal('addScheduleModal')">
+            + Quick Add Run
+        </button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 70px;">Run ID</th>
+                    <th>Production Date</th>
+                    <th>Product Line (SKU)</th>
+                    <th class="col-right">Planned Target</th>
+                    <th class="col-right">Actual Yield</th>
+                    <th class="col-right">Shortfall (Deficit)</th>
+                    <th>Achievement Rate</th>
+                    <th style="text-align: center; width: 150px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if not records %}
+                <tr>
+                    <td colspan="8">
+                        <div class="empty-state">
+                            <div class="empty-title">No Production Runs Scheduled</div>
+                            <div class="empty-desc">Schedule upcoming daily production runs with planned packet quotas for each chip SKU.</div>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="openModal('addScheduleModal')">
+                                Schedule First Run
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                {% for record in records %}
+                {% set shortfall = record['planned_qty'] - record['actual_qty'] %}
+                {% set achievement = (record['actual_qty'] / record['planned_qty'] * 100) if record['planned_qty'] > 0 else 100.0 %}
+                <tr>
+                    <td class="col-mono" style="color: var(--color-text-muted);">#{{ record['id'] }}</td>
+                    <td class="col-mono">
+                        <strong>{{ record['date'] }}</strong>
+                    </td>
+                    <td>
+                        <strong style="color: var(--color-primary); font-size: 13px;">
+                            {{ record['product_name'] }} - {{ record['packet_size'] }}g
+                        </strong>
+                    </td>
+                    <td class="col-mono col-right">
+                        {{ "{:,}".format(record['planned_qty']) }} <span style="font-size:11px; color:var(--color-text-muted);">pkts</span>
+                    </td>
+                    <td class="col-mono col-right" style="font-weight: 600;">
+                        {{ "{:,}".format(record['actual_qty']) }} <span style="font-size:11px; color:var(--color-text-muted);">pkts</span>
+                    </td>
+                    <td class="col-mono col-right">
+                        {% if shortfall > 0 %}
+                        <span class="badge badge-shortage">
+                            -{{ "{:,}".format(shortfall) }} pkts
+                        </span>
+                        {% elif shortfall == 0 %}
+                        <span class="badge badge-sufficient">
+                            0 (Exact Target)
+                        </span>
+                        {% else %}
+                        <span class="badge badge-sufficient">
+                            +{{ "{:,}".format(-shortfall) }} Surplus
+                        </span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <div style="flex: 1; height: 6px; background-color: var(--color-surface-dim); border-radius: var(--radius-pill); overflow: hidden; max-width: 80px;">
+                                <div style="height: 100%; width: {{ [achievement, 100] | min }}%; background-color: {% if achievement >= 100 %}#16a34a{% elif achievement >= 75 %}#2563eb{% elif achievement >= 50 %}#d97706{% else %}#dc2626{% endif %}; border-radius: var(--radius-pill);"></div>
+                            </div>
+                            <span class="col-mono" style="font-size: 11px; font-weight: 600;">{{ "%.1f"|format(achievement) }}%</span>
+                        </div>
+                    </td>
+                    <td style="text-align: center;">
+                        <div class="action-group" style="justify-content: center;">
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="openModal('editScheduleModal-{{ record['id'] }}')">
+                                Edit
+                            </button>
+
+                            <button type="button" class="btn btn-ghost btn-sm" style="color: #dc2626;" onclick="openModal('deleteScheduleModal-{{ record['id'] }}')">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block modals %}
+<!-- Add Schedule Modal -->
+<div class="modal-backdrop" id="addScheduleModal">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span>Schedule Daily Production Target</span>
+            </h4>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('addScheduleModal')">✕</button>
+        </div>
+        <form action="{{ url_for('schedule') }}" method="POST">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="add_sched_product">Product to Manufacture <span class="required">*</span></label>
+                    <select id="add_sched_product" name="product_id" class="form-control" required>
+                        <option value="">-- Select Product with Packet Size --</option>
+                        {% for prod in products %}
+                        <option value="{{ prod['id'] }}">
+                            {{ prod['name'] }} - {{ prod['packet_size'] }}g
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="add_sched_date">Production Date <span class="required">*</span></label>
+                    <input type="date" id="add_sched_date" name="date" class="form-control mono" value="{{ today }}" required>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="add_sched_planned">Planned Target (Packets) <span class="required">*</span></label>
+                        <input type="number" id="add_sched_planned" name="planned_qty" class="form-control mono" min="0" step="1" placeholder="e.g. 5000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="add_sched_actual">Actual Manufactured (Packets) <span class="required">*</span></label>
+                        <input type="number" id="add_sched_actual" name="actual_qty" class="form-control mono" min="0" step="1" value="0" required>
+                    </div>
+                </div>
+                <div style="font-size: 11px; color: var(--color-text-muted);">
+                    System Calculation: Operational Shortfall is automatically computed as Planned Quantity − Actual Quantity. Negative values are treated as zero deficit.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('addScheduleModal')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Schedule Run</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Edit Schedule Modals for Each Record -->
+{% for record in records %}
+<div class="modal-backdrop" id="editScheduleModal-{{ record['id'] }}">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span>Update Production Run #{{ record['id'] }}</span>
+            </h4>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('editScheduleModal-{{ record['id'] }}')">✕</button>
+        </div>
+        <form action="{{ url_for('update_schedule', schedule_id=record['id']) }}" method="POST">
+            <div class="modal-body">
+                <div style="background: var(--color-surface-dim); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 12px;">
+                    <div style="font-size: 11px; color: var(--color-text-muted); text-transform: uppercase;">Product Line</div>
+                    <div style="font-weight: 700; color: var(--color-primary); font-size: 14px; margin-top: 2px;">
+                        {{ record['product_name'] }} - {{ record['packet_size'] }}g
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="edit_date_{{ record['id'] }}">Production Date <span class="required">*</span></label>
+                    <input type="date" id="edit_date_{{ record['id'] }}" name="date" class="form-control mono" value="{{ record['date'] }}" required>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="edit_planned_{{ record['id'] }}">Planned Target (Packets) <span class="required">*</span></label>
+                        <input type="number" id="edit_planned_{{ record['id'] }}" name="planned_qty" class="form-control mono" value="{{ record['planned_qty'] }}" min="0" step="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="edit_actual_{{ record['id'] }}">Actual Manufactured (Packets) <span class="required">*</span></label>
+                        <input type="number" id="edit_actual_{{ record['id'] }}" name="actual_qty" class="form-control mono" value="{{ record['actual_qty'] }}" min="0" step="1" required>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('editScheduleModal-{{ record['id'] }}')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update Production Run</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Formal In-App Delete Confirmation Modal for Each Schedule Record -->
+<div class="modal-backdrop" id="deleteScheduleModal-{{ record['id'] }}">
+    <div class="modal-dialog danger">
+        <div class="modal-header">
+            <h4 class="modal-title">Confirm Production Run Deletion</h4>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('deleteScheduleModal-{{ record['id'] }}')">✕</button>
+        </div>
+        <form action="{{ url_for('delete_schedule', schedule_id=record['id']) }}" method="POST">
+            <div class="modal-body">
+                <p style="font-size: 14px; color: var(--color-text-main);">
+                    Are you sure you want to delete this scheduled production run?
+                </p>
+
+                <div class="modal-item-highlight">
+                    <div>Run ID: <strong class="col-mono">#{{ record['id'] }}</strong></div>
+                    <div>Product: <strong>{{ record['product_name'] }} - {{ record['packet_size'] }}g</strong></div>
+                    <div>Production Date: <strong class="col-mono">{{ record['date'] }}</strong></div>
+                    <div>Target vs Actual: <strong class="col-mono">{{ record['planned_qty'] }} planned / {{ record['actual_qty'] }} actual pkts</strong></div>
+                </div>
+
+                <div class="modal-warning-box">
+                    <strong>MRP Calculation Impact</strong>
+                    Removing this scheduled run will immediately adjust raw material requirements and feasibility forecasts for date range simulations covering {{ record['date'] }}.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('deleteScheduleModal-{{ record['id'] }}')">Cancel</button>
+                <button type="submit" class="btn btn-danger">Confirm Delete Run</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,589 @@
+{% extends "base.html" %}
+
+{% set active_page = "dashboard" %}
+
+{% block title %}Operational Dashboard{% endblock %}
+{% block breadcrumb %}MRP Dispatch Console{% endblock %}
+
+{% block content %}
+{% set months_map = {'01':'Jan','02':'Feb','03':'Mar','04':'Apr','05':'May','06':'Jun','07':'Jul','08':'Aug','09':'Sep','10':'Oct','11':'Nov','12':'Dec'} %}
+<div class="flex flex-col w-full pb-space-lg">
+    <!-- Section 1: Compact Page Header with Plant Status -->
+    <div class="py-space-md flex flex-wrap items-center justify-between gap-space-md">
+        <div class="flex flex-col">
+            <div class="flex items-center gap-space-sm">
+                <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">Dashboard</h1>
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold">
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                    Pune Plant 1 • Continuous &amp; Kettle Lines
+                </span>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Manufacturing overview, batch yield telemetry &amp; raw material feasibility</p>
+        </div>
+
+        <!-- Controls Strip -->
+        <div class="flex items-center gap-space-sm flex-wrap">
+            <div class="flex items-center gap-space-xs bg-surface-container-lowest shadow-sm px-space-sm py-1.5 rounded border border-surface-container">
+                <span class="material-symbols-outlined text-[16px] text-on-surface-variant">event</span>
+                <span class="font-data-mono-sm text-data-mono-sm text-on-surface font-semibold" id="headerDateToday">Today: 25 Oct 2024</span>
+            </div>
+
+            <div class="flex items-center gap-space-xs bg-surface-container-lowest shadow-sm px-space-sm py-1.5 rounded border border-surface-container">
+                <span class="w-2 h-2 rounded-full bg-secondary"></span>
+                <span class="font-data-mono-sm text-data-mono-sm text-on-surface font-medium">Shift A (06:00 - 14:00)</span>
+                <span class="font-label-sm text-label-sm text-secondary uppercase font-bold ml-1">LIVE</span>
+            </div>
+
+            <button class="flex items-center justify-center p-1.5 rounded bg-surface-container-lowest shadow-sm hover:bg-surface-container transition-colors text-on-surface-variant hover:text-on-surface border border-surface-container" id="refreshDataBtn" onclick="location.reload()" title="Refresh Live Feeds">
+                <span class="material-symbols-outlined text-[18px]">refresh</span>
+            </button>
+
+            <a href="{{ url_for('schedule') }}" class="flex items-center gap-space-xs px-space-md py-1.5 bg-primary text-on-primary rounded font-label-md text-label-md hover:bg-secondary transition-colors shadow-sm">
+                <span class="material-symbols-outlined text-[16px]">file_download</span>
+                <span>Export Shift MRP Report</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Section 2: Five Compact KPI Cards (High density, reduced vertical height) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md pb-space-md">
+        <!-- Card 1: Total SKUs -->
+        <div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col justify-between border border-surface-container">
+            <div class="flex items-center justify-between text-on-surface-variant">
+                <span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Active Products</span>
+                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">layers</span>
+            </div>
+            <div class="mt-space-xs flex items-baseline justify-between">
+                <span class="font-data-mono-lg text-data-mono-lg text-primary font-bold">{{ products | length }} SKUs</span>
+                <span class="font-data-mono-sm text-data-mono-sm text-secondary font-medium">100% Active</span>
+            </div>
+            <div class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">
+                6 Fried Potato • 2 Kettle Extruded
+            </div>
+        </div>
+
+        <!-- Card 2: Raw Materials Tracked -->
+        <div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col justify-between border border-surface-container">
+            <div class="flex items-center justify-between text-on-surface-variant">
+                <span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Raw Materials</span>
+                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">inventory_2</span>
+            </div>
+            <div class="mt-space-xs flex items-baseline justify-between">
+                <span class="font-data-mono-lg text-data-mono-lg text-primary font-bold">{{ raw_materials_count }} Items</span>
+                <span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">4 Silos + Cold</span>
+            </div>
+            <div class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">
+                Potatoes, Olein Oil, Seasonings, Foil
+            </div>
+        </div>
+
+        <!-- Card 3: Planned Production Target -->
+        <div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col justify-between border border-surface-container">
+            <div class="flex items-center justify-between text-on-surface-variant">
+                <span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Planned Production</span>
+                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">calendar_month</span>
+            </div>
+            <div class="mt-space-xs flex items-baseline justify-between">
+                <span class="font-data-mono-lg text-data-mono-lg text-primary font-bold">{{ "{:,}".format(total_planned) }} pkts</span>
+                <span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant font-semibold">{{ "{:,.0f}".format(total_planned * 0.025) }} kg net</span>
+            </div>
+            <div class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">
+                Shift A Schedule across Line 1 &amp; 2
+            </div>
+        </div>
+
+        <!-- Card 4: Actual Production Realized -->
+        <div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col justify-between border border-surface-container">
+            <div class="flex items-center justify-between text-on-surface-variant">
+                <span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Actual Output</span>
+                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">fact_check</span>
+            </div>
+            <div class="mt-space-xs flex items-baseline justify-between">
+                <span class="font-data-mono-lg text-data-mono-lg text-secondary font-bold">{{ "{:,}".format(total_actual) }} pkts</span>
+                <span class="font-data-mono-sm text-data-mono-sm text-secondary font-medium">{{ "%.1f"|format(overall_achievement) }}% Packout</span>
+            </div>
+            <div class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">
+                Dispatched to primary pack buffer
+            </div>
+        </div>
+
+        <!-- Card 5: Production Achievement Rate -->
+        <div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col justify-between border border-surface-container">
+            <div class="flex items-center justify-between text-on-surface-variant">
+                <span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Achievement Rate</span>
+                <span class="inline-flex items-center px-1.5 py-0.5 rounded {% if overall_achievement >= 90 %}bg-surface-container-high text-secondary{% else %}bg-error-container text-on-error-container{% endif %} font-data-mono-sm text-data-mono-sm font-bold">
+                    {% if overall_achievement >= 90 %}ON TRACK{% else %}DEFICIT{% endif %}
+                </span>
+            </div>
+            <div class="mt-space-xs flex items-baseline justify-between">
+                <span class="font-data-mono-lg text-data-mono-lg text-primary font-bold">{{ "%.1f"|format(overall_achievement) }}%</span>
+                <span class="font-data-mono-sm text-data-mono-sm text-secondary font-semibold">+1.4% vs yday</span>
+            </div>
+            <!-- Mini Achievement Bar -->
+            <div class="mt-space-xs w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+                <div class="bg-secondary h-full rounded-full transition-all" style="width: {{ [100, overall_achievement]|min }}%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: Desktop Main Data Grid (Left 7 Cols / Right 5 Cols) -->
+    <div class="grid grid-cols-12 gap-space-md pb-space-md items-start">
+        <!-- LEFT COLUMN: Planned vs Actual + Shortfall Analysis -->
+        <div class="col-span-12 xl:col-span-7 flex flex-col gap-space-md">
+            
+            <!-- Sub-panel A: Planned vs Actual Production Chart -->
+            <div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col border border-surface-container">
+                <div class="flex flex-wrap items-center justify-between pb-space-sm border-b-0">
+                    <div>
+                        <h2 class="font-headline-md text-headline-md text-primary font-bold">Planned vs Actual Production</h2>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Daily finished packet output tracking vs ERP line scheduling</p>
+                    </div>
+                    <div class="flex items-center gap-space-xs">
+                        <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Window:</span>
+                        <div class="bg-surface-container px-2 py-1 rounded font-data-mono-sm text-data-mono-sm text-on-surface font-semibold flex items-center gap-1 cursor-pointer">
+                            <span>Past 7 Days (Oct 20 - Oct 26)</span>
+                            <span class="material-symbols-outlined text-[14px]">expand_more</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Pills Bar -->
+                <div class="flex items-center justify-between py-space-xs my-space-xs flex-wrap gap-2">
+                    <div class="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1">
+                        <a href="{{ url_for('dashboard', material_id=selected_material_id) }}" class="px-2.5 py-1 rounded-full font-label-sm text-label-sm font-semibold transition-colors shrink-0 {% if not selected_product_id %}bg-primary text-on-primary{% else %}bg-surface-container text-on-surface hover:bg-surface-container-high{% endif %}">
+                            All Products ({{ products | length }})
+                        </a>
+                        {% for prod in products %}
+                        <a href="{{ url_for('dashboard', product_id=prod['id'], material_id=selected_material_id) }}" class="px-2.5 py-1 rounded-full font-label-sm text-label-sm transition-colors shrink-0 {% if selected_product_id == prod['id'] %}bg-primary text-on-primary font-semibold{% else %}bg-surface-container text-on-surface hover:bg-surface-container-high{% endif %}">
+                            {{ prod['name'] }} {{ prod['packet_size'] }}g
+                        </a>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="flex items-center gap-space-sm ml-auto">
+                        <div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+                            <span class="w-2.5 h-2.5 rounded-full bg-surface-tint"></span>
+                            <span>Planned (Target)</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface">
+                            <span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+                            <span class="font-bold">Actual Output</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- High-Fidelity Chart Canvas -->
+                <div class="relative w-full h-[230px] bg-surface-container-low rounded p-2 overflow-hidden flex flex-col justify-between">
+                    <canvas id="plannedVsActualCanvas" class="w-full h-full"></canvas>
+                </div>
+            </div>
+
+            <!-- Sub-panel B: Production Shortfall Analysis Bar Chart -->
+            <div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col border border-surface-container">
+                <div class="flex flex-wrap items-center justify-between pb-space-xs gap-2">
+                    <div>
+                        <div class="flex items-center gap-space-sm flex-wrap">
+                            <h2 class="font-headline-md text-headline-md text-primary font-bold">Production Shortfall Analysis</h2>
+                            <span class="px-2 py-0.5 rounded {% if total_shortfall > 0 %}bg-error-container text-on-error-container{% else %}bg-surface-container-high text-secondary{% endif %} font-data-mono-sm text-data-mono-sm font-semibold">
+                                Cumulative Shortfall: {{ "{:,}".format(total_shortfall) }} pkts ({{ "%.1f"|format(100 - overall_achievement) }}% Var)
+                            </span>
+                        </div>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                            <span class="font-semibold text-secondary">Operational Rule:</span> Production shortfall denotes unfulfilled daily scheduled target, not fryer waste or rejected packets.
+                        </p>
+                    </div>
+
+                    <!-- Bar Legend -->
+                    <div class="flex items-center gap-space-sm font-label-sm text-label-sm">
+                        <span class="flex items-center gap-1 text-on-surface"><span class="w-3 h-3 rounded-sm bg-secondary"></span>Achieved Output</span>
+                        <span class="flex items-center gap-1 text-error"><span class="w-3 h-3 rounded-sm bg-error"></span>Target Shortfall</span>
+                    </div>
+                </div>
+
+                <!-- 5-Day Stacked Bars (Stitch Industrial Precision Architecture) -->
+                {% set display_perf = perf_data[-5:] if perf_data | length >= 5 else perf_data %}
+                <div class="mt-space-sm grid grid-cols-{{ [display_perf|length, 1]|max }} gap-space-sm pt-space-xs">
+                    {% for row in display_perf %}
+                    {% set planned = row['planned_qty'] %}
+                    {% set actual = row['actual_qty'] %}
+                    {% set shortfall = planned - actual %}
+                    {% set max_bar = [planned, actual, 1]|max %}
+                    {% set actual_pct = ((actual / max_bar) * 85) | round(1) %}
+                    {% set shortfall_pct = (( [shortfall, 0]|max / max_bar) * 85) | round(1) %}
+                    {% set achieve_rate = ((actual / planned) * 100) if planned > 0 else 100.0 %}
+                    
+                    {# Clean Date Formatting #}
+                    {% set date_parts = row['date'].split('-') %}
+                    {% set display_date = date_parts[2] ~ ' ' ~ months_map.get(date_parts[1], date_parts[1]) if date_parts|length == 3 else row['date'] %}
+
+                    <div class="bg-surface-container-low p-space-sm rounded flex flex-col justify-end h-44 {% if loop.last %}ring-2 ring-secondary/30{% endif %}">
+                        <div class="w-full flex-1 flex flex-col justify-end gap-1">
+                            {% if shortfall > 0 %}
+                            <div class="w-full bg-error rounded-t text-center py-0.5" style="height: {{ shortfall_pct }}%; min-height: 18px;">
+                                <span class="font-data-mono-sm text-[10px] text-on-error block leading-none font-bold">-{{ "{:,}".format(shortfall) }}</span>
+                            </div>
+                            {% endif %}
+                            <div class="w-full bg-secondary {% if shortfall <= 0 %}rounded-t{% endif %} rounded-b text-center py-1 flex items-center justify-center" style="height: {{ actual_pct }}%; min-height: 24px;">
+                                <span class="font-data-mono-sm text-data-mono-sm text-on-secondary font-bold">{{ "%.1f"|format(actual / 1000) }}k</span>
+                            </div>
+                        </div>
+                        <div class="pt-2 text-center">
+                            <span class="font-data-mono-sm text-data-mono-sm font-semibold text-on-surface block truncate">
+                                {{ display_date }}{% if loop.last %} (Live){% endif %}
+                            </span>
+                            <span class="font-label-sm text-label-sm {% if achieve_rate >= 95 %}text-secondary font-bold{% elif achieve_rate >= 85 %}text-on-surface-variant font-medium{% else %}text-error font-bold{% endif %}">
+                                {{ "%.1f"|format(achieve_rate) }}%
+                            </span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Raw Material Requirement vs Stock Holding -->
+        <div class="col-span-12 xl:col-span-5 flex flex-col gap-space-md">
+            <div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col border border-surface-container">
+                <!-- Header & Live Feeder Indicator -->
+                <div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+                    <div class="flex items-center gap-space-xs">
+                        <span class="material-symbols-outlined text-[20px] text-primary">analytics</span>
+                        <h2 class="font-headline-md text-headline-md text-primary font-bold">Raw Material Requirement</h2>
+                    </div>
+                    <span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Live Feeder</span>
+                </div>
+
+                <!-- Material Switcher Tabs -->
+                <div class="grid grid-cols-4 gap-1 pt-space-sm pb-space-xs">
+                    {% for mat in materials[:4] %}
+                    {% set tab_name = 'Potatoes (kg)' if 'Potato' in mat['material_name'] else ('Palm Oil (L)' if 'Oil' in mat['material_name'] else ('Salt (kg)' if 'Salt' in mat['material_name'] else ('Seasoning (kg)' if 'Seasoning' in mat['material_name'] or 'Chilli' in mat['material_name'] else mat['material_name'].split(' ')[0] ~ ' (' ~ mat['unit'] ~ ')'))) %}
+                    <a href="{{ url_for('dashboard', product_id=selected_product_id, material_id=mat['id']) }}" class="px-2 py-1.5 rounded font-label-sm text-label-sm text-center truncate transition-colors {% if selected_material_id == mat['id'] %}bg-primary text-on-primary font-semibold{% else %}bg-surface-container text-on-surface hover:bg-surface-container-high{% endif %}">
+                        {{ tab_name }}
+                    </a>
+                    {% endfor %}
+                </div>
+
+                <!-- Selected Material Header Telemetry Card -->
+                <div class="mt-space-sm p-space-sm bg-surface-container-low rounded flex flex-col gap-space-xs">
+                    <div class="flex items-center justify-between">
+                        <span class="font-headline-md text-headline-md text-primary font-bold truncate">
+                            {{ material_perf['material_name'] if material_perf else 'Chip-Grade Potatoes' }}
+                        </span>
+                        <span class="font-data-mono-sm text-data-mono-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-semibold shrink-0">
+                            Grade A Atlantic
+                        </span>
+                    </div>
+
+                    <div class="flex items-center justify-between font-data-mono-sm text-data-mono-sm text-on-surface-variant">
+                        <span>SKU: RM-POT-01</span>
+                        <span>Batch Moisture Window: 78.2%</span>
+                    </div>
+
+                    <!-- Benchmark Stock Holding Gauge Card -->
+                    <div class="mt-space-xs bg-surface-container-lowest p-space-sm rounded shadow-sm border border-surface-container">
+                        <div class="flex items-center justify-between">
+                            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Silo Holding vs Scheduled Run</span>
+                            <span class="font-data-mono-md text-data-mono-md font-bold text-primary">
+                                {{ "{:,.1f}".format(mat_available_stock) }} {{ mat_unit }} in Silos
+                            </span>
+                        </div>
+
+                        <!-- Prominent Benchmark Progress Bar -->
+                        {% set req_ratio = ((total_mat_req / mat_available_stock) * 100) if mat_available_stock > 0 else 0 %}
+                        {% set clamped_req = [100, [0, req_ratio]|max]|min %}
+                        <div class="mt-2 relative">
+                            <div class="h-4 w-full bg-surface-container rounded-full overflow-hidden flex">
+                                <div class="bg-secondary h-full" style="width: {{ clamped_req }}%;" title="Scheduled Demand: {{ total_mat_req }} {{ mat_unit }}"></div>
+                                <div class="bg-surface-container-high h-full" style="width: {{ 100 - clamped_req }}%;" title="Buffer Reserve"></div>
+                            </div>
+                            <!-- Prominent Reference Benchmark Needle Indicator -->
+                            <div class="absolute -top-1 bottom-0 w-0.5 bg-primary flex flex-col items-center" style="left: {{ clamped_req }}%;">
+                                <div class="w-2 h-2 rounded-full bg-primary -mt-1"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-2 font-data-mono-sm text-data-mono-sm flex-wrap gap-1">
+                            <span class="text-on-surface-variant">Scheduled: <b class="text-on-surface">{{ "{:,.1f}".format(total_mat_req) }} {{ mat_unit }}</b> ({{ "%.1f"|format(clamped_req) }}% cap)</span>
+                            <span class="{% if mat_available_stock >= total_mat_req %}text-secondary font-bold{% else %}text-error font-bold{% endif %}">
+                                {% if mat_available_stock >= total_mat_req %}
+                                Buffer: +{{ "{:,.1f}".format(mat_available_stock - total_mat_req) }} {{ mat_unit }} Reserve
+                                {% else %}
+                                Deficit: -{{ "{:,.1f}".format(total_mat_req - mat_available_stock) }} {{ mat_unit }} Shortfall
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Daily Consumption & Yield Metrics -->
+                    <div class="grid grid-cols-2 gap-space-xs mt-space-xs">
+                        <div class="bg-surface-container-lowest p-space-sm rounded border border-surface-container">
+                            <span class="font-label-sm text-label-sm text-on-surface-variant block uppercase font-semibold">Burn Rate</span>
+                            <span class="font-data-mono-md text-data-mono-md text-primary font-bold">3,200 kg/day</span>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant block">Line 1: 180 kg/hr slice</span>
+                        </div>
+                        <div class="bg-surface-container-lowest p-space-sm rounded border border-surface-container">
+                            <span class="font-label-sm text-label-sm text-on-surface-variant block uppercase font-semibold">Finished BOM Yield</span>
+                            <span class="font-data-mono-md text-data-mono-md text-secondary font-bold">24.8% Finish Yield</span>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant block">4.03 kg raw = 1 kg fried</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Material Demand Trend -->
+                <div class="mt-space-md">
+                    <div class="flex items-center justify-between mb-space-xs">
+                        <span class="font-label-md text-label-md font-bold text-primary">Daily {{ material_perf['material_name'].split(' ')[0] if material_perf else 'Potato' }} Demand ({{ mat_unit }})</span>
+                        <span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">Baseline: 3,000 {{ mat_unit }}</span>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        {% if material_perf and material_perf['daily_requirements'] %}
+                            {% for rec in material_perf['daily_requirements'][-5:] %}
+                            {% set bar_pct = [100, (rec['gross_requirement'] / 3500 * 100)]|min %}
+                            {% set d_parts = rec['date'].split('-') %}
+                            {% set d_formatted = d_parts[2] ~ ' ' ~ months_map.get(d_parts[1], d_parts[1]) if d_parts|length == 3 else rec['date'] %}
+                            <div class="flex items-center gap-space-sm text-body-sm">
+                                <span class="font-data-mono-sm text-data-mono-sm w-16 text-on-surface-variant truncate">{{ d_formatted }}</span>
+                                <div class="flex-1 bg-surface-container-low rounded-full h-3 overflow-hidden">
+                                    <div class="{% if loop.last %}bg-secondary{% else %}bg-surface-tint{% endif %} h-full rounded-full" style="width: {{ bar_pct }}%;"></div>
+                                </div>
+                                <span class="font-data-mono-sm text-data-mono-sm w-24 text-right font-medium text-on-surface">
+                                    {{ "{:,.1f}".format(rec['gross_requirement']) }} {{ mat_unit }}
+                                </span>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="text-xs text-on-surface-variant py-2">No scheduled demand for this material window.</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Operational Sufficiency Callout Box -->
+                <div class="mt-space-md p-space-sm bg-surface-container-high rounded flex items-start gap-space-sm border border-secondary/20">
+                    <div class="w-6 h-6 rounded-full {% if mat_available_stock >= total_mat_req %}bg-secondary{% else %}bg-error{% endif %} flex items-center justify-center shrink-0 mt-0.5">
+                        <span class="material-symbols-outlined text-surface text-[16px]">{% if mat_available_stock >= total_mat_req %}check{% else %}warning{% endif %}</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-2">
+                            <span class="font-label-md text-label-md font-bold text-primary">
+                                {% if mat_available_stock >= total_mat_req %}
+                                Procurement Feasibility: Sufficient Stock Buffer
+                                {% else %}
+                                Procurement Alert: Material Shortfall Predicted
+                                {% endif %}
+                            </span>
+                            <span class="font-data-mono-sm text-data-mono-sm font-bold {% if mat_available_stock >= total_mat_req %}text-secondary{% else %}text-error{% endif %}">
+                                ({% if mat_available_stock >= total_mat_req %}+{{ "{:,.1f}".format(mat_available_stock - total_mat_req) }}{% else %}-{{ "{:,.1f}".format(total_mat_req - mat_available_stock) }}{% endif %} {{ mat_unit }})
+                            </span>
+                        </div>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                            {% if mat_available_stock >= total_mat_req %}
+                            Current warehouse stock ({{ "{:,.1f}".format(mat_available_stock) }} {{ mat_unit }}) fully covers cumulative manufacturing schedule ({{ "{:,.1f}".format(total_mat_req) }} {{ mat_unit }}). Next farm dispatch scheduled on 28 Oct.
+                            {% else %}
+                            Immediate replenishment purchase order required. Physical stock does not meet cumulative scheduled line requirements.
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: Clean Operational Status Bar / Shift Quick Actions -->
+    <div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-wrap items-center justify-between gap-space-md border border-surface-container">
+        <!-- Telemetry Status Badges -->
+        <div class="flex flex-wrap items-center gap-space-md">
+            <!-- Line 1 Continuous Fryer -->
+            <div class="flex items-center gap-space-sm">
+                <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+                <div class="flex flex-col">
+                    <span class="font-label-sm text-label-sm font-bold text-primary">Line 1 • Continuous Fryer</span>
+                    <span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">RUNNING (98% Cap) • 176°C Oil</span>
+                </div>
+            </div>
+            <div class="h-6 w-[1px] bg-surface-container-highest hidden md:block"></div>
+            <!-- Line 2 Kettle Fryer -->
+            <div class="flex items-center gap-space-sm">
+                <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+                <div class="flex flex-col">
+                    <span class="font-label-sm text-label-sm font-bold text-primary">Line 2 • Batch Kettle</span>
+                    <span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">RUNNING (86% Cap) • Batch #892</span>
+                </div>
+            </div>
+            <div class="h-6 w-[1px] bg-surface-container-highest hidden md:block"></div>
+            <!-- Packaging Lines A & B -->
+            <div class="flex items-center gap-space-sm">
+                <span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+                <div class="flex flex-col">
+                    <span class="font-label-sm text-label-sm font-bold text-primary">Packaging Lines A &amp; B</span>
+                    <span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">SYNCHRONIZED (120 bags/min)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center gap-space-sm ml-auto">
+            <button onclick="window.print()" class="flex items-center gap-1.5 px-space-md py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md font-semibold">
+                <span class="material-symbols-outlined text-[16px]">print</span>
+                <span>Print Batch Run Sheet</span>
+            </button>
+            <a href="{{ url_for('schedule') }}" class="flex items-center gap-1.5 px-space-md py-1.5 rounded bg-primary text-on-primary hover:bg-secondary transition-colors font-label-md text-label-md font-semibold shadow-sm">
+                <span class="material-symbols-outlined text-[16px]">assignment_turned_in</span>
+                <span>Log Shift Handover</span>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById("plannedVsActualCanvas");
+    if (!ctx) return;
+
+    const rawLabels = {{ chart_labels | tojson }};
+    const plannedData = {{ chart_planned | tojson }};
+    const actualData = {{ chart_actual | tojson }};
+
+    // Format Date strings like 2024-10-20 -> 20 Oct
+    function formatChartDate(dStr) {
+        if (!dStr) return '';
+        const parts = dStr.split('-');
+        if (parts.length === 3) {
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const mIdx = parseInt(parts[1], 10) - 1;
+            const mName = months[mIdx] || parts[1];
+            return `${parts[2]} ${mName}`;
+        }
+        return dStr;
+    }
+
+    const defaultRawDates = ["2024-10-20", "2024-10-21", "2024-10-22", "2024-10-23", "2024-10-24", "2024-10-25"];
+    const datesToUse = rawLabels.length > 0 ? rawLabels : defaultRawDates;
+    const labels = datesToUse.map((d, i) => {
+        const formatted = formatChartDate(d);
+        return (i === datesToUse.length - 1) ? `${formatted} (Live)` : formatted;
+    });
+
+    const planned = plannedData.length > 0 ? plannedData : [6800, 7200, 7400, 7200, 7500, 7800];
+    const actual = actualData.length > 0 ? actualData : [6300, 6700, 7150, 7050, 7100, 7420];
+
+    // Create Soft Gradient Fill for Actual Output
+    const chartContext = ctx.getContext('2d');
+    const gradient = chartContext.createLinearGradient(0, 0, 0, 200);
+    gradient.addColorStop(0, 'rgba(64, 89, 170, 0.28)');
+    gradient.addColorStop(1, 'rgba(64, 89, 170, 0.01)');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Planned (Target)',
+                    data: planned,
+                    borderColor: '#74777e',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointBackgroundColor: '#74777e',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 1.5,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    tension: 0.35,
+                    fill: false
+                },
+                {
+                    label: 'Actual Output',
+                    data: actual,
+                    borderColor: '#4059aa',
+                    borderWidth: 3,
+                    pointBackgroundColor: '#ffffff',
+                    pointBorderColor: '#4059aa',
+                    pointBorderWidth: 2.5,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    tension: 0.35,
+                    backgroundColor: gradient,
+                    fill: true
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false
+            },
+            plugins: {
+                legend: {
+                    display: false // Using custom Stitch legend header
+                },
+                tooltip: {
+                    backgroundColor: '#0f2744',
+                    titleFont: {
+                        family: 'JetBrains Mono',
+                        size: 12,
+                        weight: 'bold'
+                    },
+                    bodyFont: {
+                        family: 'JetBrains Mono',
+                        size: 11
+                    },
+                    padding: 10,
+                    cornerRadius: 4,
+                    callbacks: {
+                        label: function (context) {
+                            return ` ${context.dataset.label}: ${context.raw.toLocaleString()} pkts`;
+                        },
+                        afterBody: function (contexts) {
+                            if (contexts.length >= 2) {
+                                const p = contexts[0].raw;
+                                const a = contexts[1].raw;
+                                const diff = a - p;
+                                const sign = diff >= 0 ? '+' : '';
+                                return ` Shortfall: ${sign}${diff.toLocaleString()} pkts (${((a/p)*100).toFixed(1)}% Yield)`;
+                            }
+                            return '';
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            family: 'JetBrains Mono',
+                            size: 11
+                        },
+                        color: '#64748b'
+                    }
+                },
+                y: {
+                    grid: {
+                        color: 'rgba(203, 219, 245, 0.4)',
+                        borderDash: [3, 3]
+                    },
+                    ticks: {
+                        font: {
+                            family: 'JetBrains Mono',
+                            size: 11
+                        },
+                        color: '#64748b',
+                        callback: function (val) {
+                            return (val >= 1000) ? (val / 1000).toFixed(0) + 'k' : val;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary":"#4059aa","surface-container":"#e5eeff","surface":"#f8f9ff","on-tertiary-fixed-variant":"#3a485b","background":"#f8f9ff","error":"#ba1a1a","on-primary-fixed":"#021c39","tertiary-fixed-dim":"#b9c7df","outline-variant":"#c4c6ce","surface-tint":"#4a5f7f","primary-fixed-dim":"#b2c8ed","surface-container-lowest":"#ffffff","on-background":"#0b1c30","on-error":"#ffffff","surface-dim":"#cbdbf5","surface-bright":"#f8f9ff","outline":"#74777e","on-secondary-container":"#1d3989","on-primary":"#ffffff","on-secondary-fixed-variant":"#264191","inverse-primary":"#b2c8ed","secondary-container":"#8fa7fe","on-secondary-fixed":"#00164e","surface-container-low":"#eff4ff","on-primary-container":"#798fb1","inverse-on-surface":"#eaf1ff","on-secondary":"#ffffff","error-container":"#ffdad6","on-tertiary-fixed":"#0d1c2e","on-tertiary-container":"#808ea4","on-primary-fixed-variant":"#324866","inverse-surface":"#213145","surface-variant":"#d3e4fe","primary-fixed":"#d4e3ff","primary-container":"#0f2744","tertiary":"#041223","surface-container-high":"#dce9ff","secondary-fixed-dim":"#b6c4ff","on-tertiary":"#ffffff","on-surface":"#0b1c30","tertiary-container":"#192739","on-surface-variant":"#44474d","on-error-container":"#93000a","tertiary-fixed":"#d5e3fc","primary":"#001229","secondary-fixed":"#dce1ff","surface-container-highest":"#d3e4fe"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-lg":"1.25rem","gutter-compact":"0.5rem","margin":"1.5rem","margin-mobile":"1rem","space-sm":"0.5rem","space-md":"0.75rem","space-xs":"0.25rem","space-xl":"2rem","gutter":"1rem"},fontFamily:{"data-mono-lg":["JetBrains Mono"],"body-lg":["Hanken Grotesk"],"body-sm":["Hanken Grotesk"],"display-lg":["Hanken Grotesk"],"display-sm":["Hanken Grotesk"],"label-md":["Hanken Grotesk"],"body-md":["Hanken Grotesk"],"headline-lg":["Hanken Grotesk"],"data-mono-sm":["JetBrains Mono"],"headline-md":["Hanken Grotesk"],"headline-lg-mobile":["Hanken Grotesk"],"data-mono-md":["JetBrains Mono"],"label-sm":["Hanken Grotesk"]},fontSize:{"data-mono-lg":["16px",{"lineHeight":"20px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"display-sm":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["20px",{"lineHeight":"28px","fontWeight":"600"}],"data-mono-sm":["11px",{"lineHeight":"14px","fontWeight":"500"}],"headline-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["18px",{"lineHeight":"24px","fontWeight":"600"}],"data-mono-md":["13px",{"lineHeight":"16px","fontWeight":"500"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-60 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="h-14 px-gutter flex items-center justify-between bg-surface-container"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-surface text-[18px]">precision_manufacturing</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md tracking-tight text-primary leading-none">Chips MRP</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-0.5">Plant 1 • Pune</span></div></div><div class="w-2 h-2 rounded-full bg-secondary"></div></div><div class="px-gutter-compact py-space-sm"><div class="px-space-sm py-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Core MRP Operations</span></div><nav class="flex flex-col gap-space-xs mt-space-xs" data-active-classes="bg-primary-container text-on-primary font-headline-md rounded"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#">Dashboard</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="raw-materials" href="#">Raw Materials</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="products" href="#">Products</a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm shadow-sm transition-all bg-primary-container text-on-primary font-headline-md rounded" data-path="bill-of-materials" href="#">Bill of Materials</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="production-schedule" href="#">Production Schedule</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="material-feasibility" href="#">Material Feasibility</a></nav></div></div><div class="p-gutter-compact bg-surface-container-low"><div class="p-space-sm bg-surface-container rounded flex flex-col gap-space-xs"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-label-md text-label-md text-on-surface truncate">Rahul Desai</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Operations Manager</span></div></div><div class="flex items-center justify-between pt-space-xs px-space-xs"><div class="flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">Shift A (06:00-14:00)</span></div><span class="font-label-sm text-label-sm text-secondary uppercase font-semibold">Active</span></div></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-14 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-30 flex items-center justify-between px-margin"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant"><span class="font-body-sm text-body-sm text-on-surface-variant">Operations</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="font-label-md text-label-md text-on-surface">MRP Dispatch Console</span></div><div class="h-4 w-[1px] bg-surface-container-highest"></div><div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container rounded"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-data-mono-sm text-data-mono-sm text-on-surface font-semibold">LIVE PLANT DATA</span></div><div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container-low rounded"><span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">SYS: ONLINE (0.12s)</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm font-data-mono-md text-data-mono-md text-on-surface-variant bg-surface-container px-space-md py-space-xs rounded"><span class="material-symbols-outlined text-[16px]">schedule</span><span>24 OCT • 09:42:15 IST</span></div><button class="relative p-space-xs rounded hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><button class="p-space-xs rounded hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[20px]">refresh</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-14 w-full px-gutter min-h-screen bg-surface"><div class="flex flex-col w-full pb-margin">
+<!-- Toast Notification Stack -->
+<div class="fixed top-16 right-6 z-50 flex items-center gap-space-sm bg-primary-container text-on-primary px-space-md py-space-sm rounded-lg shadow-xl translate-x-[120%] transition-transform duration-300 pointer-events-none" id="toastNotification">
+<span class="material-symbols-outlined text-[20px] text-secondary-container" id="toastIcon">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md" id="toastTitle">BOM Recipe Updated</span>
+<span class="font-body-sm text-body-sm text-on-primary-container" id="toastMessage">Material requirements successfully saved to master recipe.</span>
+</div>
+</div>
+<!-- Page Header & Action Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md py-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<span>Operations</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Production Planning</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Bill of Materials</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<h1 class="font-display-sm text-display-sm text-primary tracking-tight">Bill of Materials</h1>
+<span class="inline-flex items-center px-space-xs py-0.5 rounded bg-surface-container font-data-mono-sm text-data-mono-sm text-secondary font-semibold">REV-2.4B</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Define raw-material requirements, packaging specifications, and unit yield ratios for each finished product.</p>
+</div>
+<!-- Header Actions -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md shadow-sm transition-all" id="toggleEmptyBtn" onclick="toggleEmptyState()">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>Toggle Empty State</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md shadow-sm transition-all" onclick="exportBOMCSV()">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export BOM (CSV)</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded bg-primary-container hover:bg-tertiary-container text-on-primary font-headline-md text-headline-md shadow-sm transition-all" onclick="openBOMModal('add')">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>+ Add BOM Entry</span>
+</button>
+</div>
+</div>
+<!-- Operational KPI Summary Bar -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-lg">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Active Recipe Mappings</span>
+<span class="p-1 rounded bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-data-mono-lg text-data-mono-lg text-primary" id="kpiCount">18 BOM Items</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Covering 8 Finished SKUs (Pune Line 1)</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Avg. Unit RM Cost</span>
+<span class="p-1 rounded bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">currency_rupee</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-data-mono-lg text-data-mono-lg text-primary">₹3.82</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ packet</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-secondary">trending_down</span>
+<span>-₹0.14 vs Q3 raw index</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Key Constraint RM</span>
+<span class="p-1 rounded bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs truncate">
+<span class="font-headline-md text-headline-md text-primary truncate">Chip-Grade Potatoes</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<div class="w-16 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 65%;"></div>
+</div>
+<span>65% mass fraction in yield</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Recipe Compliance</span>
+<span class="p-1 rounded bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-data-mono-lg text-data-mono-lg text-primary">100% Verified</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-secondary">check_circle</span>
+<span>SCADA &amp; FSSAI standard compliant</span>
+</div>
+</div>
+</div>
+<!-- Filters & Controls Bar -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm mb-space-md flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<div class="flex-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-space-md">
+<!-- Search Input -->
+<div class="relative flex-1 min-w-[260px]">
+<span class="material-symbols-outlined absolute left-space-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full pl-9 pr-space-md py-1.5 bg-surface-container-low focus:bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded focus:outline-none focus:ring-1 focus:ring-primary transition-all placeholder:text-on-surface-variant" id="bomSearchInput" oninput="handleSearchAndFilter()" placeholder="Search by product, raw material, or SKU..." type="text"/>
+</div>
+<!-- Filter: Product -->
+<div class="min-w-[190px]">
+<select class="w-full py-1.5 px-space-sm bg-surface-container-low focus:bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer transition-all" id="productFilter" onchange="handleSearchAndFilter()">
+<option value="">All Products</option>
+<option value="Classic Salted - 25g">Classic Salted - 25g</option>
+<option value="Classic Salted - 50g">Classic Salted - 50g</option>
+<option value="Masala Magic - 25g">Masala Magic - 25g</option>
+<option value="Masala Magic - 50g">Masala Magic - 50g</option>
+<option value="Cream &amp; Onion - 25g">Cream &amp; Onion - 25g</option>
+<option value="Cream &amp; Onion - 50g">Cream &amp; Onion - 50g</option>
+<option value="Tangy Tomato - 25g">Tangy Tomato - 25g</option>
+</select>
+</div>
+<!-- Filter: Category -->
+<div class="min-w-[170px]">
+<select class="w-full py-1.5 px-space-sm bg-surface-container-low focus:bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer transition-all" id="categoryFilter" onchange="handleSearchAndFilter()">
+<option value="">All Material Categories</option>
+<option value="Agricultural">Agricultural Raw</option>
+<option value="Oils &amp; Fats">Oils &amp; Fats</option>
+<option value="Seasonings">Seasonings &amp; Spices</option>
+<option value="Packaging">Packaging Film &amp; Gas</option>
+</select>
+</div>
+</div>
+<!-- Right Controls -->
+<div class="flex items-center gap-space-sm self-end lg:self-center">
+<button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" onclick="resetFilters()">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Reset Filters</span>
+</button>
+<div class="h-4 w-[1px] bg-surface-container-highest"></div>
+<div class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">
+        Showing <span class="font-semibold text-primary" id="filteredCount">11</span> entries
+      </div>
+</div>
+</div>
+<!-- Primary Interactive Data Table View -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col" id="tableViewCard">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse" id="bomTable">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm tracking-wider select-none">
+<th class="py-space-sm px-space-md cursor-pointer hover:bg-surface-container transition-colors group" onclick="sortTable('product')">
+<div class="flex items-center gap-space-xs">
+<span>PRODUCT NAME</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary" id="sortIconProduct">unfold_more</span>
+</div>
+</th>
+<th class="py-space-sm px-space-md cursor-pointer hover:bg-surface-container transition-colors group" onclick="sortTable('category')">
+<div class="flex items-center gap-space-xs">
+<span>CATEGORY</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary" id="sortIconCategory">unfold_more</span>
+</div>
+</th>
+<th class="py-space-sm px-space-md cursor-pointer hover:bg-surface-container transition-colors group" onclick="sortTable('material')">
+<div class="flex items-center gap-space-xs">
+<span>RAW MATERIAL</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary" id="sortIconMaterial">unfold_more</span>
+</div>
+</th>
+<th class="py-space-sm px-space-md text-right cursor-pointer hover:bg-surface-container transition-colors group" onclick="sortTable('quantity')">
+<div class="flex items-center justify-end gap-space-xs">
+<span>QUANTITY REQUIRED PER PACKET</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary" id="sortIconQuantity">unfold_more</span>
+</div>
+</th>
+<th class="py-space-sm px-space-md text-right cursor-pointer hover:bg-surface-container transition-colors group" onclick="sortTable('cost')">
+<div class="flex items-center justify-end gap-space-xs">
+<span>MATERIAL COST</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary" id="sortIconCost">unfold_more</span>
+</div>
+</th>
+<th class="py-space-sm px-space-md text-center">
+<span>ACTIONS</span>
+</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y divide-surface-container-low" id="bomTableBody">
+<!-- Populated by JavaScript -->
+</tbody>
+<tfoot>
+<tr class="bg-surface-container-low font-data-mono-md text-data-mono-md text-primary">
+<td class="py-space-sm px-space-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" colspan="3">
+              Aggregate Active View Totals
+            </td>
+<td class="py-space-sm px-space-md text-right font-semibold text-primary" id="footerTotalQty">
+              --
+            </td>
+<td class="py-space-sm px-space-md text-right font-semibold text-primary" id="footerTotalCost">
+              ₹8.86 / pkt
+            </td>
+<td class="py-space-sm px-space-md text-center text-on-surface-variant font-data-mono-sm text-data-mono-sm">
+              Validated
+            </td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<!-- Zero-Data / Empty State Container (Hidden by default) -->
+<div class="hidden bg-surface-container-lowest rounded-lg shadow-sm p-space-xl text-center flex-col items-center justify-center my-space-sm" id="emptyStateCard">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-space-md text-secondary">
+<span class="material-symbols-outlined text-[36px]">inventory_2</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-space-xs">No BOM Entries Found</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-lg">
+      No raw material mappings match your filter criteria or the BOM master table is currently unpopulated for this plant facility.
+    </p>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-space-sm rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" onclick="resetFilters(); toggleEmptyState(false);">
+        Clear All Filters
+      </button>
+<button class="px-space-md py-space-sm rounded bg-primary-container hover:bg-tertiary-container text-on-primary font-headline-md text-headline-md transition-colors flex items-center gap-space-xs" onclick="openBOMModal('add')">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Create First BOM Entry</span>
+</button>
+</div>
+</div>
+<!-- Secondary Information Section: Batch Ratio Engineering Notes -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mt-space-lg">
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">flaky</span>
+<span class="font-headline-md text-headline-md text-primary">Moisture &amp; Frying Shrinkage Factor</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+          Fresh potato tuber solids average 21.5% dry matter. Standard yield index calibrated at 1 kg finished crisps = 3.65 kg raw unpeeled potatoes.
+        </p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded flex items-center justify-between font-data-mono-sm text-data-mono-sm">
+<span class="text-on-surface-variant">SOP Code: SOP-QC-741</span>
+<span class="text-secondary font-semibold">Tolerance: ±0.15%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">tune</span>
+<span class="font-headline-md text-headline-md text-primary">Seasoning Application Drum Calibration</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+          Dry seasoning dosed via electromagnetic vibratory feeder. Masala Magic target adherence is 7.2% wt/wt; Cream &amp; Onion target is 7.0% wt/wt.
+        </p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded flex items-center justify-between font-data-mono-sm text-data-mono-sm">
+<span class="text-on-surface-variant">Feeder Speed: 42 RPM</span>
+<span class="text-secondary font-semibold">Variance: &lt;1.1%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">local_shipping</span>
+<span class="font-headline-md text-headline-md text-primary">Packaging Film Scrappage Allowance</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+          Rotary jaw heat sealer trim scrap allowance accounted at 1.025 packets of laminated roll film per 1 net unit sealed.
+        </p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded flex items-center justify-between font-data-mono-sm text-data-mono-sm">
+<span class="text-on-surface-variant">Nitrogen Purity: 99.9%</span>
+<span class="text-secondary font-semibold">Seal Integrity: PASS</span>
+</div>
+</div>
+</div>
+<!-- MODAL: Add / Edit BOM Entry -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-primary/40 backdrop-blur-sm hidden" id="bomModal">
+<div class="bg-surface-container-lowest rounded-lg shadow-xl w-full max-w-xl mx-space-md overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+<!-- Modal Header -->
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]" id="modalIcon">playlist_add</span>
+<h2 class="font-headline-lg text-headline-lg text-primary" id="modalHeading">Add BOM Entry</h2>
+</div>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" onclick="closeBOMModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Modal Body Form -->
+<form class="p-space-lg flex flex-col gap-space-md" id="bomForm" onsubmit="handleSaveBOM(event)">
+<input id="entryIndex" type="hidden" value="-1"/>
+<!-- Field 1: Finished Product -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface" for="formProduct">Finished Product <span class="text-error">*</span></label>
+<select class="w-full py-2 px-space-sm bg-surface-container-low focus:bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded focus:outline-none focus:ring-1 focus:ring-primary transition-all" id="formProduct" required="">
+<option disabled="" selected="" value="">Select Finished SKU</option>
+<option value="Classic Salted - 25g">Classic Salted - 25g (Small Pack)</option>
+<option value="Classic Salted - 50g">Classic Salted - 50g (Standard Pack)</option>
+<option value="Masala Magic - 25g">Masala Magic - 25g (Small Pack)</option>
+<option value="Masala Magic - 50g">Masala Magic - 50g (Standard Pack)</option>
+<option value="Cream &amp; Onion - 25g">Cream &amp; Onion - 25g (Small Pack)</option>
+<option value="Cream &amp; Onion - 50g">Cream &amp; Onion - 50g (Standard Pack)</option>
+<option value="Tangy Tomato - 25g">Tangy Tomato - 25g (Small Pack)</option>
+</select>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Includes specific packet packaging size variant.</span>
+</div>
+<!-- Field 2: Raw Material -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface" for="formMaterial">Raw Material <span class="text-error">*</span></label>
+<select class="w-full py-2 px-space-sm bg-surface-container-low focus:bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded focus:outline-none focus:ring-1 focus:ring-primary transition-all" id="formMaterial" onchange="handleMaterialChange()" required="">
+<option disabled="" selected="" value="">Select Raw Material Ingredient</option>
+<option data-cat="Agricultural" data-rate="0.0226" data-unit="g" value="Chip-Grade Potatoes (Grade A Atlantic)">Chip-Grade Potatoes (Grade A Atlantic)</option>
+<option data-cat="Oils &amp; Fats" data-rate="0.0829" data-unit="mL" value="Refined Palm Olein Oil">Refined Palm Olein Oil</option>
+<option data-cat="Seasonings" data-rate="0.1333" data-unit="g" value="Iodised Fine Salt">Iodised Fine Salt</option>
+<option data-cat="Seasonings" data-rate="0.2388" data-unit="g" value="Deggi Red Chilli Powder">Deggi Red Chilli Powder</option>
+<option data-cat="Seasonings" data-rate="0.3114" data-unit="g" value="Dehydrated Onion Powder">Dehydrated Onion Powder</option>
+<option data-cat="Seasonings" data-rate="0.3114" data-unit="g" value="Sour Cream Flavour Seasoning">Sour Cream Flavour Seasoning</option>
+<option data-cat="Packaging" data-rate="1.8500" data-unit="piece" value="Multi-Layer Metallised Film">Multi-Layer Metallised Film</option>
+<option data-cat="Packaging" data-rate="0.0084" data-unit="mL" value="Nitrogen Flush Gas">Nitrogen Flush Gas</option>
+</select>
+</div>
+<!-- Field 3: Quantity Required Per Packet with Dynamic Inline Unit Addon -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface" for="formQuantity">Quantity Required Per Packet <span class="text-error">*</span></label>
+<div class="flex items-center rounded bg-surface-container-low overflow-hidden focus-within:ring-1 focus-within:ring-primary">
+<input class="flex-1 py-2 px-space-sm bg-transparent text-on-surface font-data-mono-md text-data-mono-md focus:outline-none" id="formQuantity" min="0.01" oninput="updateCostPreview()" placeholder="e.g. 38.50" required="" step="0.01" type="number"/>
+<span class="px-space-md py-2 bg-surface-container text-on-surface-variant font-data-mono-sm text-data-mono-sm font-semibold select-none" id="unitBadge">
+              g / pkt
+            </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Net mass or volume measured at packaging intake stage.</span>
+</div>
+<!-- Helper Calculation: Estimated Material Cost Preview -->
+<div class="p-space-sm rounded bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">calculate</span>
+<span>Estimated Material Cost Preview:</span>
+</div>
+<span class="font-data-mono-md text-data-mono-md font-semibold text-primary" id="estimatedCostPreview">₹0.00 / pkt</span>
+</div>
+<!-- Modal Footer Actions -->
+<div class="flex items-center justify-end gap-space-sm pt-space-sm">
+<button class="px-space-md py-space-sm rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" onclick="closeBOMModal()" type="button">
+            Cancel
+          </button>
+<button class="px-space-md py-space-sm rounded bg-primary-container hover:bg-tertiary-container text-on-primary font-headline-md text-headline-md shadow-sm transition-colors" type="submit">
+            Save BOM Entry
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- MODAL: Delete Confirmation Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-primary/40 backdrop-blur-sm hidden" id="deleteModal">
+<div class="bg-surface-container-lowest rounded-lg shadow-xl w-full max-w-md mx-space-md overflow-hidden">
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-error">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Remove Recipe Item</h2>
+</div>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container" onclick="closeDeleteModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-space-lg flex flex-col gap-space-md">
+<p class="font-body-md text-body-md text-on-surface">
+          Are you sure you want to delete this ingredient mapping from the master recipe? This will impact active Material Feasibility checks and ERP MRP dispatch runs.
+        </p>
+<div class="bg-surface-container-low p-space-sm rounded font-data-mono-sm text-data-mono-sm text-primary" id="deleteTargetText">
+          --
+        </div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-space-sm rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md" onclick="closeDeleteModal()" type="button">
+            Cancel
+          </button>
+<button class="px-space-md py-space-sm rounded bg-error text-on-error font-headline-md text-headline-md shadow-sm hover:opacity-90 transition-opacity" onclick="confirmDelete()" type="button">
+            Confirm Delete
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Initial realistic dataset
+  let bomData = [
+    {
+      id: 1,
+      product: "Classic Salted - 25g",
+      packBadge: "25g Small Pack",
+      packType: "small",
+      category: "Agricultural",
+      material: "Chip-Grade Potatoes (Grade A Atlantic)",
+      quantity: 38.5,
+      unit: "g",
+      cost: 0.87
+    },
+    {
+      id: 2,
+      product: "Classic Salted - 25g",
+      packBadge: "25g Small Pack",
+      packType: "small",
+      category: "Oils & Fats",
+      material: "Refined Palm Olein Oil",
+      quantity: 8.2,
+      unit: "mL",
+      cost: 0.68
+    },
+    {
+      id: 3,
+      product: "Classic Salted - 25g",
+      packBadge: "25g Small Pack",
+      packType: "small",
+      category: "Seasonings",
+      material: "Iodised Fine Salt",
+      quantity: 0.45,
+      unit: "g",
+      cost: 0.06
+    },
+    {
+      id: 4,
+      product: "Classic Salted - 25g",
+      packBadge: "25g Small Pack",
+      packType: "small",
+      category: "Packaging",
+      material: "Multi-Layer Metallised Film",
+      quantity: 1.0,
+      unit: "piece",
+      cost: 1.85
+    },
+    {
+      id: 5,
+      product: "Classic Salted - 50g",
+      packBadge: "50g Standard Pack",
+      packType: "standard",
+      category: "Agricultural",
+      material: "Chip-Grade Potatoes (Grade A Atlantic)",
+      quantity: 77.0,
+      unit: "g",
+      cost: 1.73
+    },
+    {
+      id: 6,
+      product: "Classic Salted - 50g",
+      packBadge: "50g Standard Pack",
+      packType: "standard",
+      category: "Oils & Fats",
+      material: "Refined Palm Olein Oil",
+      quantity: 16.4,
+      unit: "mL",
+      cost: 1.36
+    },
+    {
+      id: 7,
+      product: "Classic Salted - 50g",
+      packBadge: "50g Standard Pack",
+      packType: "standard",
+      category: "Seasonings",
+      material: "Iodised Fine Salt",
+      quantity: 0.90,
+      unit: "g",
+      cost: 0.12
+    },
+    {
+      id: 8,
+      product: "Classic Salted - 50g",
+      packBadge: "50g Standard Pack",
+      packType: "standard",
+      category: "Packaging",
+      material: "Multi-Layer Metallised Film",
+      quantity: 1.0,
+      unit: "piece",
+      cost: 1.85
+    },
+    {
+      id: 9,
+      product: "Masala Magic - 25g",
+      packBadge: "25g Small Pack",
+      packType: "small",
+      category: "Agricultural",
+      material: "Chip-Grade Potatoes (Grade A Atlantic)",
+      quantity: 38.0,
+      unit: "g",
+      cost: 0.86
+    },
+    {
+      id: 10,
+      product: "Masala Magic - 25g",
+      packBadge: "25g Small Pack",
+      packType: "small",
+      category: "Seasonings",
+      material: "Deggi Red Chilli Powder",
+      quantity: 1.80,
+      unit: "g",
+      cost: 0.43
+    },
+    {
+      id: 11,
+      product: "Cream & Onion - 50g",
+      packBadge: "50g Standard Pack",
+      packType: "standard",
+      category: "Seasonings",
+      material: "Sour Cream Flavour Seasoning",
+      quantity: 3.50,
+      unit: "g",
+      cost: 1.09
+    }
+  ];
+
+  let currentSort = { column: 'product', direction: 'asc' };
+  let pendingDeleteIndex = null;
+  let isForcedEmpty = false;
+
+  // Render Table Rows
+  function renderTable() {
+    const tbody = document.getElementById('bomTableBody');
+    const tableCard = document.getElementById('tableViewCard');
+    const emptyCard = document.getElementById('emptyStateCard');
+    const filteredCountSpan = document.getElementById('filteredCount');
+    const footerCost = document.getElementById('footerTotalCost');
+    const footerQty = document.getElementById('footerTotalQty');
+    const kpiCount = document.getElementById('kpiCount');
+
+    if (isForcedEmpty) {
+      tableCard.classList.add('hidden');
+      emptyCard.classList.remove('hidden');
+      filteredCountSpan.textContent = '0';
+      return;
+    }
+
+    const searchQuery = document.getElementById('bomSearchInput').value.trim().toLowerCase();
+    const productFilter = document.getElementById('productFilter').value;
+    const categoryFilter = document.getElementById('categoryFilter').value;
+
+    const filtered = bomData.filter(item => {
+      const matchSearch = item.product.toLowerCase().includes(searchQuery) ||
+                          item.material.toLowerCase().includes(searchQuery) ||
+                          item.category.toLowerCase().includes(searchQuery);
+      const matchProduct = !productFilter || item.product === productFilter;
+      const matchCat = !categoryFilter || item.category === categoryFilter;
+      return matchSearch && matchProduct && matchCat;
+    });
+
+    // Apply Sorting
+    filtered.sort((a, b) => {
+      let valA = a[currentSort.column];
+      let valB = b[currentSort.column];
+      if (typeof valA === 'string') {
+        return currentSort.direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+      } else {
+        return currentSort.direction === 'asc' ? valA - valB : valB - valA;
+      }
+    });
+
+    if (filtered.length === 0) {
+      tableCard.classList.add('hidden');
+      emptyCard.classList.remove('hidden');
+      filteredCountSpan.textContent = '0';
+      return;
+    } else {
+      tableCard.classList.remove('hidden');
+      emptyCard.classList.add('hidden');
+      filteredCountSpan.textContent = filtered.length;
+    }
+
+    let totalCost = 0;
+    tbody.innerHTML = filtered.map((row, index) => {
+      totalCost += row.cost;
+      const badgeStyle = row.packType === 'small' 
+        ? 'bg-surface-container text-secondary' 
+        : 'bg-primary-container text-on-primary';
+
+      return `
+        <tr class="hover:bg-surface-container-low/70 transition-colors group">
+          <td class="py-space-sm px-space-md font-body-md text-body-md">
+            <div class="flex items-center gap-space-sm flex-wrap">
+              <span class="font-headline-md text-headline-md text-primary">${row.product}</span>
+              <span class="px-space-xs py-0.5 rounded font-label-sm text-label-sm ${badgeStyle}">
+                ${row.packBadge}
+              </span>
+            </div>
+          </td>
+          <td class="py-space-sm px-space-md">
+            <span class="px-space-xs py-0.5 rounded bg-surface-container-low font-data-mono-sm text-data-mono-sm text-on-surface-variant">
+              ${row.category}
+            </span>
+          </td>
+          <td class="py-space-sm px-space-md font-body-md text-body-md text-on-surface">
+            <div class="flex items-center gap-space-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              <span>${row.material}</span>
+            </div>
+          </td>
+          <td class="py-space-sm px-space-md text-right font-data-mono-md text-data-mono-md font-semibold text-primary">
+            ${row.quantity.toFixed(row.unit === 'piece' ? 1 : 2)} <span class="text-on-surface-variant font-normal">${row.unit} / pkt</span>
+          </td>
+          <td class="py-space-sm px-space-md text-right font-data-mono-md text-data-mono-md text-primary">
+            ₹${row.cost.toFixed(2)} <span class="text-on-surface-variant font-normal">/ pkt</span>
+          </td>
+          <td class="py-space-sm px-space-md text-center">
+            <div class="inline-flex items-center gap-space-xs">
+              <button onclick="openBOMModal('edit', ${row.id})" title="Edit BOM Entry" class="p-1 rounded text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors">
+                <span class="material-symbols-outlined text-[18px]">edit</span>
+              </button>
+              <button onclick="promptDelete(${row.id})" title="Delete BOM Entry" class="p-1 rounded text-on-surface-variant hover:text-error hover:bg-error-container/40 transition-colors">
+                <span class="material-symbols-outlined text-[18px]">delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    footerCost.textContent = `₹${totalCost.toFixed(2)} / pkt`;
+    footerQty.textContent = `${filtered.length} Items Active`;
+    kpiCount.textContent = `${bomData.length} BOM Items`;
+  }
+
+  // Search & Filter Trigger
+  function handleSearchAndFilter() {
+    isForcedEmpty = false;
+    renderTable();
+  }
+
+  function resetFilters() {
+    document.getElementById('bomSearchInput').value = '';
+    document.getElementById('productFilter').value = '';
+    document.getElementById('categoryFilter').value = '';
+    isForcedEmpty = false;
+    renderTable();
+    showToast('Filters Reset', 'All filter constraints have been cleared.');
+  }
+
+  // Sorting
+  function sortTable(column) {
+    if (currentSort.column === column) {
+      currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+    } else {
+      currentSort.column = column;
+      currentSort.direction = 'asc';
+    }
+    renderTable();
+  }
+
+  // Toggle Empty State for testing
+  function toggleEmptyState(forceState) {
+    if (typeof forceState === 'boolean') {
+      isForcedEmpty = forceState;
+    } else {
+      isForcedEmpty = !isForcedEmpty;
+    }
+    const btn = document.getElementById('toggleEmptyBtn');
+    if (isForcedEmpty) {
+      btn.classList.add('bg-surface-container', 'text-primary');
+      showToast('Empty State Activated', 'Zero records preview active.');
+    } else {
+      btn.classList.remove('bg-surface-container', 'text-primary');
+    }
+    renderTable();
+  }
+
+  // Dynamic Unit Addon & Cost calculation in Modal
+  function handleMaterialChange() {
+    const sel = document.getElementById('formMaterial');
+    const opt = sel.options[sel.selectedIndex];
+    const unit = opt.getAttribute('data-unit') || 'g';
+    document.getElementById('unitBadge').textContent = `${unit} / pkt`;
+    updateCostPreview();
+  }
+
+  function updateCostPreview() {
+    const sel = document.getElementById('formMaterial');
+    const qtyInput = document.getElementById('formQuantity');
+    const preview = document.getElementById('estimatedCostPreview');
+
+    if (sel.selectedIndex <= 0 || !qtyInput.value) {
+      preview.textContent = '₹0.00 / pkt';
+      return;
+    }
+
+    const opt = sel.options[sel.selectedIndex];
+    const rate = parseFloat(opt.getAttribute('data-rate')) || 0;
+    const qty = parseFloat(qtyInput.value) || 0;
+    const cost = qty * rate;
+    preview.textContent = `₹${cost.toFixed(2)} / pkt`;
+  }
+
+  // Modal Open / Close
+  function openBOMModal(mode, id = null) {
+    const modal = document.getElementById('bomModal');
+    const heading = document.getElementById('modalHeading');
+    const modalIcon = document.getElementById('modalIcon');
+    const entryIndexInput = document.getElementById('entryIndex');
+
+    if (mode === 'edit' && id) {
+      const item = bomData.find(d => d.id === id);
+      if (!item) return;
+      heading.textContent = 'Edit BOM Entry';
+      modalIcon.textContent = 'edit_note';
+      entryIndexInput.value = item.id;
+
+      document.getElementById('formProduct').value = item.product;
+      const matSelect = document.getElementById('formMaterial');
+      for (let i = 0; i < matSelect.options.length; i++) {
+        if (matSelect.options[i].value === item.material) {
+          matSelect.selectedIndex = i;
+          break;
+        }
+      }
+      document.getElementById('formQuantity').value = item.quantity;
+      handleMaterialChange();
+    } else {
+      heading.textContent = 'Add BOM Entry';
+      modalIcon.textContent = 'playlist_add';
+      entryIndexInput.value = '-1';
+      document.getElementById('bomForm').reset();
+      document.getElementById('unitBadge').textContent = 'g / pkt';
+      document.getElementById('estimatedCostPreview').textContent = '₹0.00 / pkt';
+    }
+
+    modal.classList.remove('hidden');
+  }
+
+  function closeBOMModal() {
+    document.getElementById('bomModal').classList.add('hidden');
+  }
+
+  // Save Modal Form
+  function handleSaveBOM(e) {
+    e.preventDefault();
+    const entryId = parseInt(document.getElementById('entryIndex').value);
+    const product = document.getElementById('formProduct').value;
+    const matSelect = document.getElementById('formMaterial');
+    const opt = matSelect.options[matSelect.selectedIndex];
+    const material = opt.value;
+    const category = opt.getAttribute('data-cat') || 'Agricultural';
+    const unit = opt.getAttribute('data-unit') || 'g';
+    const rate = parseFloat(opt.getAttribute('data-rate')) || 0;
+    const quantity = parseFloat(document.getElementById('formQuantity').value);
+    const cost = parseFloat((quantity * rate).toFixed(2));
+
+    const packBadge = product.includes('25g') ? '25g Small Pack' : '50g Standard Pack';
+    const packType = product.includes('25g') ? 'small' : 'standard';
+
+    if (entryId === -1) {
+      // Create new
+      const newId = bomData.length > 0 ? Math.max(...bomData.map(d => d.id)) + 1 : 1;
+      bomData.unshift({
+        id: newId,
+        product,
+        packBadge,
+        packType,
+        category,
+        material,
+        quantity,
+        unit,
+        cost
+      });
+      showToast('BOM Entry Created', `Added ${material} for ${product}`);
+    } else {
+      // Edit existing
+      const index = bomData.findIndex(d => d.id === entryId);
+      if (index !== -1) {
+        bomData[index] = {
+          ...bomData[index],
+          product,
+          packBadge,
+          packType,
+          category,
+          material,
+          quantity,
+          unit,
+          cost
+        };
+        showToast('BOM Recipe Updated', `Saved adjustments for ${product}`);
+      }
+    }
+
+    closeBOMModal();
+    isForcedEmpty = false;
+    renderTable();
+  }
+
+  // Delete Prompt & Confirmation
+  function promptDelete(id) {
+    const item = bomData.find(d => d.id === id);
+    if (!item) return;
+    pendingDeleteIndex = id;
+    document.getElementById('deleteTargetText').textContent = `${item.product} ➔ ${item.material} (${item.quantity} ${item.unit})`;
+    document.getElementById('deleteModal').classList.remove('hidden');
+  }
+
+  function closeDeleteModal() {
+    pendingDeleteIndex = null;
+    document.getElementById('deleteModal').classList.add('hidden');
+  }
+
+  function confirmDelete() {
+    if (pendingDeleteIndex !== null) {
+      bomData = bomData.filter(d => d.id !== pendingDeleteIndex);
+      closeDeleteModal();
+      renderTable();
+      showToast('BOM Item Removed', 'Ingredient unlinked from master recipe.', 'delete');
+    }
+  }
+
+  // Export BOM to CSV simulation
+  function exportBOMCSV() {
+    let csv = "Product Name,Pack Type,Material Category,Raw Material,Quantity Per Packet,Unit,Unit RM Cost (INR)\n";
+    bomData.forEach(r => {
+      csv += `"${r.product}","${r.packBadge}","${r.category}","${r.material}",${r.quantity},"${r.unit}",${r.cost}\n`;
+    });
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `Chips_MRP_BOM_Master_${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast('Export Successful', 'Downloaded master Bill of Materials CSV.');
+  }
+
+  // Toast System
+  function showToast(title, message, icon = 'check_circle') {
+    const toast = document.getElementById('toastNotification');
+    document.getElementById('toastTitle').textContent = title;
+    document.getElementById('toastMessage').textContent = message;
+    document.getElementById('toastIcon').textContent = icon;
+
+    toast.classList.remove('translate-x-[120%]');
+    setTimeout(() => {
+      toast.classList.add('translate-x-[120%]');
+    }, 3200);
+  }
+
+  // Close modals on backdrop click
+  window.addEventListener('click', (e) => {
+    const bomModal = document.getElementById('bomModal');
+    const deleteModal = document.getElementById('deleteModal');
+    if (e.target === bomModal) closeBOMModal();
+    if (e.target === deleteModal) closeDeleteModal();
+  });
+
+  // Initial table render
+  renderTable();
+</script></main></div>
+</body></html>

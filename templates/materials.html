@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+
+{% set active_page = "materials" %}
+
+{% block title %}Raw Materials Inventory{% endblock %}
+{% block page_title %}Raw Materials Inventory Ledger{% endblock %}
+{% block page_tag %}PROCUREMENT & STOCK CONTROL{% endblock %}
+
+{% block header_actions %}
+<button type="button" class="btn btn-primary btn-sm" onclick="openModal('addMaterialModal')">
+    <span>+ Register Raw Material</span>
+</button>
+{% endblock %}
+
+{% block content %}
+<!-- Inventory Valuation & Health Metrics -->
+<div class="stats-grid">
+    <div class="stat-card primary">
+        <div class="stat-label">Total Raw SKUs</div>
+        <div class="stat-value">{{ materials | length }}</div>
+        <div class="stat-helper">
+            <span>Ingredients & packaging supplies</span>
+        </div>
+    </div>
+
+    {% set total_valuation = namespace(value=0) %}
+    {% set zero_stock_count = namespace(value=0) %}
+    {% set low_buffer_count = namespace(value=0) %}
+    {% for mat in materials %}
+        {% set total_valuation.value = total_valuation.value + (mat['stock_qty'] * mat['cost_per_unit']) %}
+        {% if mat['stock_qty'] <= 0 %}
+            {% set zero_stock_count.value = zero_stock_count.value + 1 %}
+        {% elif mat['stock_qty'] < 50 %}
+            {% set low_buffer_count.value = low_buffer_count.value + 1 %}
+        {% endif %}
+    {% endfor %}
+
+    <div class="stat-card warning">
+        <div class="stat-label">Total Inventory Valuation</div>
+        <div class="stat-value">₹{{ "{:,.2f}".format(total_valuation.value) }}</div>
+        <div class="stat-helper">
+            <span>At standard procurement unit cost</span>
+        </div>
+    </div>
+
+    <div class="stat-card {% if zero_stock_count.value > 0 %}danger{% else %}success{% endif %}">
+        <div class="stat-label">Stockout Critical Items</div>
+        <div class="stat-value" style="color: {% if zero_stock_count.value > 0 %}#dc2626{% else %}#16a34a{% endif %};">
+            {{ zero_stock_count.value }}
+        </div>
+        <div class="stat-helper">
+            <span>Items at zero warehouse balance</span>
+        </div>
+    </div>
+
+    <div class="stat-card info">
+        <div class="stat-label">Buffer Warning Items</div>
+        <div class="stat-value">{{ low_buffer_count.value }}</div>
+        <div class="stat-helper">
+            <span>Stock under 50 physical units</span>
+        </div>
+    </div>
+</div>
+
+<!-- Raw Materials Table Card -->
+<div class="card">
+    <div class="card-header">
+        <div>
+            <h3 class="card-title">
+                <span>Active Raw Materials Ledger</span>
+            </h3>
+            <div class="card-subtitle">Real-time balances across potatoes, frying oils, seasonings, and laminates</div>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="openModal('addMaterialModal')">
+            + New Material
+        </button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 70px;">Item ID</th>
+                    <th>Material Description</th>
+                    <th>Unit of Measure</th>
+                    <th class="col-right">Available Stock</th>
+                    <th class="col-right">Cost Per Unit</th>
+                    <th class="col-right">Inventory Valuation</th>
+                    <th>Stock Status</th>
+                    <th style="text-align: center; width: 150px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if not materials %}
+                <tr>
+                    <td colspan="8">
+                        <div class="empty-state">
+                            <div class="empty-title">No Raw Materials Found in Ledger</div>
+                            <div class="empty-desc">Register raw materials such as processing potatoes, edible oils, seasonings, or foil packaging.</div>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="openModal('addMaterialModal')">
+                                Register First Material
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                {% for mat in materials %}
+                {% set val = mat['stock_qty'] * mat['cost_per_unit'] %}
+                <tr>
+                    <td class="col-mono" style="color: var(--color-text-muted);">#{{ mat['id'] }}</td>
+                    <td>
+                        <strong>{{ mat['material_name'] }}</strong>
+                    </td>
+                    <td>
+                        <span class="badge badge-neutral">{{ mat['unit'] }}</span>
+                    </td>
+                    <td class="col-mono col-right">
+                        <strong>{{ "%.2f"|format(mat['stock_qty']) }}</strong>
+                        <span style="font-size: 11px; color: var(--color-text-muted);">{{ mat['unit'] }}</span>
+                    </td>
+                    <td class="col-mono col-right">
+                        ₹{{ "%.2f"|format(mat['cost_per_unit']) }}
+                    </td>
+                    <td class="col-mono col-right" style="color: var(--color-primary); font-weight: 600;">
+                        ₹{{ "{:,.2f}".format(val) }}
+                    </td>
+                    <td>
+                        {% if mat['stock_qty'] <= 0 %}
+                        <span class="badge badge-shortage">CRITICAL (0 STOCK)</span>
+                        {% elif mat['stock_qty'] < 50 %}
+                        <span class="badge badge-caution">BUFFER WARNING (&lt;50)</span>
+                        {% else %}
+                        <span class="badge badge-sufficient">OPTIMAL</span>
+                        {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                        <div class="action-group" style="justify-content: center;">
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="openModal('editMaterialModal-{{ mat['id'] }}')">
+                                Edit
+                            </button>
+
+                            <button type="button" class="btn btn-ghost btn-sm" style="color: #dc2626;" onclick="openModal('deleteMaterialModal-{{ mat['id'] }}')">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block modals %}
+<!-- Add Material Modal -->
+<div class="modal-backdrop" id="addMaterialModal">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span>Register New Raw Material</span>
+            </h4>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('addMaterialModal')">Cancel</button>
+        </div>
+        <form method="POST" action="{{ url_for('materials') }}">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="add_material_name">Material Description <span class="required">*</span></label>
+                    <input type="text" id="add_material_name" name="material_name" class="form-control" placeholder="e.g. Atlantic Chip Potatoes (Grade A)" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="add_unit">Unit of Measure <span class="required">*</span></label>
+                    <select id="add_unit" name="unit" class="form-control" required>
+                        <option value="kg">Kilogram (kg) — Bulk solids & seasonings</option>
+                        <option value="litre">Litre (litre) — Oils & liquid ingredients</option>
+                        <option value="piece">Piece (piece) — Packaging pouches & cartons</option>
+                    </select>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="add_stock_qty">Initial Stock Quantity <span class="required">*</span></label>
+                        <input type="number" id="add_stock_qty" name="stock_qty" class="form-control mono" min="0" step="any" placeholder="0.00" value="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="add_cost_per_unit">Cost Per Unit (₹) <span class="required">*</span></label>
+                        <div class="input-with-addon">
+                            <span class="input-addon">₹</span>
+                            <input type="number" id="add_cost_per_unit" name="cost_per_unit" class="form-control mono" min="0" step="any" placeholder="0.00" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('addMaterialModal')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Material</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Edit Material Modals for Each Record -->
+{% for mat in materials %}
+<div class="modal-backdrop" id="editMaterialModal-{{ mat['id'] }}">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span>Update Raw Material #{{ mat['id'] }}</span>
+            </h4>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('editMaterialModal-{{ mat['id'] }}')">Cancel</button>
+        </div>
+        <form method="POST" action="{{ url_for('update_material', material_id=mat['id']) }}">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="edit_name_{{ mat['id'] }}">Material Description <span class="required">*</span></label>
+                    <input type="text" id="edit_name_{{ mat['id'] }}" name="material_name" class="form-control" value="{{ mat['material_name'] }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="edit_unit_{{ mat['id'] }}">Unit of Measure <span class="required">*</span></label>
+                    <select id="edit_unit_{{ mat['id'] }}" name="unit" class="form-control" required>
+                        <option value="kg" {% if mat['unit'] == 'kg' %}selected{% endif %}>Kilogram (kg)</option>
+                        <option value="litre" {% if mat['unit'] == 'litre' %}selected{% endif %}>Litre (litre)</option>
+                        <option value="piece" {% if mat['unit'] == 'piece' %}selected{% endif %}>Piece (piece)</option>
+                    </select>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="edit_stock_{{ mat['id'] }}">Warehouse Stock <span class="required">*</span></label>
+                        <input type="number" id="edit_stock_{{ mat['id'] }}" name="stock_qty" class="form-control mono" value="{{ mat['stock_qty'] }}" min="0" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="edit_cost_{{ mat['id'] }}">Cost Per Unit (₹) <span class="required">*</span></label>
+                        <div class="input-with-addon">
+                            <span class="input-addon">₹</span>
+                            <input type="number" id="edit_cost_{{ mat['id'] }}" name="cost_per_unit" class="form-control mono" value="{{ mat['cost_per_unit'] }}" min="0" step="any" required>
+                        </div>
+                    </div>
+                </div>
+                <div style="font-size: 11px; color: var(--color-text-muted); background: var(--color-surface-dim); padding: 8px 12px; border-radius: var(--radius-xs); border: 1px solid var(--color-border);">
+                    System Notice: Modifying the unit procurement cost automatically cascades updates to all Bill of Materials (BOM) recipes utilizing this raw material.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('editMaterialModal-{{ mat['id'] }}')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update Ledger Record</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Formal In-App Delete Confirmation Modal for Each Record -->
+<div class="modal-backdrop" id="deleteMaterialModal-{{ mat['id'] }}">
+    <div class="modal-dialog danger">
+        <div class="modal-header">
+            <h4 class="modal-title">Confirm Material Deletion</h4>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('deleteMaterialModal-{{ mat['id'] }}')">Cancel</button>
+        </div>
+        <form method="POST" action="{{ url_for('delete_material', material_id=mat['id']) }}">
+            <div class="modal-body">
+                <p style="font-size: 14px; color: var(--color-text-main);">
+                    Are you sure you want to permanently delete raw material <strong>{{ mat['material_name'] }}</strong> (ID #{{ mat['id'] }})?
+                </p>
+
+                <div class="modal-warning-box">
+                    <strong>Inventory Integrity Rule</strong>
+                    Raw materials currently referenced by active Bill of Materials (BOM) recipes cannot be deleted. If this item is part of an existing product recipe, the database constraint will abort the deletion.
+                </div>
+
+                <div style="font-size: 12px; color: var(--color-text-secondary); background: #f8fafc; padding: 10px 12px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+                    <div>Current Stock: <strong class="col-mono">{{ "%.2f"|format(mat['stock_qty']) }} {{ mat['unit'] }}</strong></div>
+                    <div>Recorded Valuation: <strong class="col-mono">₹{{ "{:,.2f}".format(mat['stock_qty'] * mat['cost_per_unit']) }}</strong></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('deleteMaterialModal-{{ mat['id'] }}')">Cancel</button>
+                <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

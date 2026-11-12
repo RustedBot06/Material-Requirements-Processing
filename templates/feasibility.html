@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+
+{% set active_page = "feasibility" %}
+
+{% block title %}Material Feasibility Analysis{% endblock %}
+{% block page_title %}Material Feasibility Analysis{% endblock %}
+{% block page_tag %}MRP FEASIBILITY & PROCUREMENT REQUISITIONS{% endblock %}
+
+{% block content %}
+<!-- Explanation & Date Range Filter Card -->
+<div class="card">
+    <div class="card-header">
+        <div>
+            <h3 class="card-title">
+                <span>Production Run Feasibility Evaluation</span>
+            </h3>
+            <div class="card-subtitle">
+                Checks whether current raw-material inventory can fulfil the remaining planned production runs:
+                <code style="font-family: var(--font-mono); font-size: 11px; background: var(--color-surface-dim); padding: 2px 6px; border-radius: 3px;">
+                    Remaining Packets = max(Planned - Actual, 0) × BOM Requirement
+                </code>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <form method="GET" action="{{ url_for('feasibility') }}" id="feasibilityForm">
+            <div class="form-grid" style="align-items: flex-end;">
+                <div class="form-group">
+                    <label class="form-label" for="start_date">Production Start Date <span class="required">*</span></label>
+                    <input type="date" id="start_date" name="start_date" class="form-control mono" value="{{ start_date }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="end_date">Production End Date <span class="required">*</span></label>
+                    <input type="date" id="end_date" name="end_date" class="form-control mono" value="{{ end_date }}" required>
+                </div>
+
+                <div class="form-group" style="display: flex; flex-direction: row; gap: 8px;">
+                    <button type="submit" class="btn btn-primary" style="height: 38px;">
+                        <span>Generate Feasibility Report</span>
+                    </button>
+                    {% if start_date or end_date %}
+                    <a href="{{ url_for('feasibility') }}" class="btn btn-secondary" style="height: 38px;">
+                        Reset
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Quick Date Preset Buttons -->
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap;">
+                <span style="font-size: 11px; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase;">Quick Date Presets:</span>
+                <button type="button" class="btn btn-ghost btn-sm" onclick="setPreset(0, 0)">Today</button>
+                <button type="button" class="btn btn-ghost btn-sm" onclick="setPreset(0, 7)">Next 7 Days</button>
+                <button type="button" class="btn btn-ghost btn-sm" onclick="setPreset(0, 14)">Next 14 Days</button>
+                <button type="button" class="btn btn-ghost btn-sm" onclick="setPreset(0, 30)">Next 30 Days</button>
+            </div>
+        </form>
+
+        {% if error %}
+        <div class="alert alert-danger" style="margin-top: 16px;">
+            <span>{{ error }}</span>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% if report is not none %}
+<!-- Report Summary KPIs -->
+{% set proc_req_count = namespace(value=0) %}
+{% set caution_count = namespace(value=0) %}
+{% set sufficient_count = namespace(value=0) %}
+{% set zero_req_count = namespace(value=0) %}
+
+{% for item in report %}
+    {% if item.status == "Procurement required" %}
+        {% set proc_req_count.value = proc_req_count.value + 1 %}
+    {% elif item.status == "Exactly sufficient - no buffer" %}
+        {% set caution_count.value = caution_count.value + 1 %}
+    {% elif item.status == "Sufficient" %}
+        {% set sufficient_count.value = sufficient_count.value + 1 %}
+    {% else %}
+        {% set zero_req_count.value = zero_req_count.value + 1 %}
+    {% endif %}
+{% endfor %}
+
+<div class="stats-grid">
+    <div class="stat-card primary">
+        <div class="stat-label">Materials Evaluated</div>
+        <div class="stat-value">{{ report | length }}</div>
+        <div class="stat-helper">
+            <span>Range: {{ start_date }} to {{ end_date }}</span>
+        </div>
+    </div>
+
+    <div class="stat-card {% if proc_req_count.value > 0 %}danger{% else %}success{% endif %}">
+        <div class="stat-label">Procurement Required</div>
+        <div class="stat-value" style="color: {% if proc_req_count.value > 0 %}#dc2626{% else %}#16a34a{% endif %};">
+            {{ proc_req_count.value }}
+        </div>
+        <div class="stat-helper">
+            <span>Critical material stock shortages</span>
+        </div>
+    </div>
+
+    <div class="stat-card {% if caution_count.value > 0 %}warning{% else %}info{% endif %}">
+        <div class="stat-label">Buffer Caution (Exact Fit)</div>
+        <div class="stat-value" style="color: {% if caution_count.value > 0 %}#d97706{% else %}#0f172a{% endif %};">
+            {{ caution_count.value }}
+        </div>
+        <div class="stat-helper">
+            <span>Exactly sufficient — zero safety margin</span>
+        </div>
+    </div>
+
+    <div class="stat-card success">
+        <div class="stat-label">Sufficient & Ready</div>
+        <div class="stat-value">{{ sufficient_count.value }}</div>
+        <div class="stat-helper">
+            <span>Adequate stock for full planned run</span>
+        </div>
+    </div>
+</div>
+
+<!-- Detailed Feasibility Analysis Table -->
+<div class="card">
+    <div class="card-header">
+        <div>
+            <h3 class="card-title">
+                <span>Material Feasibility & Procurement Breakdown</span>
+            </h3>
+            <div class="card-subtitle">
+                Period evaluated: <strong>{{ start_date }}</strong> through <strong>{{ end_date }}</strong>
+            </div>
+        </div>
+        <span class="badge badge-neutral">MRP SIMULATION</span>
+    </div>
+
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 70px;">Item ID</th>
+                    <th>Raw Material</th>
+                    <th class="col-right">Available Stock</th>
+                    <th class="col-right">Remaining Requirement</th>
+                    <th class="col-right">Shortage</th>
+                    <th class="col-right">Surplus</th>
+                    <th class="col-right" style="color: #991b1b;">Suggested Procurement</th>
+                    <th>Feasibility Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if not report %}
+                <tr>
+                    <td colspan="8">
+                        <div class="empty-state">
+                            <div class="empty-title">No Raw Materials Found</div>
+                            <div class="empty-desc">No raw materials recorded in database. Please configure raw materials first.</div>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                {% for item in report %}
+                <tr>
+                    <td class="col-mono" style="color: var(--color-text-muted);">#{{ item.material_id }}</td>
+                    <td>
+                        <strong style="color: var(--color-primary); font-size: 13px;">{{ item.material_name }}</strong>
+                    </td>
+                    <td class="col-mono col-right">
+                        <strong>{{ "%.2f"|format(item.available_stock) }}</strong>
+                        <span style="font-size: 11px; color: var(--color-text-muted);">{{ item.unit }}</span>
+                    </td>
+                    <td class="col-mono col-right" style="font-weight: 600;">
+                        {{ "%.2f"|format(item.required_qty) }}
+                        <span style="font-size: 11px; color: var(--color-text-muted);">{{ item.unit }}</span>
+                    </td>
+                    <td class="col-mono col-right">
+                        {% if item.shortage > 0 %}
+                        <span style="color: #dc2626; font-weight: 700;">
+                            {{ "%.2f"|format(item.shortage) }} {{ item.unit }}
+                        </span>
+                        {% else %}
+                        <span style="color: var(--color-text-muted);">0.00</span>
+                        {% endif %}
+                    </td>
+                    <td class="col-mono col-right">
+                        {% if item.surplus > 0 %}
+                        <span style="color: #16a34a; font-weight: 600;">
+                            +{{ "%.2f"|format(item.surplus) }} {{ item.unit }}
+                        </span>
+                        {% else %}
+                        <span style="color: var(--color-text-muted);">0.00</span>
+                        {% endif %}
+                    </td>
+                    <td class="col-mono col-right">
+                        {% if item.procurement_qty > 0 %}
+                        <span class="badge badge-shortage" style="font-size: 12px; font-weight: 700;">
+                            ORDER {{ "%.2f"|format(item.procurement_qty) }} {{ item.unit }}
+                        </span>
+                        {% else %}
+                        <span class="badge badge-sufficient">NONE NEEDED</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if item.status == "Procurement required" %}
+                        <span class="badge badge-shortage">
+                            PROCUREMENT REQUIRED
+                        </span>
+                        {% elif item.status == "Exactly sufficient - no buffer" %}
+                        <span class="badge badge-caution">
+                            BUFFER CAUTION (EXACT)
+                        </span>
+                        {% elif item.status == "Sufficient" %}
+                        <span class="badge badge-sufficient">
+                            SUFFICIENT STOCK
+                        </span>
+                        {% else %}
+                        <span class="badge badge-neutral">
+                            NO REQUIREMENT
+                        </span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function setPreset(startOffsetDays, endOffsetDays) {
+        const today = new Date();
+        const start = new Date(today);
+        start.setDate(today.getDate() + startOffsetDays);
+
+        const end = new Date(today);
+        end.setDate(today.getDate() + endOffsetDays);
+
+        document.getElementById('start_date').value = start.toISOString().split('T')[0];
+        document.getElementById('end_date').value = end.toISOString().split('T')[0];
+        document.getElementById('feasibilityForm').submit();
+    }
+</script>
+{% endblock %}

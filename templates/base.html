@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Chips MRP{% endblock %} — Agro-Industrial Line 01</title>
+    
+    <!-- Google Fonts: Hanken Grotesk & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS with Stitch Agro-Industrial Precision Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary": "#4059aa",
+            "surface-container": "#e5eeff",
+            "surface": "#f8f9ff",
+            "on-tertiary-fixed-variant": "#3a485b",
+            "background": "#f8f9ff",
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#021c39",
+            "tertiary-fixed-dim": "#b9c7df",
+            "outline-variant": "#c4c6ce",
+            "surface-tint": "#4a5f7f",
+            "primary-fixed-dim": "#b2c8ed",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#0b1c30",
+            "on-error": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "surface-bright": "#f8f9ff",
+            "outline": "#74777e",
+            "on-secondary-container": "#1d3989",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#264191",
+            "inverse-primary": "#b2c8ed",
+            "secondary-container": "#8fa7fe",
+            "on-secondary-fixed": "#00164e",
+            "surface-container-low": "#eff4ff",
+            "on-primary-container": "#798fb1",
+            "inverse-on-surface": "#eaf1ff",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed": "#0d1c2e",
+            "on-tertiary-container": "#808ea4",
+            "on-primary-fixed-variant": "#324866",
+            "inverse-surface": "#213145",
+            "surface-variant": "#d3e4fe",
+            "primary-fixed": "#d4e3ff",
+            "primary-container": "#0f2744",
+            "tertiary": "#041223",
+            "surface-container-high": "#dce9ff",
+            "secondary-fixed-dim": "#b6c4ff",
+            "on-tertiary": "#ffffff",
+            "on-surface": "#0b1c30",
+            "tertiary-container": "#192739",
+            "on-surface-variant": "#44474d",
+            "on-error-container": "#93000a",
+            "tertiary-fixed": "#d5e3fc",
+            "primary": "#001229",
+            "secondary-fixed": "#dce1ff",
+            "surface-container-highest": "#d3e4fe"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "space-lg": "1.25rem",
+            "gutter-compact": "0.5rem",
+            "margin": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "gutter": "1rem"
+          },
+          fontFamily: {
+            "data-mono-lg": ["JetBrains Mono"],
+            "body-lg": ["Hanken Grotesk"],
+            "body-sm": ["Hanken Grotesk"],
+            "display-lg": ["Hanken Grotesk"],
+            "display-sm": ["Hanken Grotesk"],
+            "label-md": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"],
+            "data-mono-sm": ["JetBrains Mono"],
+            "headline-md": ["Hanken Grotesk"],
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "data-mono-md": ["JetBrains Mono"],
+            "label-sm": ["Hanken Grotesk"]
+          },
+          fontSize: {
+            "data-mono-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-sm": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "data-mono-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+            "headline-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "data-mono-md": ["13px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }]
+          }
+        }
+      }
+    };
+    </script>
+
+    <!-- Custom CSS (Modals, Tables, Forms) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Chart.js for MRP Dashboards -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
+    <!-- Persistent Left Sidebar Navigation -->
+    <aside class="fixed left-0 top-0 h-full w-60 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between select-none">
+        <div class="flex flex-col">
+            <!-- Brand Bar -->
+            <div class="h-14 px-gutter flex items-center justify-between bg-surface-container">
+                <div class="flex items-center gap-space-sm">
+                    <div class="w-7 h-7 rounded bg-primary-container flex items-center justify-center">
+                        <span class="material-symbols-outlined text-surface text-[18px]">precision_manufacturing</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-headline-md text-headline-md tracking-tight text-primary leading-none">Chips MRP</span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-0.5">Plant 1 • Pune</span>
+                    </div>
+                </div>
+                <div class="w-2 h-2 rounded-full bg-secondary"></div>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="px-gutter-compact py-space-sm">
+                <div class="px-space-sm py-space-xs">
+                    <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Core MRP Operations</span>
+                </div>
+                <nav class="flex flex-col gap-space-xs mt-space-xs">
+                    <a class="flex items-center gap-space-sm px-space-md py-space-sm transition-all {% if active_page == 'dashboard' %}bg-primary-container text-on-primary font-headline-md rounded{% else %}rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface{% endif %}" href="{{ url_for('dashboard') }}">
+                        <span class="material-symbols-outlined text-[18px]">dashboard</span>
+                        <span>Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-space-sm px-space-md py-space-sm transition-all {% if active_page == 'materials' %}bg-primary-container text-on-primary font-headline-md rounded{% else %}rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface{% endif %}" href="{{ url_for('materials') }}">
+                        <span class="material-symbols-outlined text-[18px]">inventory_2</span>
+                        <span>Raw Materials</span>
+                    </a>
+                    <a class="flex items-center gap-space-sm px-space-md py-space-sm transition-all {% if active_page == 'products' %}bg-primary-container text-on-primary font-headline-md rounded{% else %}rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface{% endif %}" href="{{ url_for('products') }}">
+                        <span class="material-symbols-outlined text-[18px]">layers</span>
+                        <span>Products</span>
+                    </a>
+                    <a class="flex items-center gap-space-sm px-space-md py-space-sm transition-all {% if active_page == 'bom' %}bg-primary-container text-on-primary font-headline-md rounded{% else %}rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface{% endif %}" href="{{ url_for('bom') }}">
+                        <span class="material-symbols-outlined text-[18px]">account_tree</span>
+                        <span>Bill of Materials</span>
+                    </a>
+                    <a class="flex items-center gap-space-sm px-space-md py-space-sm transition-all {% if active_page == 'schedule' %}bg-primary-container text-on-primary font-headline-md rounded{% else %}rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface{% endif %}" href="{{ url_for('schedule') }}">
+                        <span class="material-symbols-outlined text-[18px]">calendar_clock</span>
+                        <span>Production Schedule</span>
+                    </a>
+                    <a class="flex items-center gap-space-sm px-space-md py-space-sm transition-all {% if active_page == 'feasibility' %}bg-primary-container text-on-primary font-headline-md rounded{% else %}rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface{% endif %}" href="{{ url_for('feasibility') }}">
+                        <span class="material-symbols-outlined text-[18px]">flaky</span>
+                        <span>Material Feasibility</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Shift Floor Operator Profile -->
+        <div class="p-gutter-compact bg-surface-container-low">
+            <div class="p-space-sm bg-surface-container rounded flex flex-col gap-space-xs">
+                <div class="flex items-center gap-space-sm">
+                    <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+                    </div>
+                    <div class="flex flex-col min-w-0 flex-1">
+                        <span class="font-label-md text-label-md text-on-surface truncate">Rahul Desai</span>
+                        <span class="font-body-sm text-body-sm text-on-surface-variant truncate">Operations Manager</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between pt-space-xs px-space-xs">
+                    <div class="flex items-center gap-space-xs">
+                        <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                        <span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">Shift A (06:00-14:00)</span>
+                    </div>
+                    <span class="font-label-sm text-label-sm text-secondary uppercase font-semibold">Active</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Workspace (Offset by Sidebar) -->
+    <div class="pl-60">
+        <!-- Top Industrial Header Bar -->
+        <header class="fixed top-0 left-60 right-0 h-14 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-margin border-b border-surface-container">
+            <div class="flex items-center gap-space-md">
+                <div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant">
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">Operations</span>
+                    <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                    <span class="font-label-md text-label-md text-on-surface font-semibold">{% block breadcrumb %}MRP Dispatch Console{% endblock %}</span>
+                </div>
+                <div class="h-4 w-[1px] bg-surface-container-highest"></div>
+                <div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container rounded">
+                    <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                    <span class="font-data-mono-sm text-data-mono-sm text-on-surface font-semibold">LIVE PLANT DATA</span>
+                </div>
+                <div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container-low rounded">
+                    <span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">SYS: ONLINE (0.12s)</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-space-md">
+                <div class="flex items-center gap-space-sm font-data-mono-md text-data-mono-md text-on-surface-variant bg-surface-container px-space-md py-space-xs rounded">
+                    <span class="material-symbols-outlined text-[16px]">schedule</span>
+                    <span id="clockDisplay">25 OCT • 09:42:15 IST</span>
+                </div>
+                <button class="relative p-space-xs rounded hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface" title="Alerts">
+                    <span class="material-symbols-outlined text-[20px]">notifications</span>
+                    <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span>
+                </button>
+                <button class="p-space-xs rounded hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface" onclick="location.reload()" title="Refresh Data">
+                    <span class="material-symbols-outlined text-[20px]">refresh</span>
+                </button>
+                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body Area -->
+        <main class="relative pt-14 w-full px-gutter min-h-screen bg-surface">
+            <!-- Flash Notification Banners -->
+            <div class="pt-4 px-2">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="mb-3 p-3 rounded flex items-center justify-between {% if category == 'error' %}bg-error-container text-on-error-container border border-error/30{% else %}bg-surface-container-high text-primary border border-secondary/30{% endif %}">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-[18px]">{% if category == 'error' %}warning{% else %}check_circle{% endif %}</span>
+                                    <span class="font-body-md text-body-md font-medium">{{ message }}</span>
+                                </div>
+                                <button onclick="this.parentElement.remove()" class="text-on-surface-variant hover:text-on-surface">
+                                    <span class="material-symbols-outlined text-[16px]">close</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <!-- Modals Container -->
+    {% block modals %}{% endblock %}
+
+    <script>
+        // Live Floor Clock
+        function updateClock() {
+            const now = new Date();
+            const day = String(now.getDate()).padStart(2, '0');
+            const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            const month = months[now.getMonth()];
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const clockEl = document.getElementById('clockDisplay');
+            if (clockEl) {
+                clockEl.textContent = `${day} ${month} • ${hours}:${minutes}:${seconds} IST`;
+            }
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // In-App Accessible Modal Helpers (No blocked window.confirm)
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.add('active');
+                const firstInput = modal.querySelector('input:not([type=hidden]), select, button[type=submit]');
+                if (firstInput) firstInput.focus();
+            }
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Close modal on Escape key or backdrop click
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-backdrop.active').forEach(m => m.classList.remove('active'));
+            }
+        });
+
+        document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+            backdrop.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,1311 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"error-container":"#ffdad6","secondary-fixed":"#dce1ff","surface-container-low":"#eff4ff","outline-variant":"#c4c6ce","surface-dim":"#cbdbf5","on-background":"#0b1c30","secondary-fixed-dim":"#b6c4ff","on-error":"#ffffff","on-tertiary-container":"#808ea4","inverse-surface":"#213145","primary-fixed-dim":"#b2c8ed","primary-fixed":"#d4e3ff","tertiary-fixed":"#d5e3fc","on-surface":"#0b1c30","on-primary-fixed-variant":"#324866","primary":"#001229","secondary":"#4059aa","surface":"#f8f9ff","surface-container-lowest":"#ffffff","on-primary-container":"#798fb1","background":"#f8f9ff","surface-tint":"#4a5f7f","on-secondary-fixed":"#00164e","surface-bright":"#f8f9ff","primary-container":"#0f2744","secondary-container":"#8fa7fe","outline":"#74777e","surface-container-highest":"#d3e4fe","on-primary-fixed":"#021c39","surface-container":"#e5eeff","surface-container-high":"#dce9ff","on-surface-variant":"#44474d","on-secondary":"#ffffff","error":"#ba1a1a","surface-variant":"#d3e4fe","tertiary":"#041223","on-secondary-container":"#1d3989","on-error-container":"#93000a","on-tertiary":"#ffffff","inverse-on-surface":"#eaf1ff","inverse-primary":"#b2c8ed","on-tertiary-fixed":"#0d1c2e","on-secondary-fixed-variant":"#264191","on-primary":"#ffffff","tertiary-container":"#192739","tertiary-fixed-dim":"#b9c7df","on-tertiary-fixed-variant":"#3a485b"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-xl":"2rem","margin-mobile":"1rem","space-xs":"0.25rem","space-md":"0.75rem","margin":"1.5rem","gutter-compact":"0.5rem","space-sm":"0.5rem","space-lg":"1.25rem","gutter":"1rem"},fontFamily:{"data-mono-md":["JetBrains Mono"],"data-mono-lg":["JetBrains Mono"],"label-sm":["Hanken Grotesk"],"body-md":["Hanken Grotesk"],"headline-lg-mobile":["Hanken Grotesk"],"display-lg":["Hanken Grotesk"],"body-sm":["Hanken Grotesk"],"headline-md":["Hanken Grotesk"],"headline-lg":["Hanken Grotesk"],"label-md":["Hanken Grotesk"],"display-sm":["Hanken Grotesk"],"body-lg":["Hanken Grotesk"],"data-mono-sm":["JetBrains Mono"]},fontSize:{"data-mono-md":["13px",{"lineHeight":"16px","fontWeight":"500"}],"data-mono-lg":["16px",{"lineHeight":"20px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg-mobile":["18px",{"lineHeight":"24px","fontWeight":"600"}],"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"headline-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"display-sm":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"400"}],"data-mono-sm":["11px",{"lineHeight":"14px","fontWeight":"500"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-low text-on-surface z-50 flex flex-col justify-between border-b border-surface-container shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center justify-between border-b border-surface-container bg-surface-container-lowest"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded bg-secondary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-secondary-container text-[18px]">precision_manufacturing</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md tracking-tight font-bold text-on-surface">Chips MRP</span><div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Plant 1 • Pune</span></div></div></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Core MRP Operations</div></div><nav class="flex flex-col px-space-sm gap-space-xs"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[18px]">dashboard</span><span class="font-label-md text-label-md">Dashboard</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="raw-materials" href="#"><span class="material-symbols-outlined text-[18px]">inventory_2</span><span class="font-label-md text-label-md">Raw Materials</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="products" href="#"><span class="material-symbols-outlined text-[18px]">fastfood</span><span class="font-label-md text-label-md">Products</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="bill-of-materials" href="#"><span class="material-symbols-outlined text-[18px]">account_tree</span><span class="font-label-md text-label-md">Bill of Materials</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm rounded bg-primary-container text-on-primary font-semibold shadow-inner" data-path="production-schedule" href="#"><span class="material-symbols-outlined text-[18px]">event_available</span><span class="font-label-md text-label-md">Production Schedule</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="material-feasibility" href="#"><span class="material-symbols-outlined text-[18px]">fact_check</span><span class="font-label-md text-label-md">Material Feasibility</span></a></nav></div><div class="p-space-md bg-surface-container border-b border-surface-container flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="relative"><div class="w-8 h-8 rounded bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-secondary ring-1 ring-primary"></span></div><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface leading-tight font-semibold">Rahul Desai</span><span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">Operations Manager</span><span class="font-data-mono-sm text-data-mono-sm text-secondary text-[10px] leading-tight mt-0.5">Shift A (06:00-14:00)</span></div></div><div class="px-1.5 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-data-mono-sm text-[10px] uppercase font-semibold">Active</div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container px-space-sm py-space-xs rounded"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface">Plant 1 • Pune</span></div><div class="flex items-center gap-space-xs bg-surface-container-high px-space-sm py-space-xs rounded"><span class="material-symbols-outlined text-[14px] text-secondary">sensors</span><span class="font-label-sm text-label-sm text-on-surface-variant">Live Plant Data</span></div><div class="flex items-center gap-space-xs px-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant">Telemetry:</span><span class="font-data-mono-sm text-data-mono-sm text-secondary font-semibold">Online (100%)</span></div><div class="hidden xl:flex items-center pl-space-md"><nav class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant"><span class="hover:text-on-surface cursor-pointer">Operations</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="hover:text-on-surface cursor-pointer">Production Planning</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-on-surface font-semibold">Production Schedule</span></nav></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-space-xs rounded"><span class="material-symbols-outlined text-[16px] text-on-surface-variant">schedule</span><span class="font-data-mono-sm text-data-mono-sm text-on-surface font-semibold">24 OCT • 09:42:15 IST</span></div><div class="flex items-center gap-space-xs"><button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container transition-colors text-on-surface-variant hover:text-on-surface" title="Telemetry Sync"><span class="material-symbols-outlined text-[18px]">sync</span></button><button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container transition-colors text-on-surface-variant hover:text-on-surface relative" title="Notifications"><span class="material-symbols-outlined text-[18px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button></div><div class="flex items-center gap-space-sm pl-space-sm bg-surface-container-low py-space-xs pr-space-md rounded"><div class="w-8 h-8 rounded bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="font-label-sm text-label-sm text-on-surface leading-tight">Rahul Desai</span><span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant text-[10px] leading-tight">Ops Mgr • Shift A</span></div></div></div></header><main class="w-full pt-16 bg-surface flex-1 px-space-lg py-space-md"><div class="flex flex-col w-full">
+<!-- Toast Feedback Component -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-space-sm bg-primary text-on-primary px-space-md py-space-sm rounded-lg shadow-xl max-w-md" id="toastNotification">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-fixed text-[16px]">check_circle</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-fixed">System Update Verified</span>
+<span class="font-body-sm text-body-sm text-on-primary truncate" id="toastMessage">Schedule saved successfully. Target updated.</span>
+</div>
+<button class="text-on-primary-container hover:text-on-primary ml-space-xs p-1 rounded transition-colors" onclick="dismissToast()">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Header Section with Operational Context & Actions -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">Production Schedule</h1>
+<div class="flex items-center gap-1.5 px-space-sm py-0.5 rounded bg-primary-container text-on-primary font-data-mono-sm text-data-mono-sm uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+<span>Active Dispatch Batch v3.1</span>
+</div>
+<div class="px-space-sm py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+<span>Continuous Line 01-04</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+        Plan and monitor daily production targets, track manufacturing throughput against line capacities, and identify output shortfalls in real time across packet packaging runs.
+      </p>
+</div>
+<!-- Quick Actions Toolbar -->
+<div class="flex items-center gap-space-sm shrink-0 flex-wrap">
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors shadow-sm" onclick="toggleEmptyState()" title="Simulate Zero Data State">
+<span class="material-symbols-outlined text-[16px]">filter_list_off</span>
+<span>Toggle Empty State</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded bg-surface-container-lowest hover:bg-surface-container-low text-on-surface font-label-md text-label-md transition-colors shadow-sm" onclick="exportCSV()">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Export Schedule (CSV)</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md transition-colors shadow-sm" onclick="openScheduleModal()">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Add Production Schedule</span>
+</button>
+</div>
+</div>
+<!-- KPI Metric Summary Tiles (Industrial MRP Spec) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Metric 1: Planned Output -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Today's Planned Output</span>
+<span class="p-1 rounded bg-surface-container text-secondary">
+<span class="material-symbols-outlined text-[18px]">flag</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-data-mono-lg text-[26px] leading-tight font-bold text-on-surface" id="metricPlannedOutput">1,20,000</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">pkts</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant pt-space-xs">
+<span class="font-body-sm text-body-sm">4 Active Lines • 8 SKUs</span>
+<span class="font-data-mono-sm text-data-mono-sm text-secondary font-medium">100% Calibrated</span>
+</div>
+</div>
+<!-- Metric 2: Actual Manufactured -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Actual Manufactured</span>
+<span class="p-1 rounded bg-secondary-fixed text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]">conveyor_belt</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-data-mono-lg text-[26px] leading-tight font-bold text-on-surface" id="metricActualOutput">1,14,500</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">pkts</span>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Shift Progress: 7h 45m</span>
+</div>
+<span class="font-data-mono-sm text-data-mono-sm text-secondary font-semibold">95.4% Rate</span>
+</div>
+</div>
+<!-- Metric 3: Output Shortfall -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Net Output Shortfall</span>
+<span class="p-1 rounded bg-error-container text-on-error-container">
+<span class="material-symbols-outlined text-[18px]">trending_down</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-data-mono-lg text-[26px] leading-tight font-bold text-error" id="metricShortfall">-5,500</span>
+<span class="font-data-mono-sm text-data-mono-sm text-error">pkts</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant pt-space-xs truncate">
+<span class="font-body-sm text-body-sm text-error truncate" title="Line 2 Sealer Jams - 22 mins downtime">L2 Sealer Jam: 22m downtime</span>
+<span class="font-label-sm text-label-sm bg-error-container text-on-error-container px-1.5 py-0.5 rounded ml-2 shrink-0">ALERT</span>
+</div>
+</div>
+<!-- Metric 4: Target Achievement & Gauge -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Shift Target Achievement</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+          Healthy Buffer
+        </span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-data-mono-lg text-[26px] leading-tight font-bold text-secondary" id="metricAchievement">95.4%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">of daily quota</span>
+</div>
+<div class="w-full pt-space-xs">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden flex">
+<div class="bg-secondary h-full transition-all duration-500" id="metricProgressBar" style="width: 95.4167%;"></div>
+</div>
+<div class="flex justify-between items-center mt-1 text-[10px] font-data-mono-sm text-on-surface-variant">
+<span>Min: 85%</span>
+<span>Target: 100%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Operational Filter & Navigation Toolbar -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm mb-space-md">
+<div class="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-space-md">
+<!-- Date Selector with Prev / Next Navigation -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<div class="flex items-center bg-surface-container-low rounded p-0.5">
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="navigateDay(-1)" title="Previous Day">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<div class="flex items-center gap-space-xs px-space-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">calendar_today</span>
+<span class="font-data-mono-md text-data-mono-md font-semibold text-on-surface select-none" id="currentDateDisplay">24 Oct 2024</span>
+<span class="text-on-surface-variant text-[11px] font-label-sm uppercase bg-surface-container px-1.5 py-0.5 rounded ml-1">Today</span>
+</div>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="navigateDay(1)" title="Next Day">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<!-- Shift Quick Filter Buttons -->
+<div class="hidden sm:flex items-center gap-1 bg-surface-container-low p-0.5 rounded">
+<button class="px-space-sm py-1 rounded bg-primary-container text-on-primary font-label-sm text-label-sm">All Shifts</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm">Shift A (Morning)</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm">Shift B (Evening)</button>
+</div>
+</div>
+<!-- Search, Product and Status Selectors -->
+<div class="flex flex-wrap items-center gap-space-sm flex-1 xl:justify-end">
+<!-- Search Input -->
+<div class="relative min-w-[240px] flex-1 max-w-sm">
+<span class="material-symbols-outlined text-on-surface-variant absolute left-2.5 top-1/2 -translate-y-1/2 text-[18px]">search</span>
+<input class="w-full h-9 pl-9 pr-space-md rounded bg-surface-container-low text-on-surface text-body-sm font-body-sm placeholder:text-on-surface-variant focus:bg-surface-container-lowest focus:outline-none focus:ring-1 focus:ring-secondary transition-all" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search SKU, batch ID, or line..." type="text">
+</div>
+<!-- Product SKU Filter -->
+<div class="relative">
+<select class="h-9 px-space-sm pr-8 rounded bg-surface-container-low text-on-surface text-body-sm font-body-sm focus:outline-none focus:ring-1 focus:ring-secondary cursor-pointer appearance-none" id="productFilter" onchange="applyFilter()">
+<option value="ALL">All Products (8 SKUs)</option>
+<option value="Classic Salted - 25g">Classic Salted - 25g</option>
+<option value="Classic Salted - 50g">Classic Salted - 50g</option>
+<option value="Masala Magic - 25g">Masala Magic - 25g</option>
+<option value="Masala Magic - 50g">Masala Magic - 50g</option>
+<option value="Cream &amp; Onion - 50g">Cream &amp; Onion - 50g</option>
+<option value="Tangy Tomato - 25g">Tangy Tomato - 25g</option>
+</select>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant pointer-events-none absolute right-2 top-1/2 -translate-y-1/2">expand_more</span>
+</div>
+<!-- Status Filter -->
+<div class="relative">
+<select class="h-9 px-space-sm pr-8 rounded bg-surface-container-low text-on-surface text-body-sm font-body-sm focus:outline-none focus:ring-1 focus:ring-secondary cursor-pointer appearance-none" id="statusFilter" onchange="applyFilter()">
+<option value="ALL">All Statuses</option>
+<option value="Above Target">Above Target (Surplus)</option>
+<option value="Target Achieved">Target Achieved (100%)</option>
+<option value="Below Target">Below Target (Shortfall)</option>
+</select>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant pointer-events-none absolute right-2 top-1/2 -translate-y-1/2">expand_more</span>
+</div>
+<!-- Reset Button -->
+<button class="h-9 px-space-sm rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm flex items-center gap-1 transition-colors" onclick="resetFilters()" title="Reset all applied filters">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Reset</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Schedule Data Table Container -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col">
+<!-- Active Table View -->
+<div class="w-full overflow-x-auto" id="scheduleTableContainer">
+<table class="w-full text-left border-collapse whitespace-nowrap">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant uppercase font-label-sm text-label-sm tracking-wider select-none">
+<th class="py-2.5 px-space-md cursor-pointer hover:bg-surface-container" onclick="sortTable('date')">
+<div class="flex items-center gap-1">
+<span>Production Date</span>
+<span class="material-symbols-outlined text-[14px]">swap_vert</span>
+</div>
+</th>
+<th class="py-2.5 px-space-md cursor-pointer hover:bg-surface-container" onclick="sortTable('product')">
+<div class="flex items-center gap-1">
+<span>Product Name &amp; Packet Size</span>
+<span class="material-symbols-outlined text-[14px]">swap_vert</span>
+</div>
+</th>
+<th class="py-2.5 px-space-md cursor-pointer hover:bg-surface-container text-right" onclick="sortTable('planned')">
+<div class="flex items-center justify-end gap-1">
+<span>Planned Target (pkts)</span>
+<span class="material-symbols-outlined text-[14px]">swap_vert</span>
+</div>
+</th>
+<th class="py-2.5 px-space-md cursor-pointer hover:bg-surface-container text-right" onclick="sortTable('actual')">
+<div class="flex items-center justify-end gap-1">
+<span>Actual Output (pkts)</span>
+<span class="material-symbols-outlined text-[14px]">swap_vert</span>
+</div>
+</th>
+<th class="py-2.5 px-space-md cursor-pointer hover:bg-surface-container text-right" onclick="sortTable('shortfall')">
+<div class="flex items-center justify-end gap-1">
+<span>Net Shortfall / Surplus</span>
+<span class="material-symbols-outlined text-[14px]">swap_vert</span>
+</div>
+</th>
+<th class="py-2.5 px-space-md text-center">
+<span>Achievement &amp; Shift Status</span>
+</th>
+<th class="py-2.5 px-space-md text-right">
+<span>Line Actions</span>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y-0" id="scheduleTableBody"><tr class="hover:bg-surface-container-low/60 transition-colors border-b border-surface-container">
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex flex-col">
+            <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">24 Oct 2024</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Shift A • Line 1</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex items-center gap-space-sm">
+            <div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[16px] text-secondary">lunch_dining</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-body-md text-body-md font-semibold text-on-surface truncate">Classic Salted - 25g</span>
+              <span class="inline-block mt-0.5 w-fit px-1.5 py-0.5 rounded text-[10px] font-label-sm uppercase tracking-wider bg-surface-container-high text-on-surface">
+                25g Small Pack
+              </span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-medium">20,000 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">21,500 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-secondary font-semibold">+1,500 surplus</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-center">
+          <div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high text-secondary">
+            <span class="material-symbols-outlined text-[14px]">trending_up</span>
+            <span class="font-data-mono-sm text-data-mono-sm font-bold">107.5%</span>
+            <span class="hidden md:inline font-label-sm text-label-sm ml-0.5">• Above Target</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <div class="flex items-center justify-end gap-1">
+            <button onclick="editSchedule('SCH-001')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Edit Line Target">
+              <span class="material-symbols-outlined text-[16px]">edit</span>
+            </button>
+            <button onclick="promptDelete('SCH-001')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container transition-colors" title="Remove Entry">
+              <span class="material-symbols-outlined text-[16px]">delete</span>
+            </button>
+          </div>
+        </td>
+      </tr><tr class="hover:bg-surface-container-low/60 transition-colors border-b border-surface-container">
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex flex-col">
+            <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">24 Oct 2024</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Shift A • Line 2</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex items-center gap-space-sm">
+            <div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[16px] text-secondary">lunch_dining</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-body-md text-body-md font-semibold text-on-surface truncate">Classic Salted - 50g</span>
+              <span class="inline-block mt-0.5 w-fit px-1.5 py-0.5 rounded text-[10px] font-label-sm uppercase tracking-wider bg-primary-container text-on-primary">
+                50g Standard Pack
+              </span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-medium">25,000 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">25,000 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface-variant">0 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-center">
+          <div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed">
+            <span class="material-symbols-outlined text-[14px]">check_circle</span>
+            <span class="font-data-mono-sm text-data-mono-sm font-bold">100.0%</span>
+            <span class="hidden md:inline font-label-sm text-label-sm ml-0.5">• Target Achieved</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <div class="flex items-center justify-end gap-1">
+            <button onclick="editSchedule('SCH-002')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Edit Line Target">
+              <span class="material-symbols-outlined text-[16px]">edit</span>
+            </button>
+            <button onclick="promptDelete('SCH-002')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container transition-colors" title="Remove Entry">
+              <span class="material-symbols-outlined text-[16px]">delete</span>
+            </button>
+          </div>
+        </td>
+      </tr><tr class="hover:bg-surface-container-low/60 transition-colors border-b border-surface-container">
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex flex-col">
+            <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">24 Oct 2024</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Shift B • Line 1</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex items-center gap-space-sm">
+            <div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[16px] text-secondary">lunch_dining</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-body-md text-body-md font-semibold text-on-surface truncate">Masala Magic - 50g</span>
+              <span class="inline-block mt-0.5 w-fit px-1.5 py-0.5 rounded text-[10px] font-label-sm uppercase tracking-wider bg-primary-container text-on-primary">
+                50g Standard Pack
+              </span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-medium">15,000 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">12,200 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-error font-semibold">-2,800 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-center">
+          <div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-error-container text-on-error-container">
+            <span class="material-symbols-outlined text-[14px]">warning</span>
+            <span class="font-data-mono-sm text-data-mono-sm font-bold">81.3%</span>
+            <span class="hidden md:inline font-label-sm text-label-sm ml-0.5">• Below Target</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <div class="flex items-center justify-end gap-1">
+            <button onclick="editSchedule('SCH-003')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Edit Line Target">
+              <span class="material-symbols-outlined text-[16px]">edit</span>
+            </button>
+            <button onclick="promptDelete('SCH-003')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container transition-colors" title="Remove Entry">
+              <span class="material-symbols-outlined text-[16px]">delete</span>
+            </button>
+          </div>
+        </td>
+      </tr><tr class="hover:bg-surface-container-low/60 transition-colors border-b border-surface-container">
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex flex-col">
+            <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">24 Oct 2024</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Shift B • Line 3</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex items-center gap-space-sm">
+            <div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[16px] text-secondary">lunch_dining</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-body-md text-body-md font-semibold text-on-surface truncate">Cream &amp; Onion - 50g</span>
+              <span class="inline-block mt-0.5 w-fit px-1.5 py-0.5 rounded text-[10px] font-label-sm uppercase tracking-wider bg-primary-container text-on-primary">
+                50g Standard Pack
+              </span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-medium">30,000 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">27,300 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-error font-semibold">-2,700 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-center">
+          <div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-error-container text-on-error-container">
+            <span class="material-symbols-outlined text-[14px]">warning</span>
+            <span class="font-data-mono-sm text-data-mono-sm font-bold">91.0%</span>
+            <span class="hidden md:inline font-label-sm text-label-sm ml-0.5">• Below Target</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <div class="flex items-center justify-end gap-1">
+            <button onclick="editSchedule('SCH-004')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Edit Line Target">
+              <span class="material-symbols-outlined text-[16px]">edit</span>
+            </button>
+            <button onclick="promptDelete('SCH-004')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container transition-colors" title="Remove Entry">
+              <span class="material-symbols-outlined text-[16px]">delete</span>
+            </button>
+          </div>
+        </td>
+      </tr><tr class="hover:bg-surface-container-low/60 transition-colors border-b border-surface-container">
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex flex-col">
+            <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">24 Oct 2024</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Shift A • Line 4</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex items-center gap-space-sm">
+            <div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[16px] text-secondary">lunch_dining</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-body-md text-body-md font-semibold text-on-surface truncate">Tangy Tomato - 25g</span>
+              <span class="inline-block mt-0.5 w-fit px-1.5 py-0.5 rounded text-[10px] font-label-sm uppercase tracking-wider bg-surface-container-high text-on-surface">
+                25g Small Pack
+              </span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-medium">12,000 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">12,500 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-secondary font-semibold">+500 surplus</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-center">
+          <div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high text-secondary">
+            <span class="material-symbols-outlined text-[14px]">trending_up</span>
+            <span class="font-data-mono-sm text-data-mono-sm font-bold">104.2%</span>
+            <span class="hidden md:inline font-label-sm text-label-sm ml-0.5">• Above Target</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <div class="flex items-center justify-end gap-1">
+            <button onclick="editSchedule('SCH-005')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Edit Line Target">
+              <span class="material-symbols-outlined text-[16px]">edit</span>
+            </button>
+            <button onclick="promptDelete('SCH-005')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container transition-colors" title="Remove Entry">
+              <span class="material-symbols-outlined text-[16px]">delete</span>
+            </button>
+          </div>
+        </td>
+      </tr><tr class="hover:bg-surface-container-low/60 transition-colors border-b border-surface-container">
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex flex-col">
+            <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">24 Oct 2024</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Shift B • Line 2</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex items-center gap-space-sm">
+            <div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[16px] text-secondary">lunch_dining</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-body-md text-body-md font-semibold text-on-surface truncate">Masala Magic - 25g</span>
+              <span class="inline-block mt-0.5 w-fit px-1.5 py-0.5 rounded text-[10px] font-label-sm uppercase tracking-wider bg-surface-container-high text-on-surface">
+                25g Small Pack
+              </span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-medium">18,000 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">16,000 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-error font-semibold">-2,000 pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-center">
+          <div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-error-container text-on-error-container">
+            <span class="material-symbols-outlined text-[14px]">warning</span>
+            <span class="font-data-mono-sm text-data-mono-sm font-bold">88.9%</span>
+            <span class="hidden md:inline font-label-sm text-label-sm ml-0.5">• Below Target</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <div class="flex items-center justify-end gap-1">
+            <button onclick="editSchedule('SCH-006')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Edit Line Target">
+              <span class="material-symbols-outlined text-[16px]">edit</span>
+            </button>
+            <button onclick="promptDelete('SCH-006')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container transition-colors" title="Remove Entry">
+              <span class="material-symbols-outlined text-[16px]">delete</span>
+            </button>
+          </div>
+        </td>
+      </tr></tbody>
+<!-- Table Aggregate Summary Footer -->
+<tfoot class="bg-surface-container text-on-surface font-semibold select-none" id="tableFooter">
+<tr class="h-10">
+<td class="py-2.5 px-space-md" colspan="2">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Aggregate Plant Output</span>
+<span class="font-data-mono-sm text-data-mono-sm bg-surface-container-high px-1.5 py-0.5 rounded text-on-surface-variant">Daily Total (All Lines)</span>
+</div>
+</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface" id="footerPlannedTotal">1,20,000 pkts</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface" id="footerActualTotal">1,14,500 pkts</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-error" id="footerShortfallTotal">-5,500 pkts</td>
+<td class="py-2.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-data-mono-sm text-data-mono-sm font-semibold" id="footerAchievementStatus">
+      <span class="material-symbols-outlined text-[14px]">insights</span>
+      <span>95.4% Avg Achievement</span>
+    </span>
+</td>
+<td class="py-2.5 px-space-md text-right font-label-sm text-label-sm text-on-surface-variant">
+<span>6 Runs Scheduled</span>
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<!-- Empty State Container (Hidden by default) -->
+<div class="hidden flex-col items-center justify-center py-16 px-space-md text-center" id="emptyStateContainer">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant mb-space-md">
+<span class="material-symbols-outlined text-[32px]">event_busy</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface mb-space-xs">No Production Schedules Found</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-lg">
+        There are no scheduled packaging targets or active manufacturing runs matching your selected date and filter parameters.
+      </p>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors" onclick="resetFilters()">
+          Reset Filter Filters
+        </button>
+<button class="px-space-md py-2 rounded bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md transition-colors flex items-center gap-1" onclick="openScheduleModal()">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Schedule New Target</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Operational Insights Panel Below Table -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md mt-space-lg">
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<div class="w-7 h-7 rounded bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-on-secondary-fixed">tune</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Yield &amp; Moisture Control</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Continuous fryer calibration</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+        Frying moisture maintained at <span class="font-data-mono-sm text-data-mono-sm text-on-surface font-semibold">1.62%</span> (Target Window: 1.5% - 1.8%). Oil absorption constant at 33.4% with zero rancidity flags.
+      </p>
+<div class="flex items-center justify-between text-label-sm font-label-sm pt-space-xs bg-surface-container-low px-space-sm py-1 rounded">
+<span class="text-on-surface-variant">Palmolein Refill Lot:</span>
+<span class="font-data-mono-sm text-data-mono-sm text-secondary font-medium">LOT-OIL-8820 [OK]</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<div class="w-7 h-7 rounded bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-on-error-container">report_problem</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Bottleneck Diagnostics</span>
+<span class="font-body-sm text-body-sm text-error">Line 2 Multi-Head Weigher</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+        Cream &amp; Onion 50g packaging slowed by intermittent optical registration slip on metallized foil roll #FLM-202. Technician dispatched.
+      </p>
+<div class="flex items-center justify-between text-label-sm font-label-sm pt-space-xs bg-surface-container-low px-space-sm py-1 rounded">
+<span class="text-on-surface-variant">Estimated Recovery:</span>
+<span class="font-data-mono-sm text-data-mono-sm text-error font-medium">10:45 IST (+1,200 pkts/hr)</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<div class="w-7 h-7 rounded bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-on-primary">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Downstream Dispatch Staging</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bay 3 Loading Schedule</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+        Consignment #DS-9912 for Western Distribution Hub staged at 88% capacity. Awaiting final run of Classic Salted 25g cartons.
+      </p>
+<div class="flex items-center justify-between text-label-sm font-label-sm pt-space-xs bg-surface-container-low px-space-sm py-1 rounded">
+<span class="text-on-surface-variant">Carton Palletizing:</span>
+<span class="font-data-mono-sm text-data-mono-sm text-secondary font-medium">2,290 / 2,400 Cartons</span>
+</div>
+</div>
+</div>
+<!-- Modal 1: Add/Edit Production Schedule Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-primary/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200" id="scheduleModal">
+<div class="bg-surface-container-lowest rounded-lg shadow-xl w-full max-w-lg overflow-hidden transform scale-95 transition-transform duration-200" id="modalCard">
+<!-- Modal Header -->
+<div class="bg-primary px-space-lg py-space-md flex items-center justify-between text-on-primary">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary-container text-[20px]">calendar_add_on</span>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md font-bold leading-tight" id="modalTitle">Schedule Daily Production Target</h3>
+<span class="font-label-sm text-label-sm text-on-primary-container">Industrial Line Allocation</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-primary-container hover:text-on-primary hover:bg-tertiary-container transition-colors" onclick="closeScheduleModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Helper Notice -->
+<div class="bg-surface-container-low px-space-lg py-space-xs text-on-surface-variant font-body-sm text-body-sm flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary shrink-0 mt-0.5">info</span>
+<span>
+<strong>Production Date</strong> is the manufacturing run day. <strong>Planned Quantity</strong> establishes line quota. <strong>Actual Quantity</strong> is actual verified yield.
+        </span>
+</div>
+<!-- Form Container -->
+<form class="p-space-lg flex flex-col gap-space-md" id="scheduleForm" onsubmit="handleFormSubmit(event)">
+<input id="editRowId" type="hidden" value="">
+<!-- Field: Product SKU -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface" for="formProduct">Product &amp; SKU Pack Size</label>
+<div class="relative">
+<select class="w-full h-10 px-space-sm pr-8 rounded bg-surface-container-low text-on-surface text-body-md font-body-md focus:bg-surface-container-lowest focus:outline-none focus:ring-1 focus:ring-secondary cursor-pointer appearance-none" id="formProduct" required="">
+<option disabled="" selected="" value="">Select SKU configuration...</option>
+<option value="Classic Salted - 25g">Classic Salted - 25g (Small Snack Pack)</option>
+<option value="Classic Salted - 50g">Classic Salted - 50g (Standard Family Pack)</option>
+<option value="Masala Magic - 25g">Masala Magic - 25g (Small Snack Pack)</option>
+<option value="Masala Magic - 50g">Masala Magic - 50g (Standard Family Pack)</option>
+<option value="Cream &amp; Onion - 50g">Cream &amp; Onion - 50g (Standard Family Pack)</option>
+<option value="Tangy Tomato - 25g">Tangy Tomato - 25g (Small Snack Pack)</option>
+</select>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2">expand_more</span>
+</div>
+</div>
+<!-- Field: Production Date -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface" for="formDate">Production Date (Manufacturing Run Date)</label>
+<input class="w-full h-10 px-space-sm rounded bg-surface-container-low text-on-surface text-body-md font-body-md focus:bg-surface-container-lowest focus:outline-none focus:ring-1 focus:ring-secondary" id="formDate" required="" type="date">
+</div>
+<!-- Grid for Quantities -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Planned Quantity -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface" for="formPlanned">Planned Target (Quota)</label>
+<div class="flex rounded overflow-hidden shadow-inner">
+<input class="flex-1 h-10 px-space-sm bg-surface-container-low text-on-surface text-body-md font-data-mono-md focus:bg-surface-container-lowest focus:outline-none" id="formPlanned" min="100" oninput="updateModalCalculation()" placeholder="20000" required="" step="100" type="number">
+<span class="h-10 px-space-sm flex items-center justify-center bg-surface-container-high text-on-surface-variant font-data-mono-sm text-data-mono-sm select-none">
+                pkts
+              </span>
+</div>
+</div>
+<!-- Actual Quantity -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface" for="formActual">Actual Manufactured</label>
+<div class="flex rounded overflow-hidden shadow-inner">
+<input class="flex-1 h-10 px-space-sm bg-surface-container-low text-on-surface text-body-md font-data-mono-md focus:bg-surface-container-lowest focus:outline-none" id="formActual" min="0" oninput="updateModalCalculation()" placeholder="0" required="" step="100" type="number">
+<span class="h-10 px-space-sm flex items-center justify-center bg-surface-container-high text-on-surface-variant font-data-mono-sm text-data-mono-sm select-none">
+                pkts
+              </span>
+</div>
+</div>
+</div>
+<!-- Dynamic Calculation & Status Preview -->
+<div class="bg-surface-container-low p-space-sm rounded flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Live Achievement &amp; Variance</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface font-semibold" id="modalCalcSummary">Shortfall: 0 pkts (100.0%)</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-bold" id="modalCalcBadge">
+            Target Achieved
+          </span>
+</div>
+<!-- Modal Actions -->
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" onclick="closeScheduleModal()" type="button">
+            Cancel
+          </button>
+<button class="px-space-lg py-2 rounded bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md transition-colors shadow-sm flex items-center gap-1" type="submit">
+<span class="material-symbols-outlined text-[16px]">save</span>
+<span>Save Schedule Target</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Modal 2: Delete Confirmation Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-primary/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200" id="deleteModal">
+<div class="bg-surface-container-lowest rounded-lg shadow-xl w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-200" id="deleteCard">
+<div class="bg-error-container px-space-lg py-space-md flex items-center justify-between text-on-error-container">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<h3 class="font-headline-md text-headline-md font-bold">Confirm Schedule Deletion</h3>
+</div>
+<button class="w-8 h-8 rounded flex items-center justify-center hover:bg-on-error-container/10 transition-colors" onclick="closeDeleteModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="p-space-lg flex flex-col gap-space-md">
+<p class="font-body-md text-body-md text-on-surface" id="deleteModalDescription">
+          Are you sure you want to delete the production schedule entry for <strong id="deleteTargetProduct">Classic Salted - 50g</strong> on <strong id="deleteTargetDate">24 Oct 2024</strong>? This will remove the recorded line targets and actual shift yields. This action requires operator authorization.
+        </p>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" onclick="closeDeleteModal()" type="button">
+            Cancel
+          </button>
+<button class="px-space-md py-2 rounded bg-error text-on-error hover:bg-on-error-container font-label-md text-label-md transition-colors shadow-sm flex items-center gap-1" onclick="confirmDelete()" type="button">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+<span>Delete Entry</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Initial Datasets for Continuous Chip Line 01 - 04
+  let scheduleData = [
+    {
+      id: "SCH-001",
+      date: "2024-10-24",
+      dateDisplay: "24 Oct 2024",
+      shift: "Shift A • Line 1",
+      product: "Classic Salted - 25g",
+      packSize: "25g Small Pack",
+      packBadgeClass: "bg-surface-container-high text-on-surface",
+      planned: 20000,
+      actual: 21500,
+      shortfall: 1500, // surplus
+      achievement: 107.5,
+      status: "Above Target",
+      statusClass: "bg-surface-container-high text-secondary",
+      statusIcon: "trending_up"
+    },
+    {
+      id: "SCH-002",
+      date: "2024-10-24",
+      dateDisplay: "24 Oct 2024",
+      shift: "Shift A • Line 2",
+      product: "Classic Salted - 50g",
+      packSize: "50g Standard Pack",
+      packBadgeClass: "bg-primary-container text-on-primary",
+      planned: 25000,
+      actual: 25000,
+      shortfall: 0,
+      achievement: 100.0,
+      status: "Target Achieved",
+      statusClass: "bg-secondary-fixed text-on-secondary-fixed",
+      statusIcon: "check_circle"
+    },
+    {
+      id: "SCH-003",
+      date: "2024-10-24",
+      dateDisplay: "24 Oct 2024",
+      shift: "Shift B • Line 1",
+      product: "Masala Magic - 50g",
+      packSize: "50g Standard Pack",
+      packBadgeClass: "bg-primary-container text-on-primary",
+      planned: 15000,
+      actual: 12200,
+      shortfall: -2800,
+      achievement: 81.3,
+      status: "Below Target",
+      statusClass: "bg-error-container text-on-error-container",
+      statusIcon: "warning"
+    },
+    {
+      id: "SCH-004",
+      date: "2024-10-24",
+      dateDisplay: "24 Oct 2024",
+      shift: "Shift B • Line 3",
+      product: "Cream & Onion - 50g",
+      packSize: "50g Standard Pack",
+      packBadgeClass: "bg-primary-container text-on-primary",
+      planned: 30000,
+      actual: 27300,
+      shortfall: -2700,
+      achievement: 91.0,
+      status: "Below Target",
+      statusClass: "bg-error-container text-on-error-container",
+      statusIcon: "warning"
+    },
+    {
+      id: "SCH-005",
+      date: "2024-10-24",
+      dateDisplay: "24 Oct 2024",
+      shift: "Shift A • Line 4",
+      product: "Tangy Tomato - 25g",
+      packSize: "25g Small Pack",
+      packBadgeClass: "bg-surface-container-high text-on-surface",
+      planned: 12000,
+      actual: 12500,
+      shortfall: 500,
+      achievement: 104.2,
+      status: "Above Target",
+      statusClass: "bg-surface-container-high text-secondary",
+      statusIcon: "trending_up"
+    },
+    {
+      id: "SCH-006",
+      date: "2024-10-24",
+      dateDisplay: "24 Oct 2024",
+      shift: "Shift B • Line 2",
+      product: "Masala Magic - 25g",
+      packSize: "25g Small Pack",
+      packBadgeClass: "bg-surface-container-high text-on-surface",
+      planned: 18000,
+      actual: 16000,
+      shortfall: -2000,
+      achievement: 88.9,
+      status: "Below Target",
+      statusClass: "bg-error-container text-on-error-container",
+      statusIcon: "warning"
+    }
+  ];
+
+  let currentSort = { column: 'date', ascending: true };
+  let pendingDeleteId = null;
+  let isSimulatedEmpty = false;
+  let currentDate = new Date(2024, 9, 24); // 24 Oct 2024
+
+  function formatNumber(num) {
+    return new Intl.NumberFormat('en-IN').format(num);
+  }
+
+  function renderTable(dataToRender) {
+    const tbody = document.getElementById("scheduleTableBody");
+    const tableContainer = document.getElementById("scheduleTableContainer");
+    const emptyContainer = document.getElementById("emptyStateContainer");
+
+    if (isSimulatedEmpty || dataToRender.length === 0) {
+      tableContainer.classList.add("hidden");
+      emptyContainer.classList.remove("hidden");
+      emptyContainer.classList.add("flex");
+      updateMetrics(0, 0, 0, 0);
+      return;
+    }
+
+    tableContainer.classList.remove("hidden");
+    emptyContainer.classList.add("hidden");
+    emptyContainer.classList.remove("flex");
+
+    tbody.innerHTML = "";
+
+    dataToRender.forEach((row) => {
+      const tr = document.createElement("tr");
+      tr.className = "hover:bg-surface-container-low/60 transition-colors border-b border-surface-container";
+
+      // Shortfall Badge formatting
+      let shortfallHtml = "";
+      if (row.shortfall < 0) {
+        shortfallHtml = `<span class="font-data-mono-md text-data-mono-md text-error font-semibold">${formatNumber(row.shortfall)} pkts</span>`;
+      } else if (row.shortfall > 0) {
+        shortfallHtml = `<span class="font-data-mono-md text-data-mono-md text-secondary font-semibold">+${formatNumber(row.shortfall)} surplus</span>`;
+      } else {
+        shortfallHtml = `<span class="font-data-mono-md text-data-mono-md text-on-surface-variant">0 pkts</span>`;
+      }
+
+      tr.innerHTML = `
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex flex-col">
+            <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">${row.dateDisplay}</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">${row.shift}</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle">
+          <div class="flex items-center gap-space-sm">
+            <div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[16px] text-secondary">lunch_dining</span>
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="font-body-md text-body-md font-semibold text-on-surface truncate">${row.product}</span>
+              <span class="inline-block mt-0.5 w-fit px-1.5 py-0.5 rounded text-[10px] font-label-sm uppercase tracking-wider ${row.packBadgeClass}">
+                ${row.packSize}
+              </span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-medium">${formatNumber(row.planned)} pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <span class="font-data-mono-md text-data-mono-md text-on-surface font-semibold">${formatNumber(row.actual)} pkts</span>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          ${shortfallHtml}
+        </td>
+        <td class="py-3 px-space-md align-middle text-center">
+          <div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full ${row.statusClass}">
+            <span class="material-symbols-outlined text-[14px]">${row.statusIcon}</span>
+            <span class="font-data-mono-sm text-data-mono-sm font-bold">${row.achievement.toFixed(1)}%</span>
+            <span class="hidden md:inline font-label-sm text-label-sm ml-0.5">• ${row.status}</span>
+          </div>
+        </td>
+        <td class="py-3 px-space-md align-middle text-right">
+          <div class="flex items-center justify-end gap-1">
+            <button onclick="editSchedule('${row.id}')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Edit Line Target">
+              <span class="material-symbols-outlined text-[16px]">edit</span>
+            </button>
+            <button onclick="promptDelete('${row.id}')" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container transition-colors" title="Remove Entry">
+              <span class="material-symbols-outlined text-[16px]">delete</span>
+            </button>
+          </div>
+        </td>
+      `;
+
+      tbody.appendChild(tr);
+    });
+
+    recalculateFooterAndMetrics(dataToRender);
+  }
+
+  function recalculateFooterAndMetrics(activeRows) {
+    const totalPlanned = activeRows.reduce((sum, item) => sum + item.planned, 0);
+    const totalActual = activeRows.reduce((sum, item) => sum + item.actual, 0);
+    const totalShortfall = totalActual - totalPlanned;
+    const avgAchievement = totalPlanned > 0 ? (totalActual / totalPlanned) * 100 : 0;
+
+    // Table Footer Update
+    document.getElementById("footerPlannedTotal").innerText = `${formatNumber(totalPlanned)} pkts`;
+    document.getElementById("footerActualTotal").innerText = `${formatNumber(totalActual)} pkts`;
+    
+    const footerShortfallEl = document.getElementById("footerShortfallTotal");
+    if (totalShortfall < 0) {
+      footerShortfallEl.className = "py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-error";
+      footerShortfallEl.innerText = `${formatNumber(totalShortfall)} pkts`;
+    } else {
+      footerShortfallEl.className = "py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary";
+      footerShortfallEl.innerText = `+${formatNumber(totalShortfall)} pkts`;
+    }
+
+    document.getElementById("footerAchievementStatus").innerHTML = `
+      <span class="material-symbols-outlined text-[14px]">insights</span>
+      <span>${avgAchievement.toFixed(1)}% Avg Achievement</span>
+    `;
+
+    // Top Cards Update
+    updateMetrics(totalPlanned, totalActual, totalShortfall, avgAchievement);
+  }
+
+  function updateMetrics(planned, actual, shortfall, achievement) {
+    document.getElementById("metricPlannedOutput").innerText = formatNumber(planned);
+    document.getElementById("metricActualOutput").innerText = formatNumber(actual);
+    
+    const shortfallEl = document.getElementById("metricShortfall");
+    shortfallEl.innerText = (shortfall > 0 ? `+${formatNumber(shortfall)}` : formatNumber(shortfall));
+    if (shortfall < 0) {
+      shortfallEl.className = "font-data-mono-lg text-[26px] leading-tight font-bold text-error";
+    } else {
+      shortfallEl.className = "font-data-mono-lg text-[26px] leading-tight font-bold text-secondary";
+    }
+
+    document.getElementById("metricAchievement").innerText = `${achievement.toFixed(1)}%`;
+    const bar = document.getElementById("metricProgressBar");
+    bar.style.width = `${Math.min(achievement, 100)}%`;
+  }
+
+  // Filtering Logic
+  function getFilteredData() {
+    const searchVal = document.getElementById("searchInput").value.toLowerCase();
+    const productVal = document.getElementById("productFilter").value;
+    const statusVal = document.getElementById("statusFilter").value;
+
+    return scheduleData.filter((item) => {
+      const matchSearch = item.product.toLowerCase().includes(searchVal) ||
+                          item.id.toLowerCase().includes(searchVal) ||
+                          item.shift.toLowerCase().includes(searchVal);
+      const matchProduct = (productVal === "ALL" || item.product === productVal);
+      const matchStatus = (statusVal === "ALL" || item.status === statusVal);
+
+      return matchSearch && matchProduct && matchStatus;
+    });
+  }
+
+  function applyFilter() {
+    if (isSimulatedEmpty) return;
+    const filtered = getFilteredData();
+    renderTable(filtered);
+  }
+
+  function handleSearch(val) {
+    applyFilter();
+  }
+
+  function resetFilters() {
+    isSimulatedEmpty = false;
+    document.getElementById("searchInput").value = "";
+    document.getElementById("productFilter").value = "ALL";
+    document.getElementById("statusFilter").value = "ALL";
+    renderTable(scheduleData);
+    showToast("Filters reset to default plant schedule.");
+  }
+
+  function toggleEmptyState() {
+    isSimulatedEmpty = !isSimulatedEmpty;
+    if (isSimulatedEmpty) {
+      renderTable([]);
+      showToast("Toggled view to Simulated Empty State.");
+    } else {
+      applyFilter();
+      showToast("Restored active production schedule records.");
+    }
+  }
+
+  // Date Navigation Mock
+  function navigateDay(offset) {
+    currentDate.setDate(currentDate.getDate() + offset);
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const formatted = `${currentDate.getDate()} ${months[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+    document.getElementById("currentDateDisplay").innerText = formatted;
+    showToast(`Loaded production manifest for ${formatted}`);
+  }
+
+  // Table Sorting
+  function sortTable(columnKey) {
+    if (currentSort.column === columnKey) {
+      currentSort.ascending = !currentSort.ascending;
+    } else {
+      currentSort.column = columnKey;
+      currentSort.ascending = true;
+    }
+
+    const currentRows = getFilteredData();
+
+    currentRows.sort((a, b) => {
+      let valA = a[columnKey];
+      let valB = b[columnKey];
+
+      if (typeof valA === 'string') {
+        return currentSort.ascending ? valA.localeCompare(valB) : valB.localeCompare(valA);
+      } else {
+        return currentSort.ascending ? valA - valB : valB - valA;
+      }
+    });
+
+    renderTable(currentRows);
+  }
+
+  // Modal Handlers (Add / Edit)
+  function openScheduleModal(editId = null) {
+    const modal = document.getElementById("scheduleModal");
+    const card = document.getElementById("modalCard");
+    const form = document.getElementById("scheduleForm");
+    const modalTitle = document.getElementById("modalTitle");
+
+    form.reset();
+    document.getElementById("editRowId").value = "";
+
+    if (editId) {
+      const existing = scheduleData.find((x) => x.id === editId);
+      if (existing) {
+        modalTitle.innerText = "Edit Production Schedule Target";
+        document.getElementById("editRowId").value = existing.id;
+        document.getElementById("formProduct").value = existing.product;
+        document.getElementById("formDate").value = existing.date;
+        document.getElementById("formPlanned").value = existing.planned;
+        document.getElementById("formActual").value = existing.actual;
+      }
+    } else {
+      modalTitle.innerText = "Schedule Daily Production Target";
+      document.getElementById("formDate").value = "2024-10-24";
+      document.getElementById("formPlanned").value = "20000";
+      document.getElementById("formActual").value = "0";
+    }
+
+    updateModalCalculation();
+
+    modal.classList.remove("hidden");
+    setTimeout(() => {
+      modal.classList.remove("opacity-0");
+      card.classList.remove("scale-95");
+      card.classList.add("scale-100");
+    }, 10);
+  }
+
+  function closeScheduleModal() {
+    const modal = document.getElementById("scheduleModal");
+    const card = document.getElementById("modalCard");
+
+    modal.classList.add("opacity-0");
+    card.classList.remove("scale-100");
+    card.classList.add("scale-95");
+    setTimeout(() => {
+      modal.classList.add("hidden");
+    }, 200);
+  }
+
+  function updateModalCalculation() {
+    const planned = parseFloat(document.getElementById("formPlanned").value) || 0;
+    const actual = parseFloat(document.getElementById("formActual").value) || 0;
+    const shortfall = actual - planned;
+    const pct = planned > 0 ? (actual / planned) * 100 : 0;
+
+    const summaryEl = document.getElementById("modalCalcSummary");
+    const badgeEl = document.getElementById("modalCalcBadge");
+
+    let statusText = "Target Achieved";
+    let badgeClass = "font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-bold";
+
+    if (pct < 100) {
+      statusText = "Below Target";
+      badgeClass = "font-label-sm text-label-sm px-2 py-0.5 rounded bg-error-container text-on-error-container font-bold";
+    } else if (pct > 100) {
+      statusText = "Above Target";
+      badgeClass = "font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-secondary font-bold";
+    }
+
+    badgeEl.innerText = statusText;
+    badgeEl.className = badgeClass;
+
+    const diffText = shortfall < 0 
+      ? `Shortfall: ${formatNumber(shortfall)} pkts` 
+      : shortfall > 0 
+        ? `Surplus: +${formatNumber(shortfall)} pkts` 
+        : `Exact match: 0 pkts`;
+
+    summaryEl.innerText = `${diffText} (${pct.toFixed(1)}%)`;
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const editId = document.getElementById("editRowId").value;
+    const product = document.getElementById("formProduct").value;
+    const date = document.getElementById("formDate").value;
+    const planned = parseInt(document.getElementById("formPlanned").value, 10);
+    const actual = parseInt(document.getElementById("formActual").value, 10);
+    const shortfall = actual - planned;
+    const achievement = planned > 0 ? (actual / planned) * 100 : 0;
+
+    let status = "Target Achieved";
+    let statusClass = "bg-secondary-fixed text-on-secondary-fixed";
+    let statusIcon = "check_circle";
+
+    if (achievement < 100) {
+      status = "Below Target";
+      statusClass = "bg-error-container text-on-error-container";
+      statusIcon = "warning";
+    } else if (achievement > 100) {
+      status = "Above Target";
+      statusClass = "bg-surface-container-high text-secondary";
+      statusIcon = "trending_up";
+    }
+
+    const isSmallPack = product.includes("25g");
+    const packSize = isSmallPack ? "25g Small Pack" : "50g Standard Pack";
+    const packBadgeClass = isSmallPack ? "bg-surface-container-high text-on-surface" : "bg-primary-container text-on-primary";
+
+    const dateObj = new Date(date);
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const dateDisplay = isNaN(dateObj) ? date : `${dateObj.getDate()} ${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+
+    if (editId) {
+      const idx = scheduleData.findIndex((x) => x.id === editId);
+      if (idx !== -1) {
+        scheduleData[idx] = {
+          ...scheduleData[idx],
+          product,
+          date,
+          dateDisplay,
+          planned,
+          actual,
+          shortfall,
+          achievement,
+          status,
+          statusClass,
+          statusIcon,
+          packSize,
+          packBadgeClass
+        };
+        showToast(`Schedule target of ${formatNumber(planned)} pkts for ${product} updated.`);
+      }
+    } else {
+      const newEntry = {
+        id: `SCH-${String(scheduleData.length + 1).padStart(3, '0')}`,
+        date,
+        dateDisplay,
+        shift: "Shift A • Line 1",
+        product,
+        packSize,
+        packBadgeClass,
+        planned,
+        actual,
+        shortfall,
+        achievement,
+        status,
+        statusClass,
+        statusIcon
+      };
+      scheduleData.unshift(newEntry);
+      showToast(`New target scheduled: ${formatNumber(planned)} pkts for ${product}`);
+    }
+
+    closeScheduleModal();
+    isSimulatedEmpty = false;
+    applyFilter();
+  }
+
+  function editSchedule(id) {
+    openScheduleModal(id);
+  }
+
+  // Delete Handlers
+  function promptDelete(id) {
+    pendingDeleteId = id;
+    const item = scheduleData.find((x) => x.id === id);
+    if (!item) return;
+
+    document.getElementById("deleteTargetProduct").innerText = item.product;
+    document.getElementById("deleteTargetDate").innerText = item.dateDisplay;
+
+    const modal = document.getElementById("deleteModal");
+    const card = document.getElementById("deleteCard");
+
+    modal.classList.remove("hidden");
+    setTimeout(() => {
+      modal.classList.remove("opacity-0");
+      card.classList.remove("scale-95");
+      card.classList.add("scale-100");
+    }, 10);
+  }
+
+  function closeDeleteModal() {
+    const modal = document.getElementById("deleteModal");
+    const card = document.getElementById("deleteCard");
+
+    modal.classList.add("opacity-0");
+    card.classList.remove("scale-100");
+    card.classList.add("scale-95");
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      pendingDeleteId = null;
+    }, 200);
+  }
+
+  function confirmDelete() {
+    if (!pendingDeleteId) return;
+    const item = scheduleData.find((x) => x.id === pendingDeleteId);
+    scheduleData = scheduleData.filter((x) => x.id !== pendingDeleteId);
+
+    closeDeleteModal();
+    applyFilter();
+    showToast(`Deleted schedule quota for ${item ? item.product : 'entry'}.`);
+  }
+
+  // CSV Export Mock
+  function exportCSV() {
+    const headers = ["ID", "Date", "Shift", "Product", "Planned_Pkts", "Actual_Pkts", "Shortfall_Pkts", "Achievement_Pct", "Status"];
+    const rows = scheduleData.map(r => [r.id, r.date, `"${r.shift}"`, `"${r.product}"`, r.planned, r.actual, r.shortfall, r.achievement.toFixed(2), `"${r.status}"`].join(","));
+    const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows].join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `ChipsMRP_Production_Schedule_${currentDate.toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast("Production Schedule CSV exported successfully.");
+  }
+
+  // Toast System
+  let toastTimer = null;
+  function showToast(message) {
+    const toast = document.getElementById("toastNotification");
+    const msgEl = document.getElementById("toastMessage");
+    msgEl.innerText = message;
+
+    clearTimeout(toastTimer);
+    toast.classList.remove("opacity-0", "translate-y-20", "pointer-events-none");
+    toast.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
+
+    toastTimer = setTimeout(() => {
+      dismissToast();
+    }, 4500);
+  }
+
+  function dismissToast() {
+    const toast = document.getElementById("toastNotification");
+    toast.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
+    toast.classList.add("opacity-0", "translate-y-20", "pointer-events-none");
+  }
+
+  // Initial Boot
+  document.addEventListener("DOMContentLoaded", () => {
+    renderTable(scheduleData);
+  });
+  // Trigger immediate render if already loaded
+  renderTable(scheduleData);
+</script></main></div>
+
+</body></html>

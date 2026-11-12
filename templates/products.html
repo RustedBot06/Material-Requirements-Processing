@@ -1,0 +1,272 @@
+{% extends "base.html" %}
+
+{% set active_page = "products" %}
+
+{% block title %}Products (SKUs){% endblock %}
+{% block page_title %}Finished Goods Catalog (SKUs){% endblock %}
+{% block page_tag %}PACKAGING & FINISHED STOCK{% endblock %}
+
+{% block header_actions %}
+<button type="button" class="btn btn-primary btn-sm" onclick="openModal('addProductModal')">
+    <span>+ Register Product SKU</span>
+</button>
+{% endblock %}
+
+{% block content %}
+<!-- Product Inventory Metrics -->
+<div class="stats-grid">
+    <div class="stat-card primary">
+        <div class="stat-label">Total Product SKUs</div>
+        <div class="stat-value">{{ products | length }}</div>
+        <div class="stat-helper">
+            <span>Configured chip packaging sizes</span>
+        </div>
+    </div>
+
+    {% set total_packets = namespace(value=0) %}
+    {% set total_mrp_val = namespace(value=0) %}
+    {% for prod in products %}
+        {% set total_packets.value = total_packets.value + prod['stock_qty'] %}
+        {% set total_mrp_val.value = total_mrp_val.value + (prod['stock_qty'] * prod['mrp']) %}
+    {% endfor %}
+
+    <div class="stat-card success">
+        <div class="stat-label">Finished Packets in Stock</div>
+        <div class="stat-value">{{ "{:,}".format(total_packets.value) }}</div>
+        <div class="stat-helper">
+            <span class="badge badge-sufficient">Warehouse</span>
+            <span>Total ready-for-dispatch packets</span>
+        </div>
+    </div>
+
+    <div class="stat-card warning">
+        <div class="stat-label">Finished Inventory Value (MRP)</div>
+        <div class="stat-value">₹{{ "{:,.2f}".format(total_mrp_val.value) }}</div>
+        <div class="stat-helper">
+            <span>At standard retail market price</span>
+        </div>
+    </div>
+
+    <div class="stat-card info">
+        <div class="stat-label">Size Variations</div>
+        <div class="stat-value">25g / 50g</div>
+        <div class="stat-helper">
+            <span>Standard commercial packet sizes</span>
+        </div>
+    </div>
+</div>
+
+<!-- Products Table Card -->
+<div class="card">
+    <div class="card-header">
+        <div>
+            <h3 class="card-title">
+                <span>Finished Goods Master Ledger</span>
+            </h3>
+            <div class="card-subtitle">All product names explicitly incorporate packet net weight (e.g. Classic Salted - 25g)</div>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="openModal('addProductModal')">
+            + Quick Add SKU
+        </button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 70px;">Item ID</th>
+                    <th>Product Full Name (with Packet Size)</th>
+                    <th>Net Weight</th>
+                    <th class="col-right">Finished Stock</th>
+                    <th class="col-right">MRP (Retail)</th>
+                    <th class="col-right">Total Retail Value</th>
+                    <th style="text-align: center; width: 150px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if not products %}
+                <tr>
+                    <td colspan="7">
+                        <div class="empty-state">
+                            <div class="empty-title">No Products Configured</div>
+                            <div class="empty-desc">Create your product lines such as Classic Salted (25g), Cream & Onion (50g), or Peri Peri.</div>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="openModal('addProductModal')">
+                                Register First Product
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                {% for prod in products %}
+                {% set val = prod['stock_qty'] * prod['mrp'] %}
+                <tr>
+                    <td class="col-mono" style="color: var(--color-text-muted);">#{{ prod['id'] }}</td>
+                    <td>
+                        <strong style="color: var(--color-primary); font-size: 14px;">
+                            {{ prod['name'] }} - {{ prod['packet_size'] }}g
+                        </strong>
+                    </td>
+                    <td>
+                        <span class="badge-packet">{{ prod['packet_size'] }}g</span>
+                    </td>
+                    <td class="col-mono col-right">
+                        <strong>{{ "{:,}".format(prod['stock_qty']) }}</strong>
+                        <span style="font-size: 11px; color: var(--color-text-muted);">pkts</span>
+                    </td>
+                    <td class="col-mono col-right">
+                        ₹{{ "%.2f"|format(prod['mrp']) }}
+                    </td>
+                    <td class="col-mono col-right" style="font-weight: 600;">
+                        ₹{{ "{:,.2f}".format(val) }}
+                    </td>
+                    <td style="text-align: center;">
+                        <div class="action-group" style="justify-content: center;">
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="openModal('editProductModal-{{ prod['id'] }}')">
+                                Edit
+                            </button>
+
+                            <button type="button" class="btn btn-ghost btn-sm" style="color: #dc2626;" onclick="openModal('deleteProductModal-{{ prod['id'] }}')">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block modals %}
+<!-- Add Product Modal -->
+<div class="modal-backdrop" id="addProductModal">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span>Register Finished Product SKU</span>
+            </h4>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('addProductModal')">✕</button>
+        </div>
+        <form method="POST" action="{{ url_for('products') }}">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="add_prod_name">Product Line / Flavour Name <span class="required">*</span></label>
+                    <input type="text" id="add_prod_name" name="name" class="form-control" placeholder="e.g. Classic Salted" required autofocus>
+                    <div style="font-size: 11px; color: var(--color-text-muted);">
+                        The packet net weight will automatically be appended to all display labels (e.g. "Classic Salted - 25g").
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="add_packet_size">Packet Size (Net Weight) <span class="required">*</span></label>
+                    <select id="add_packet_size" name="packet_size" class="form-control" required>
+                        <option value="25">25 grams (Snack pouch)</option>
+                        <option value="50">50 grams (Standard party pack)</option>
+                    </select>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="add_stock">Initial Finished Packets Stock <span class="required">*</span></label>
+                        <input type="number" id="add_stock" name="stock_qty" class="form-control mono" min="0" step="1" value="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="add_mrp">Maximum Retail Price (₹) <span class="required">*</span></label>
+                        <div class="input-with-addon">
+                            <span class="input-addon">₹</span>
+                            <input type="number" id="add_mrp" name="mrp" class="form-control mono" min="0" step="any" placeholder="10.00" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('addProductModal')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Product SKU</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Edit Product Modals for Each Record -->
+{% for prod in products %}
+<div class="modal-backdrop" id="editProductModal-{{ prod['id'] }}">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span>Update Finished Good #{{ prod['id'] }}</span>
+            </h4>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('editProductModal-{{ prod['id'] }}')">✕</button>
+        </div>
+        <form method="POST" action="{{ url_for('update_product_route', product_id=prod['id']) }}">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="edit_name_{{ prod['id'] }}">Product Flavour Name <span class="required">*</span></label>
+                    <input type="text" id="edit_name_{{ prod['id'] }}" name="name" class="form-control" value="{{ prod['name'] }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="edit_size_{{ prod['id'] }}">Packet Net Weight <span class="required">*</span></label>
+                    <select id="edit_size_{{ prod['id'] }}" name="packet_size" class="form-control" required>
+                        <option value="25" {% if prod['packet_size'] == 25 %}selected{% endif %}>25 grams</option>
+                        <option value="50" {% if prod['packet_size'] == 50 %}selected{% endif %}>50 grams</option>
+                    </select>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="edit_stock_{{ prod['id'] }}">Warehouse Stock (Packets) <span class="required">*</span></label>
+                        <input type="number" id="edit_stock_{{ prod['id'] }}" name="stock_qty" class="form-control mono" value="{{ prod['stock_qty'] }}" min="0" step="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="edit_mrp_{{ prod['id'] }}">Retail MRP (₹) <span class="required">*</span></label>
+                        <div class="input-with-addon">
+                            <span class="input-addon">₹</span>
+                            <input type="number" id="edit_mrp_{{ prod['id'] }}" name="mrp" class="form-control mono" value="{{ prod['mrp'] }}" min="0" step="any" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('editProductModal-{{ prod['id'] }}')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update Product</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Formal In-App Delete Confirmation Modal for Each Product -->
+<div class="modal-backdrop" id="deleteProductModal-{{ prod['id'] }}">
+    <div class="modal-dialog danger">
+        <div class="modal-header">
+            <h4 class="modal-title">Confirm Product SKU Deletion</h4>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('deleteProductModal-{{ prod['id'] }}')">✕</button>
+        </div>
+        <form method="POST" action="{{ url_for('delete_product_route', product_id=prod['id']) }}">
+            <div class="modal-body">
+                <p style="font-size: 14px; color: var(--color-text-main);">
+                    Are you sure you want to permanently delete finished SKU <strong>{{ prod['name'] }} - {{ prod['packet_size'] }}g</strong> (ID #{{ prod['id'] }})?
+                </p>
+
+                <div class="modal-warning-box">
+                    <strong>Deletion Constraint Rules</strong>
+                    Finished product SKUs referenced by active Bill of Materials (BOM) recipes or scheduled production runs cannot be deleted. Database foreign key constraints will abort deletion if dependent records exist.
+                </div>
+
+                <div style="font-size: 12px; color: var(--color-text-secondary); background: #f8fafc; padding: 10px 12px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+                    <div>Finished Warehouse Stock: <strong class="col-mono">{{ "{:,}".format(prod['stock_qty']) }} packets</strong></div>
+                    <div>Retail Valuation (MRP): <strong class="col-mono">₹{{ "{:,.2f}".format(prod['stock_qty'] * prod['mrp']) }}</strong></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('deleteProductModal-{{ prod['id'] }}')">Cancel</button>
+                <button type="submit" class="btn btn-danger">Confirm Delete SKU</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

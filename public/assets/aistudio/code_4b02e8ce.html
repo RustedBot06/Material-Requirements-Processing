@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary":"#4059aa","surface-container":"#e5eeff","surface":"#f8f9ff","on-tertiary-fixed-variant":"#3a485b","background":"#f8f9ff","error":"#ba1a1a","on-primary-fixed":"#021c39","tertiary-fixed-dim":"#b9c7df","outline-variant":"#c4c6ce","surface-tint":"#4a5f7f","primary-fixed-dim":"#b2c8ed","surface-container-lowest":"#ffffff","on-background":"#0b1c30","on-error":"#ffffff","surface-dim":"#cbdbf5","surface-bright":"#f8f9ff","outline":"#74777e","on-secondary-container":"#1d3989","on-primary":"#ffffff","on-secondary-fixed-variant":"#264191","inverse-primary":"#b2c8ed","secondary-container":"#8fa7fe","on-secondary-fixed":"#00164e","surface-container-low":"#eff4ff","on-primary-container":"#798fb1","inverse-on-surface":"#eaf1ff","on-secondary":"#ffffff","error-container":"#ffdad6","on-tertiary-fixed":"#0d1c2e","on-tertiary-container":"#808ea4","on-primary-fixed-variant":"#324866","inverse-surface":"#213145","surface-variant":"#d3e4fe","primary-fixed":"#d4e3ff","primary-container":"0f2744","primary-container":"#0f2744","tertiary":"#041223","surface-container-high":"#dce9ff","secondary-fixed-dim":"#b6c4ff","on-tertiary":"#ffffff","on-surface":"#0b1c30","tertiary-container":"#192739","on-surface-variant":"#44474d","on-error-container":"#93000a","tertiary-fixed":"#d5e3fc","primary":"#001229","secondary-fixed":"#dce1ff","surface-container-highest":"#d3e4fe"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-lg":"1.25rem","gutter-compact":"0.5rem","margin":"1.5rem","margin-mobile":"1rem","space-sm":"0.5rem","space-md":"0.75rem","space-xs":"0.25rem","space-xl":"2rem","gutter":"1rem"},fontFamily:{"data-mono-lg":["JetBrains Mono"],"body-lg":["Hanken Grotesk"],"body-sm":["Hanken Grotesk"],"display-lg":["Hanken Grotesk"],"display-sm":["Hanken Grotesk"],"label-md":["Hanken Grotesk"],"body-md":["Hanken Grotesk"],"headline-lg":["Hanken Grotesk"],"data-mono-sm":["JetBrains Mono"],"headline-md":["Hanken Grotesk"],"headline-lg-mobile":["Hanken Grotesk"],"data-mono-md":["JetBrains Mono"],"label-sm":["Hanken Grotesk"]},fontSize:{"data-mono-lg":["16px",{"lineHeight":"20px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"display-sm":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["20px",{"lineHeight":"28px","fontWeight":"600"}],"data-mono-sm":["11px",{"lineHeight":"14px","fontWeight":"500"}],"headline-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["18px",{"lineHeight":"24px","fontWeight":"600"}],"data-mono-md":["13px",{"lineHeight":"16px","fontWeight":"500"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-60 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="h-14 px-gutter flex items-center justify-between bg-surface-container"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-surface text-[18px]">precision_manufacturing</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md tracking-tight text-primary leading-none">Chips MRP</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-0.5">Plant 1 • Pune</span></div></div><div class="w-2 h-2 rounded-full bg-secondary"></div></div><div class="px-gutter-compact py-space-sm"><div class="px-space-sm py-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Core MRP Operations</span></div><nav class="flex flex-col gap-space-xs mt-space-xs" data-active-classes="bg-primary-container text-on-primary font-headline-md rounded"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[18px]">dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-headline-md text-headline-md bg-primary-container text-on-primary shadow-sm transition-all" data-path="raw-materials" href="#"><span class="material-symbols-outlined text-[18px]">inventory_2</span><span>Raw Materials</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="products" href="#"><span class="material-symbols-outlined text-[18px]">layers</span><span>Products</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="bill-of-materials" href="#"><span class="material-symbols-outlined text-[18px]">account_tree</span><span>Bill of Materials</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="production-schedule" href="#"><span class="material-symbols-outlined text-[18px]">calendar_clock</span><span>Production Schedule</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="material-feasibility" href="#"><span class="material-symbols-outlined text-[18px]">flaky</span><span>Material Feasibility</span></a></nav></div></div><div class="p-gutter-compact bg-surface-container-low"><div class="p-space-sm bg-surface-container rounded flex flex-col gap-space-xs"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-label-md text-label-md text-on-surface truncate">Rahul Desai</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Operations Manager</span></div></div><div class="flex items-center justify-between pt-space-xs px-space-xs"><div class="flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">Shift A (06:00-14:00)</span></div><span class="font-label-sm text-label-sm text-secondary uppercase font-semibold">Active</span></div></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-14 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-30 flex items-center justify-between px-margin"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant"><span class="font-body-sm text-body-sm text-on-surface-variant">Operations</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="font-label-md text-label-md text-on-surface">MRP Dispatch Console</span></div><div class="h-4 w-[1px] bg-surface-container-highest"></div><div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container rounded"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-data-mono-sm text-data-mono-sm text-on-surface font-semibold">LIVE PLANT DATA</span></div><div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container-low rounded"><span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">SYS: ONLINE (0.12s)</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm font-data-mono-md text-data-mono-md text-on-surface-variant bg-surface-container px-space-md py-space-xs rounded"><span class="material-symbols-outlined text-[16px]">schedule</span><span>24 OCT • 09:42:15 IST</span></div><button class="relative p-space-xs rounded hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><button class="p-space-xs rounded hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[20px]">refresh</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-14 w-full px-gutter min-h-screen bg-surface"><div class="flex flex-col w-full">
+<!-- Interactive Script to sync App Shell active navigation state, manage Drawer interactions, and handle table sorting -->
+<script>
+    (function() {
+      // Sync App Shell Sidebar active tab to 'Raw Materials'
+      const navLinks = document.querySelectorAll('aside nav a');
+      navLinks.forEach(link => {
+        const path = link.getAttribute('data-path');
+        if (path === 'raw-materials') {
+          link.className = 'flex items-center gap-space-sm px-space-md py-space-sm rounded font-headline-md text-headline-md bg-primary-container text-on-primary shadow-sm transition-all';
+        } else if (path === 'dashboard') {
+          link.className = 'flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all';
+        }
+      });
+    })();
+
+    // Sorting State
+    let currentSortColumn = null;
+    let currentSortDirection = 'none'; // 'asc', 'desc', 'none'
+
+    function sortTable(columnKey) {
+      const tbody = document.getElementById('inventory-table-body');
+      const emptyRow = document.getElementById('empty-state-row');
+      const rows = Array.from(tbody.querySelectorAll('tr:not(#empty-state-row)'));
+
+      if (currentSortColumn === columnKey) {
+        if (currentSortDirection === 'asc') {
+          currentSortDirection = 'desc';
+        } else if (currentSortDirection === 'desc') {
+          currentSortDirection = 'none';
+          currentSortColumn = null;
+        } else {
+          currentSortDirection = 'asc';
+        }
+      } else {
+        currentSortColumn = columnKey;
+        currentSortDirection = 'asc';
+      }
+
+      // Update UI for all sortable headers
+      const sortableHeaders = document.querySelectorAll('th[data-sortable="true"]');
+      sortableHeaders.forEach(th => {
+        const key = th.getAttribute('data-sort-key');
+        const iconSpan = th.querySelector('.sort-indicator');
+        const labelSpan = th.querySelector('.header-label');
+        if (key === currentSortColumn && currentSortDirection !== 'none') {
+          th.classList.add('text-primary');
+          th.classList.remove('text-on-surface-variant');
+          if (labelSpan) labelSpan.classList.add('text-primary');
+          if (iconSpan) {
+            iconSpan.textContent = currentSortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward';
+            iconSpan.className = 'material-symbols-outlined sort-indicator text-[16px] text-secondary font-bold';
+          }
+        } else {
+          th.classList.remove('text-primary');
+          th.classList.add('text-on-surface-variant');
+          if (labelSpan) labelSpan.classList.remove('text-primary');
+          if (iconSpan) {
+            iconSpan.textContent = 'unfold_more';
+            iconSpan.className = 'material-symbols-outlined sort-indicator text-[16px] text-outline-variant group-hover:text-on-surface transition-colors';
+          }
+        }
+      });
+
+      if (currentSortDirection === 'none' || !currentSortColumn) {
+        // Restore initial DOM order via data-initial-index
+        rows.sort((a, b) => {
+          return parseInt(a.getAttribute('data-initial-index') || 0) - parseInt(b.getAttribute('data-initial-index') || 0);
+        });
+      } else {
+        rows.sort((a, b) => {
+          let valA = a.getAttribute(`data-${currentSortColumn}`);
+          let valB = b.getAttribute(`data-${currentSortColumn}`);
+
+          // Determine numerical vs string comparison
+          const isNumeric = ['stock', 'safetystock', 'unitcost', 'valuation'].includes(currentSortColumn);
+          if (isNumeric) {
+            valA = parseFloat(valA) || 0;
+            valB = parseFloat(valB) || 0;
+            return currentSortDirection === 'asc' ? valA - valB : valB - valA;
+          } else {
+            valA = (valA || '').toLowerCase();
+            valB = (valB || '').toLowerCase();
+            if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
+            if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
+            return 0;
+          }
+        });
+      }
+
+      // Re-append sorted rows (emptyRow stays intact)
+      rows.forEach(row => tbody.appendChild(row));
+    }
+
+    function openMaterialDrawer(mode, id, name, location, unit, stock, safety, cost, notes) {
+      const drawer = document.getElementById('material-drawer');
+      const backdrop = document.getElementById('drawer-backdrop');
+      const drawerTitle = document.getElementById('drawer-title');
+      const drawerSub = document.getElementById('drawer-subtitle');
+      const fieldId = document.getElementById('form-mat-id');
+      const fieldName = document.getElementById('form-mat-name');
+      const fieldStorage = document.getElementById('form-mat-storage');
+      const fieldUnit = document.getElementById('form-mat-unit');
+      const fieldStock = document.getElementById('form-mat-stock');
+      const fieldSafety = document.getElementById('form-mat-safety');
+      const fieldCost = document.getElementById('form-mat-cost');
+      const fieldNotes = document.getElementById('form-mat-notes');
+      const submitBtn = document.getElementById('drawer-submit-btn');
+
+      if (mode === 'edit') {
+        drawerTitle.textContent = `Edit Raw Material: ${id}`;
+        drawerSub.textContent = 'Modify silo assignment, minimum buffer margins, and lot valuations.';
+        fieldId.value = id;
+        fieldId.readOnly = true;
+        fieldId.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+        fieldName.value = name || 'Chip-Grade Potatoes (Grade A Atlantic)';
+        fieldStorage.value = location || 'Silo A1/A2';
+        fieldUnit.value = unit || 'kg';
+        fieldStock.value = stock || '18500';
+        fieldSafety.value = safety || '5000';
+        fieldCost.value = cost || '22.50';
+        fieldNotes.value = notes || 'Ambient ventilated potato silo, batch moisture target max 78.5%. Checked against incoming farm gate dispatch.';
+        submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span><span>Save Material Changes</span>';
+      } else {
+        drawerTitle.textContent = 'Add New Raw Material';
+        drawerSub.textContent = 'Register a new packaging roll, frying oil, potato grade, or seasoning lot.';
+        fieldId.value = 'RM-' + Math.floor(100 + Math.random() * 900);
+        fieldId.readOnly = false;
+        fieldId.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+        fieldName.value = '';
+        fieldStorage.value = 'Silo A1/A2';
+        fieldUnit.value = 'kg';
+        fieldStock.value = '';
+        fieldSafety.value = '';
+        fieldCost.value = '';
+        fieldNotes.value = '';
+        submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">add_circle</span><span>Add Raw Material</span>';
+      }
+
+      backdrop.classList.remove('pointer-events-none', 'opacity-0');
+      backdrop.classList.add('opacity-100');
+      drawer.classList.remove('translate-x-full');
+      drawer.classList.add('translate-x-0');
+    }
+
+    function closeMaterialDrawer() {
+      const drawer = document.getElementById('material-drawer');
+      const backdrop = document.getElementById('drawer-backdrop');
+      if (backdrop) {
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        backdrop.classList.remove('opacity-100');
+      }
+      if (drawer) {
+        drawer.classList.add('translate-x-full');
+        drawer.classList.remove('translate-x-0');
+      }
+    }
+
+    function openDeleteModal(id, name, stock, cost, boms) {
+      const backdrop = document.getElementById('delete-modal-backdrop');
+      const modal = document.getElementById('delete-modal');
+      if (id) document.getElementById('delete-modal-id').textContent = id;
+      if (name) document.getElementById('delete-modal-name').textContent = name;
+      if (stock) document.getElementById('delete-modal-stock').textContent = stock;
+      if (cost) document.getElementById('delete-modal-cost').textContent = cost;
+      if (boms) document.getElementById('delete-modal-boms').textContent = boms;
+
+      if (backdrop && modal) {
+        backdrop.classList.remove('pointer-events-none', 'opacity-0');
+        backdrop.classList.add('opacity-100');
+        modal.classList.remove('scale-95');
+        modal.classList.add('scale-100');
+      }
+    }
+
+    function closeDeleteModal() {
+      const backdrop = document.getElementById('delete-modal-backdrop');
+      const modal = document.getElementById('delete-modal');
+      if (backdrop && modal) {
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        backdrop.classList.remove('opacity-100');
+        modal.classList.remove('scale-100');
+        modal.classList.add('scale-95');
+      }
+    }
+
+    function confirmMaterialDeletion() {
+      closeDeleteModal();
+      triggerNotify('Material deleted from active register.');
+    }
+
+    function dismissToast(id) {
+      const toast = document.getElementById(id);
+      if (toast) {
+        toast.style.transition = 'all 0.25s ease-out';
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%) scale(0.95)';
+        setTimeout(() => {
+          toast.remove();
+        }, 260);
+      }
+    }
+
+    function filterTable() {
+      const query = document.getElementById('search-materials-input').value.toLowerCase();
+      const statusFilter = document.getElementById('filter-stock-status').value;
+      const typeFilter = document.getElementById('filter-category').value;
+      const rows = document.querySelectorAll('#inventory-table-body tr:not(#empty-state-row)');
+
+      let visibleCount = 0;
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        const rowStatus = row.getAttribute('data-status');
+        const rowType = row.getAttribute('data-storage-type');
+
+        const matchesQuery = !query || text.includes(query);
+        const matchesStatus = (statusFilter === 'all') || (rowStatus === statusFilter);
+        const matchesType = (typeFilter === 'all') || (rowType === typeFilter);
+
+        if (matchesQuery && matchesStatus && matchesType) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      const emptyRow = document.getElementById('empty-state-row');
+      if (emptyRow) {
+        emptyRow.classList.toggle('hidden', visibleCount > 0);
+      }
+    }
+
+    function toggleEmptyStateDemo() {
+      const emptyRow = document.getElementById('empty-state-row');
+      const rows = document.querySelectorAll('#inventory-table-body tr:not(#empty-state-row)');
+      if (emptyRow) {
+        const willShow = emptyRow.classList.contains('hidden');
+        emptyRow.classList.toggle('hidden', !willShow);
+        rows.forEach(r => r.style.display = willShow ? 'none' : '');
+      }
+    }
+
+    function triggerNotify(msg) {
+      const toast = document.getElementById('toast-banner');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.innerText = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3200);
+    }
+  </script>
+<!-- Delete Confirmation Modal Backdrop & Dialog -->
+<div class="fixed inset-0 bg-primary/50 backdrop-blur-sm z-50 flex items-center justify-center p-space-md opacity-0 pointer-events-none transition-opacity duration-200" id="delete-modal-backdrop" onclick="closeDeleteModal()"><div class="bg-surface-container-lowest rounded shadow-2xl border border-surface-container max-w-lg w-full p-space-lg transform scale-95 transition-all duration-200 pointer-events-auto" id="delete-modal" onclick="event.stopPropagation()"><div class="flex items-start gap-space-md mb-space-md"><div class="w-10 h-10 rounded-full bg-error-container text-error flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[24px]">warning</span></div><div class="flex-1 min-w-0"><div class="flex items-center justify-between"><h3 class="font-headline-lg text-headline-lg text-primary tracking-tight">Delete Raw Material?</h3><button aria-label="Close dialog" class="p-1 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container transition-colors cursor-pointer" onclick="closeDeleteModal()" type="button"><span class="material-symbols-outlined text-[20px] block">close</span></button></div><p class="font-body-md text-body-md text-on-surface-variant mt-1">Are you sure you want to delete <span class="font-semibold text-primary" id="delete-modal-id">RM-ONN-04</span> (<span class="font-semibold text-primary" id="delete-modal-name">Dehydrated Onion Powder</span>)? This item is currently referenced in <span class="text-error font-semibold" id="delete-modal-boms">2 active Bill of Materials (BOM)</span> recipes. Deleting it may impact feasibility calculations and production scheduling.</p></div></div><div class="p-space-md bg-surface-container-low rounded mb-space-lg space-y-space-xs"><div class="flex items-center justify-between font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant pb-1 border-b border-surface-container"><span>Material Ledger Profile</span><span class="font-data-mono-sm text-data-mono-sm text-primary font-semibold">Plant 1 • Pune</span></div><div class="grid grid-cols-2 gap-space-sm pt-space-xs"><div class="flex flex-col"><span class="font-body-sm text-[11px] text-on-surface-variant">Current Stock</span><span class="font-data-mono-md text-data-mono-md font-bold text-primary" id="delete-modal-stock">45 kg</span></div><div class="flex flex-col"><span class="font-body-sm text-[11px] text-on-surface-variant">Unit Cost</span><span class="font-data-mono-md text-data-mono-md font-bold text-primary" id="delete-modal-cost">₹185.00</span></div></div></div><div class="flex items-center justify-end gap-space-sm"><button class="px-space-lg py-2 font-label-md text-label-md text-on-surface bg-surface-container hover:bg-surface-container-high rounded transition-colors cursor-pointer" onclick="closeDeleteModal()" type="button">Cancel</button><button class="flex items-center gap-space-xs px-space-lg py-2 bg-error hover:bg-[#ba1a1a]/90 text-on-error font-label-md text-label-md rounded shadow-md transition-all active:scale-[0.98] cursor-pointer" onclick="confirmMaterialDeletion()" type="button"><span class="material-symbols-outlined text-[18px]">delete</span><span>Delete Material</span></button></div></div></div><div class="fixed bottom-6 right-6 z-50 flex items-center gap-space-sm px-space-md py-space-sm bg-primary text-on-primary rounded shadow-xl transition-all duration-300 transform pointer-events-none translate-y-24 opacity-0" id="toast-banner">
+<span class="material-symbols-outlined text-[20px] text-secondary-fixed">check_circle</span>
+<span class="font-body-md text-body-md" id="toast-message">Deletion locked: RM-POT-01 is currently engaged in Batch #PUN-B290</span>
+</div>
+<!-- Floating Notification Toasts (Top Right) -->
+<div class="fixed top-16 right-6 z-50 flex flex-col gap-space-sm max-w-sm w-full pointer-events-none" id="toast-stack"><div class="pointer-events-auto bg-surface-container-lowest border-l-4 border-[#16a34a] rounded shadow-xl p-space-md flex items-start gap-space-sm transition-all duration-300 transform" id="success-toast"><div class="p-1 rounded bg-[#dcfce7] text-[#16a34a] shrink-0"><span class="material-symbols-outlined text-[20px]">check_circle</span></div><div class="flex-1 min-w-0"><div class="flex items-center justify-between"><span class="font-headline-md text-[14px] text-primary font-semibold">Material Updated Successfully</span><button aria-label="Dismiss Notification" class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container transition-colors cursor-pointer" onclick="dismissToast('success-toast')" type="button"><span class="material-symbols-outlined text-[18px] block">close</span></button></div><p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Available stock for <span class="font-medium text-primary">RM-POT-01</span> (Chip-Grade Potatoes) updated to 18,500 kg. FIFO valuation recalculated.</p></div></div><div class="pointer-events-auto bg-surface-container-lowest border-l-4 border-error rounded shadow-xl p-space-md flex items-start gap-space-sm transition-all duration-300 transform" id="error-toast"><div class="p-1 rounded bg-error-container text-error shrink-0"><span class="material-symbols-outlined text-[20px]">error</span></div><div class="flex-1 min-w-0"><div class="flex items-center justify-between"><span class="font-headline-md text-[14px] text-error font-semibold">Deletion Blocked / Failed</span><button aria-label="Dismiss Notification" class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container transition-colors cursor-pointer" onclick="dismissToast('error-toast')" type="button"><span class="material-symbols-outlined text-[18px] block">close</span></button></div><p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Cannot delete <span class="font-medium text-primary">RM-OIL-02</span>: Active production batch #892 is currently consuming 420 L of Refined Palm Olein Oil.</p><div class="mt-space-xs flex items-center gap-space-sm"><button class="font-label-sm text-label-sm text-error underline hover:text-[#93000a] transition-colors cursor-pointer" onclick="triggerNotify('Checking active batch locks...')" type="button">Inspect Locks</button><button class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="dismissToast('error-toast')" type="button">Dismiss</button></div></div></div></div>
+<!-- Page Header & Action Bar -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-space-md py-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span>Operations</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Inventory</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Raw Materials</span>
+</div>
+<div class="flex items-baseline gap-space-md">
+<h1 class="font-display-sm text-display-sm tracking-tight text-primary">Raw Materials</h1>
+<span class="font-data-mono-sm text-data-mono-sm px-space-sm py-0.5 bg-surface-container text-on-surface-variant rounded">14 Tracked Lots</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+        Manage raw-material inventory, warehouse silos, unit allocations, and unit costs.
+      </p>
+</div>
+<!-- Action Bar -->
+<div class="flex items-center gap-space-sm shrink-0"><button class="flex items-center gap-space-xs px-space-md py-2 bg-error-container text-error hover:bg-error-container/40 font-label-md text-label-md rounded shadow-sm transition-all cursor-pointer" onclick="openDeleteModal('RM-ONN-04', 'Dehydrated Onion Powder', '45 kg', '₹185.00', '2 active Bill of Materials (BOM)')"><span class="material-symbols-outlined text-[18px]">delete_forever</span><span>Simulate Delete Modal</span></button><button class="flex items-center gap-space-xs px-space-md py-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md rounded shadow-sm transition-all cursor-pointer" onclick="toggleEmptyStateDemo()"><span class="material-symbols-outlined text-[18px]">filter_list_off</span><span>Toggle Empty State</span></button>
+<button class="flex items-center gap-space-xs px-space-md py-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md rounded shadow-sm transition-all" onclick="triggerNotify('Exporting Raw Materials Ledger (CSV)...')">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export CSV</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md rounded shadow-sm transition-all" onclick="triggerNotify('Inventory print manifest sent to Floor Terminal Dispatcher')">
+<span class="material-symbols-outlined text-[18px]">print</span>
+<span>Print Manifest</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-lg py-2 bg-primary-container text-on-primary hover:bg-primary rounded font-label-md text-label-md shadow-md transition-all active:scale-[0.98] cursor-pointer" onclick="openMaterialDrawer('add')">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Add Raw Material</span>
+</button>
+</div>
+</section>
+<!-- Top Metrics Bar (Industrial High-Scannability Cards) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Metric 1 -->
+<div class="p-space-md bg-surface-container-lowest rounded shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-surface-container-low rounded-full -mr-8 -mt-8 pointer-events-none transition-transform group-hover:scale-110"></div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Total Tracked Materials</span>
+<span class="p-1 rounded bg-surface-container text-secondary flex items-center">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-data-mono-lg text-[28px] font-bold text-primary tracking-tight">14</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Items</span>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">Active Batches: 8 Lines</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">100% Audited</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-space-md bg-surface-container-lowest rounded shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-error-container/40 rounded-full -mr-8 -mt-8 pointer-events-none transition-transform group-hover:scale-110"></div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-error font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span>
+          Critical Shortage Alert
+        </span>
+<span class="p-1 rounded bg-error-container text-error flex items-center">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-data-mono-lg text-[28px] font-bold text-error tracking-tight">2</span>
+<span class="font-label-md text-label-md text-error">Items Below Safety</span>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant truncate">Cold Storage &amp; Minor Spices</span>
+<span class="font-label-sm text-label-sm text-error font-semibold">PO Req.</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="p-space-md bg-surface-container-lowest rounded shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-surface-container-low rounded-full -mr-8 -mt-8 pointer-events-none transition-transform group-hover:scale-110"></div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Inventory Valuation</span>
+<span class="p-1 rounded bg-surface-container text-primary-container flex items-center">
+<span class="material-symbols-outlined text-[16px]">currency_rupee</span>
+</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-data-mono-lg text-[28px] font-bold text-primary tracking-tight">₹18,42,650</span>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">Cost Basis: Weighted FIFO</span>
+<span class="font-data-mono-sm text-data-mono-sm text-secondary font-semibold">+3.4% MoM</span>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="p-space-md bg-surface-container-lowest rounded shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-surface-container-low rounded-full -mr-8 -mt-8 pointer-events-none transition-transform group-hover:scale-110"></div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Average Silo Capacity</span>
+<span class="p-1 rounded bg-surface-container text-secondary flex items-center">
+<span class="material-symbols-outlined text-[16px]">pie_chart</span>
+</span>
+</div>
+<div class="flex items-center gap-space-md my-space-xs">
+<span class="font-data-mono-lg text-[28px] font-bold text-primary tracking-tight">78.4%</span>
+<div class="flex-1 flex flex-col gap-1">
+<div class="w-full bg-surface-container-high h-2 rounded overflow-hidden">
+<div class="bg-secondary h-full rounded" style="width: 78.4%;"></div>
+</div>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant text-right">38.2 T / 48.7 T max</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">Active Inflow: Tank B (Olein)</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Optimal</span>
+</div>
+</div>
+</section>
+<!-- Filter & Search Toolbar Strip -->
+<section class="bg-surface-container-lowest p-space-md rounded shadow-sm mb-space-md flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Search Bar -->
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-10 pr-space-md py-2 text-body-md font-body-md text-on-surface bg-surface-container-low rounded focus:bg-surface-container-lowest focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="search-materials-input" oninput="filterTable()" placeholder="Search by Material ID (e.g. RM-POT-01), name, or storage type..." type="text"/>
+</div>
+<!-- Filters Strip -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<!-- Category Filter -->
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">warehouse</span>
+<select class="bg-transparent text-label-md font-label-md text-on-surface focus:outline-none cursor-pointer pr-space-sm" id="filter-category" onchange="filterTable()">
+<option value="all">All Storage Types</option>
+<option value="silo">Silos (Ventilated)</option>
+<option value="tank">Liquid Tanks</option>
+<option value="dry">Dry Store / Pallets</option>
+<option value="cold">Cold Storage</option>
+</select>
+</div>
+<!-- Stock Status Filter -->
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">filter_alt</span>
+<select class="bg-transparent text-label-md font-label-md text-on-surface focus:outline-none cursor-pointer pr-space-sm" id="filter-stock-status" onchange="filterTable()">
+<option value="all">All Stock Statuses</option>
+<option value="healthy">Healthy Stock</option>
+<option value="low">Low Buffer Stock</option>
+<option value="critical">Critical Shortage</option>
+</select>
+</div>
+<!-- Quick Reset Button -->
+<button class="p-2 text-on-surface-variant hover:text-on-surface bg-surface-container-low hover:bg-surface-container rounded transition-colors" onclick="document.getElementById('search-materials-input').value=''; document.getElementById('filter-category').value='all'; document.getElementById('filter-stock-status').value='all'; filterTable();" title="Reset Filters">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+</button>
+</div>
+</section>
+<!-- Inventory Master Table Container -->
+<section class="bg-surface-container-lowest rounded shadow-sm overflow-hidden mb-space-xl">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse select-text">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider select-none">
+<!-- Material ID (Sortable) -->
+<th class="py-space-sm px-space-md w-32 font-semibold cursor-pointer hover:bg-surface-container transition-colors group" data-sort-key="id" data-sortable="true" onclick="sortTable('id')">
+<div class="flex items-center gap-1.5">
+<span class="header-label group-hover:text-primary transition-colors">Material ID</span>
+<span class="material-symbols-outlined sort-indicator text-[16px] text-outline-variant group-hover:text-on-surface transition-colors">unfold_more</span>
+</div>
+</th>
+<!-- Material Name & Specification (Sortable) -->
+<th class="py-space-sm px-space-md font-semibold min-w-[240px] cursor-pointer hover:bg-surface-container transition-colors group" data-sort-key="name" data-sortable="true" onclick="sortTable('name')">
+<div class="flex items-center gap-1.5">
+<span class="header-label group-hover:text-primary transition-colors">Material Name &amp; Specification</span>
+<span class="material-symbols-outlined sort-indicator text-[16px] text-outline-variant group-hover:text-on-surface transition-colors">unfold_more</span>
+</div>
+</th>
+<th class="py-space-sm px-space-md font-semibold">Storage Location</th>
+<th class="py-space-sm px-space-md font-semibold text-center w-20">Unit</th>
+<!-- Available Stock (Sortable) -->
+<th class="py-space-sm px-space-md font-semibold text-right cursor-pointer hover:bg-surface-container transition-colors group" data-sort-key="stock" data-sortable="true" onclick="sortTable('stock')">
+<div class="flex items-center justify-end gap-1.5">
+<span class="header-label group-hover:text-primary transition-colors">Available Stock</span>
+<span class="material-symbols-outlined sort-indicator text-[16px] text-outline-variant group-hover:text-on-surface transition-colors">unfold_more</span>
+</div>
+</th>
+<!-- Min Safety Stock (Sortable) -->
+<th class="py-space-sm px-space-md font-semibold text-right cursor-pointer hover:bg-surface-container transition-colors group" data-sort-key="safetystock" data-sortable="true" onclick="sortTable('safetystock')">
+<div class="flex items-center justify-end gap-1.5">
+<span class="header-label group-hover:text-primary transition-colors">Min Safety Stock</span>
+<span class="material-symbols-outlined sort-indicator text-[16px] text-outline-variant group-hover:text-on-surface transition-colors">unfold_more</span>
+</div>
+</th>
+<!-- Unit Cost (₹) (Sortable) -->
+<th class="py-space-sm px-space-md font-semibold text-right cursor-pointer hover:bg-surface-container transition-colors group" data-sort-key="unitcost" data-sortable="true" onclick="sortTable('unitcost')">
+<div class="flex items-center justify-end gap-1.5">
+<span class="header-label group-hover:text-primary transition-colors">Unit Cost (₹)</span>
+<span class="material-symbols-outlined sort-indicator text-[16px] text-outline-variant group-hover:text-on-surface transition-colors">unfold_more</span>
+</div>
+</th>
+<!-- Total Valuation (Sortable) -->
+<th class="py-space-sm px-space-md font-semibold text-right cursor-pointer hover:bg-surface-container transition-colors group" data-sort-key="valuation" data-sortable="true" onclick="sortTable('valuation')">
+<div class="flex items-center justify-end gap-1.5">
+<span class="header-label group-hover:text-primary transition-colors">Total Valuation</span>
+<span class="material-symbols-outlined sort-indicator text-[16px] text-outline-variant group-hover:text-on-surface transition-colors">unfold_more</span>
+</div>
+</th>
+<th class="py-space-sm px-space-md font-semibold text-center">Last Verified</th>
+<th class="py-space-sm px-space-md font-semibold text-right pr-space-lg w-28">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md text-body-md text-on-surface" id="inventory-table-body"><tr class="hidden" id="empty-state-row"><td class="py-space-xl px-space-md text-center bg-surface-container-lowest" colspan="10"><div class="flex flex-col items-center justify-center max-w-md mx-auto py-space-lg text-center"><div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-space-md text-on-surface-variant ring-8 ring-surface"><span class="material-symbols-outlined text-[36px] text-secondary">inventory_2</span></div><h3 class="font-headline-lg text-headline-lg text-primary tracking-tight mb-space-xs">No Raw Materials Found</h3><p class="font-body-md text-body-md text-on-surface-variant mb-space-lg">No inventory records match the search criteria. Try adjusting keywords, clearing filters, or registering a new lot.</p><div class="flex items-center justify-center gap-space-sm"><button class="flex items-center gap-space-xs px-space-md py-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md rounded shadow-sm transition-all" onclick="toggleEmptyStateDemo()"><span class="material-symbols-outlined text-[18px]">restart_alt</span><span>Clear Filters</span></button><button class="flex items-center gap-space-xs px-space-md py-2 bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md rounded shadow-sm transition-all cursor-pointer" onclick="openMaterialDrawer('add')"><span class="material-symbols-outlined text-[18px]">add</span><span>+ Add New Material</span></button></div></div></td></tr>
+<!-- Row 1: Potatoes -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group" data-id="RM-POT-01" data-initial-index="0" data-name="Chip-Grade Potatoes" data-safetystock="5000" data-status="healthy" data-stock="18500" data-storage-type="silo" data-unitcost="22.50" data-valuation="416250">
+<td class="py-space-md px-space-md font-data-mono-md text-data-mono-md text-primary font-bold">
+<span class="inline-block px-1.5 py-0.5 bg-surface-container rounded">RM-POT-01</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">agriculture</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-[14px] text-on-surface truncate font-semibold">Chip-Grade Potatoes</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Grade A Atlantic • Spec Gravity &gt; 1.080</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-data-mono-sm text-data-mono-sm">Silo A1 / Silo A2</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">kg</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end gap-0.5">
+<span class="font-data-mono-md text-data-mono-md font-bold text-primary">18,500</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#dcfce7] text-[#16a34a]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span> Healthy
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">
+              5,000 kg
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface font-medium">
+              ₹22.50
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-primary font-bold">
+              ₹4,16,250
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex flex-col items-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface">Today 07:30</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Silo Sensor A1</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right pr-space-lg">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" onclick="openMaterialDrawer('edit', 'RM-POT-01', 'Chip-Grade Potatoes (Grade A Atlantic)', 'Silo A1/A2', 'kg', '18500', '5000', '22.50', 'Ambient ventilated potato silo, batch moisture max 78.5%')" title="Edit Material">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container/40 rounded transition-colors" onclick="openDeleteModal('RM-POT-01', 'Chip-Grade Potatoes (Grade A Atlantic)', '18,500 kg', '₹22.50', '4 active Bill of Materials (BOM)')" title="Delete Material">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Palm Olein -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group" data-id="RM-OIL-02" data-initial-index="1" data-name="Refined Palm Olein Oil" data-safetystock="1500" data-status="healthy" data-stock="4200" data-storage-type="tank" data-unitcost="98.00" data-valuation="411600">
+<td class="py-space-md px-space-md font-data-mono-md text-data-mono-md text-primary font-bold">
+<span class="inline-block px-1.5 py-0.5 bg-surface-container rounded">RM-OIL-02</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">water_drop</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-[14px] text-on-surface truncate font-semibold">Refined Palm Olein Oil</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Triple Refined • FFA &lt; 0.05% • TBHQ Fortified</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-data-mono-sm text-data-mono-sm">Tank B (External Heated)</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">Litre</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end gap-0.5">
+<span class="font-data-mono-md text-data-mono-md font-bold text-primary">4,200</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#dcfce7] text-[#16a34a]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span> Healthy
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">
+              1,500 L
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface font-medium">
+              ₹98.00
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-primary font-bold">
+              ₹4,11,600
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex flex-col items-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface">Today 09:15</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Load Cell Dip</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right pr-space-lg">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" onclick="openMaterialDrawer('edit', 'RM-OIL-02', 'Refined Palm Olein Oil', 'Tank B (External Heated)', 'litre', '4200', '1500', '98.00', 'External heated stainless steel bulk container with nitrogen top blanket.')" title="Edit Material">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container/40 rounded transition-colors" onclick="triggerNotify('Deletion locked: Tank B in production pipe route.')" title="Delete Material">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Salt (Healthy) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group" data-id="RM-SLT-01" data-initial-index="2" data-name="Iodised Fine Salt" data-safetystock="600" data-status="healthy" data-stock="2450" data-storage-type="dry" data-unitcost="14.00" data-valuation="34300">
+<td class="py-space-md px-space-md font-data-mono-md text-data-mono-md text-primary font-bold">
+<span class="inline-block px-1.5 py-0.5 bg-surface-container rounded">RM-SLT-01</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">grain</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-[14px] text-on-surface truncate font-semibold">Iodised Fine Salt</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Micro-pulverised 50-mesh food grade</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-data-mono-sm text-data-mono-sm">Dry Pallet Bay 4</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">kg</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end gap-0.5">
+<span class="font-data-mono-md text-data-mono-md font-bold text-primary">2,450</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#dcfce7] text-[#16a34a]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span> Healthy
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">
+              600 kg
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface font-medium">
+              ₹14.00
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-primary font-bold">
+              ₹34,300
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex flex-col items-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface">Yesterday 18:00</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Barcode Check</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right pr-space-lg">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" onclick="openMaterialDrawer('edit', 'RM-SLT-01', 'Iodised Fine Salt', 'Dry Pallet Bay 4', 'kg', '2450', '600', '14.00', 'Palletised 25kg multi-wall paper sacks. Moisture controlled room.')" title="Edit Material">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container/40 rounded transition-colors" onclick="triggerNotify('Material deleted from active draft register')" title="Delete Material">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Deggi Red Chilli (Low Buffer) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group bg-amber-50/20" data-id="RM-CHL-03" data-initial-index="3" data-name="Deggi Red Chilli Powder" data-safetystock="1200" data-status="low" data-stock="950" data-storage-type="dry" data-unitcost="240.00" data-valuation="228000">
+<td class="py-space-md px-space-md font-data-mono-md text-data-mono-md text-primary font-bold">
+<span class="inline-block px-1.5 py-0.5 bg-surface-container rounded">RM-CHL-03</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">local_fire_department</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-[14px] text-on-surface truncate font-semibold">Deggi Red Chilli Powder</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">High Oleoresin SHU 18,000 • ASTA Color 95</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="font-data-mono-sm text-data-mono-sm">Dry Pallet Bay 2</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">kg</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end gap-0.5">
+<span class="font-data-mono-md text-data-mono-md font-bold text-amber-700">950</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#fef3c7] text-[#d97706]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#d97706]"></span> Low Buffer
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">
+              1,200 kg
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface font-medium">
+              ₹240.00
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-primary font-bold">
+              ₹2,28,000
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex flex-col items-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface">Today 06:45</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Scale Net Weight</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right pr-space-lg">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" onclick="openMaterialDrawer('edit', 'RM-CHL-03', 'Deggi Red Chilli Powder', 'Dry Pallet Bay 2', 'kg', '950', '1200', '240.00', 'High color intensity seasoning component. Order placed with Spices Syndicate.')" title="Edit Material">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container/40 rounded transition-colors" onclick="triggerNotify('Action restricted')" title="Delete Material">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Dehydrated Onion Powder (Critical Shortage) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group bg-red-50/30" data-id="RM-ONN-04" data-initial-index="4" data-name="Dehydrated Onion Powder" data-safetystock="200" data-status="critical" data-stock="45" data-storage-type="dry" data-unitcost="185.00" data-valuation="8325">
+<td class="py-space-md px-space-md font-data-mono-md text-data-mono-md text-error font-bold">
+<span class="inline-block px-1.5 py-0.5 bg-error-container text-error rounded">RM-ONN-04</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-error-container text-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">priority_high</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-[14px] text-error truncate font-semibold">Dehydrated Onion Powder</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">White Onion Kibbled Powder • Indian Origin</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="font-data-mono-sm text-data-mono-sm text-error font-semibold">Dry Pallet Bay 1</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">kg</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end gap-0.5">
+<span class="font-data-mono-md text-data-mono-md font-bold text-error">45</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#fee2e2] text-[#dc2626]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#dc2626]"></span> Critical Deficit
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">
+              200 kg
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface font-medium">
+              ₹185.00
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-error font-bold">
+              ₹8,325
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex flex-col items-center">
+<span class="font-data-mono-sm text-data-mono-sm text-error font-bold">Today 05:10</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Shift Lead A</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right pr-space-lg">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" onclick="openMaterialDrawer('edit', 'RM-ONN-04', 'Dehydrated Onion Powder', 'Dry Pallet Bay 1', 'kg', '45', '200', '185.00', 'CRITICAL SHORTAGE: Cannot execute Line 2 Onion &amp; Cream scheduled run.')" title="Edit Material">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 text-error hover:bg-error-container rounded transition-colors" onclick="triggerNotify('Triggering urgent reorder PO for RM-ONN-04...')" title="Generate Emergency PO">
+<span class="material-symbols-outlined text-[18px]">shopping_cart_checkout</span>
+</button><button class="p-1.5 text-error hover:bg-error-container rounded transition-colors" onclick="openDeleteModal('RM-ONN-04', 'Dehydrated Onion Powder', '45 kg', '₹185.00', '2 active Bill of Materials (BOM)')" title="Delete Raw Material"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Sour Cream Seasoning (Critical Shortage) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group bg-red-50/30" data-id="RM-MSG-01" data-initial-index="5" data-name="Sour Cream Flavour Seasoning" data-safetystock="350" data-status="critical" data-stock="90" data-storage-type="cold" data-unitcost="310.00" data-valuation="27900">
+<td class="py-space-md px-space-md font-data-mono-md text-data-mono-md text-error font-bold">
+<span class="inline-block px-1.5 py-0.5 bg-error-container text-error rounded">RM-MSG-01</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-error-container text-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">ac_unit</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-[14px] text-error truncate font-semibold">Sour Cream Flavour Seasoning</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Dairy Blend Pre-mix • Cold Storage Temp 4°C</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="font-data-mono-sm text-data-mono-sm text-error font-semibold">Cold Room 2</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">kg</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end gap-0.5">
+<span class="font-data-mono-md text-data-mono-md font-bold text-error">90</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#fee2e2] text-[#dc2626]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#dc2626]"></span> Critical Deficit
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">
+              350 kg
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface font-medium">
+              ₹310.00
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-error font-bold">
+              ₹27,900
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex flex-col items-center">
+<span class="font-data-mono-sm text-data-mono-sm text-error font-bold">Today 04:00</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Manual Stock Count</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right pr-space-lg">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" onclick="openMaterialDrawer('edit', 'RM-MSG-01', 'Sour Cream Flavour Seasoning', 'Cold Room 2', 'kg', '90', '350', '310.00', 'Refrigerated spice pre-mix for packaging line #3.')" title="Edit Material">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 text-error hover:bg-error-container rounded transition-colors" onclick="triggerNotify('Emergency vendor PO dispatched to Kerry Ingredients')" title="Generate Emergency PO">
+<span class="material-symbols-outlined text-[18px]">shopping_cart_checkout</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 7: Nitrogen Flush Gas (Healthy) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group" data-id="RM-GAS-01" data-initial-index="6" data-name="Nitrogen Flush Gas (N2)" data-safetystock="20" data-status="healthy" data-stock="84" data-storage-type="tank" data-unitcost="850.00" data-valuation="71400">
+<td class="py-space-md px-space-md font-data-mono-md text-data-mono-md text-primary font-bold">
+<span class="inline-block px-1.5 py-0.5 bg-surface-container rounded">RM-GAS-01</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">propane_tank</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-[14px] text-on-surface truncate font-semibold">Nitrogen Flush Gas (N2)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Food Preservation Grade • 99.999% Purity</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-data-mono-sm text-data-mono-sm">Manifold Bank C</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">cylinders</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end gap-0.5">
+<span class="font-data-mono-md text-data-mono-md font-bold text-primary">84</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#dcfce7] text-[#16a34a]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span> Healthy
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">
+              20 cylinders
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface font-medium">
+              ₹850.00
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-primary font-bold">
+              ₹71,400
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex flex-col items-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface">Yesterday 22:00</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Pressure Gauge</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right pr-space-lg">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" onclick="openMaterialDrawer('edit', 'RM-GAS-01', 'Nitrogen Flush Gas (N2)', 'Manifold Bank C', 'cylinders', '84', '20', '850.00', 'Cryogenic refill manifold connecting packaging machines 1 through 5.')" title="Edit Material">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container/40 rounded transition-colors" onclick="triggerNotify('Restricted Action')" title="Delete Material">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 8: Packaging Roll Film (Healthy) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group" data-id="RM-PKG-01" data-initial-index="7" data-name="Multi-Layer Metallised Film" data-safetystock="80" data-status="healthy" data-stock="310" data-storage-type="dry" data-unitcost="1850.00" data-valuation="573500">
+<td class="py-space-md px-space-md font-data-mono-md text-data-mono-md text-primary font-bold">
+<span class="inline-block px-1.5 py-0.5 bg-surface-container rounded">RM-PKG-01</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">layers</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-[14px] text-on-surface truncate font-semibold">Multi-Layer Metallised Film</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">BOPP/Met PET/Poly 38 Micron • 500m rolls</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-data-mono-sm text-data-mono-sm">Dry Pallet Bay 6</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">pieces</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end gap-0.5">
+<span class="font-data-mono-md text-data-mono-md font-bold text-primary">310</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#dcfce7] text-[#16a34a]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span> Healthy
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">
+              80 pieces
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface font-medium">
+              ₹1,850.00
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-primary font-bold">
+              ₹5,73,500
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex flex-col items-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface">Today 08:30</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">RFID Gateway</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right pr-space-lg">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" onclick="openMaterialDrawer('edit', 'RM-PKG-01', 'Multi-Layer Metallised Film (BOPP)', 'Dry Pallet Bay 6', 'pieces', '310', '80', '1850.00', 'Master packaging roll for Salted &amp; Masala stock sku batch.')" title="Edit Material">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container/40 rounded transition-colors" onclick="triggerNotify('Draft deletion prevented.')" title="Delete Material">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 9: Tomato Flavour Seasoning (Healthy) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group" data-id="RM-TOM-02" data-initial-index="8" data-name="Tangy Tomato Seasoning" data-safetystock="150" data-status="healthy" data-stock="360" data-storage-type="dry" data-unitcost="265.00" data-valuation="95400">
+<td class="py-space-md px-space-md font-data-mono-md text-data-mono-md text-primary font-bold">
+<span class="inline-block px-1.5 py-0.5 bg-surface-container rounded">RM-TOM-02</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">soup_kitchen</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-[14px] text-on-surface truncate font-semibold">Tangy Tomato Seasoning</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Blend #TM-44 • Acidulant 3.2% • Spray dried</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-data-mono-sm text-data-mono-sm">Dry Pallet Bay 3</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">kg</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end gap-0.5">
+<span class="font-data-mono-md text-data-mono-md font-bold text-primary">360</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#dcfce7] text-[#16a34a]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span> Healthy
+                </span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">
+              150 kg
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface font-medium">
+              ₹265.00
+            </td>
+<td class="py-space-md px-space-md text-right font-data-mono-md text-data-mono-md text-primary font-bold">
+              ₹95,400
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex flex-col items-center">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface">Yesterday 16:30</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Floor Inspection</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right pr-space-lg">
+<div class="flex items-center justify-end gap-space-xs">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" onclick="openMaterialDrawer('edit', 'RM-TOM-02', 'Tangy Tomato Seasoning Blend #TM-44', 'Dry Pallet Bay 3', 'kg', '360', '150', '265.00', 'Moisture resistant bags. Re-tested for acidity last Friday.')" title="Edit Material">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container/40 rounded transition-colors" onclick="triggerNotify('Audit active')" title="Delete Material">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+<!-- Sticky Table Summary Row -->
+<tfoot>
+<tr class="bg-surface-container font-data-mono-md text-data-mono-md text-primary font-bold">
+<td class="py-space-sm px-space-md uppercase font-label-md text-label-md tracking-wider text-on-surface" colspan="4">
+              Active Inventory Totals (8 Rows Displayed)
+            </td>
+<td class="py-space-sm px-space-md text-right text-primary">
+              26,609 <span class="font-normal text-on-surface-variant text-[11px]">eq. units</span>
+</td>
+<td class="py-space-sm px-space-md text-right text-on-surface-variant">
+              8,750 <span class="font-normal text-[11px]">min</span>
+</td>
+<td class="py-space-sm px-space-md text-right text-on-surface-variant">
+              --
+            </td>
+<td class="py-space-sm px-space-md text-right text-primary text-[15px]">
+              ₹17,67,475
+            </td>
+<td class="py-space-sm px-space-md text-center text-on-surface-variant text-label-sm font-label-sm" colspan="2">
+              Live PLC Auto-Sync
+            </td>
+</tr>
+</tfoot>
+</table>
+</div>
+<!-- Table Pagination / Status Summary Footbar -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Showing 8 of 14 items • Connected to Pune Silo SCADA Gateway (Port 502 Modbus)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 bg-surface-container rounded hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<span class="px-space-sm py-1 bg-primary text-on-primary rounded font-data-mono-sm text-data-mono-sm">1</span>
+<button class="px-space-sm py-1 bg-surface-container rounded hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Slide-Over Drawer & Modal: Add / Edit Raw Material -->
+<div class="fixed inset-0 bg-primary/40 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="drawer-backdrop" onclick="closeMaterialDrawer()"></div>
+<aside class="fixed top-0 right-0 h-full w-full max-w-xl bg-surface-container-lowest shadow-2xl z-50 flex flex-col justify-between transform transition-transform duration-300 ease-in-out translate-x-full" id="material-drawer">
+<!-- Drawer Header -->
+<div class="h-16 px-space-lg flex items-center justify-between bg-surface-container">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight" id="drawer-title">Edit Raw Material: RM-SLT-01</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="drawer-subtitle">Modify silo assignment, minimum buffer margins, and lot valuations.</p>
+</div>
+<button aria-label="Close drawer" class="p-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded transition-colors cursor-pointer" onclick="closeMaterialDrawer()" type="button">
+<span class="material-symbols-outlined text-[24px] block">close</span>
+</button>
+</div>
+<!-- Drawer Body Form -->
+<form class="flex-1 overflow-y-auto p-space-lg space-y-space-md" id="material-form" onsubmit="event.preventDefault(); closeMaterialDrawer(); triggerNotify('Material specifications updated successfully in local ERP.');">
+<!-- Section 1: Core Identifiers -->
+<div class="p-space-md bg-surface-container-low rounded space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">1. Material Identification</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">System Master Key</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface">Material Code</label>
+<input class="w-full px-space-sm py-2 font-data-mono-md text-data-mono-md rounded bg-surface-container-high text-on-surface-variant focus:outline-none" id="form-mat-id" readonly="" type="text" value="RM-POT-01"/>
+</div>
+<div class="sm:col-span-2 flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface">Material Name &amp; Variety</label>
+<input class="w-full px-space-sm py-2 font-body-md text-body-md rounded bg-surface-container-lowest text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="form-mat-name" required="" type="text" value="Chip-Grade Potatoes (Grade A Atlantic)"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface">Storage Location / Silo</label>
+<input class="w-full px-space-sm py-2 font-body-md text-body-md rounded bg-surface-container-lowest text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="form-mat-storage" required="" type="text" value="Silo A1 / Silo A2"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface">Unit of Measurement (UOM)</label>
+<select class="w-full px-space-sm py-2 font-body-md text-body-md rounded bg-surface-container-lowest text-on-surface focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer" id="form-mat-unit">
+<option value="kg">kg (Kilograms)</option>
+<option value="litre">litre (Fluid Litres)</option>
+<option value="pieces">pieces (Packaging Units)</option>
+<option value="cylinders">cylinders (Pressurised Gas)</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Section 2: Quantities & Thresholds -->
+<div class="p-space-md bg-surface-container-low rounded space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">2. Inventory &amp; Safety Thresholds</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">MRP Calculations</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<!-- Available Stock -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface">Current Available Stock</label>
+<div class="relative flex items-center">
+<input class="w-full px-space-sm py-2 font-data-mono-md text-data-mono-md rounded bg-surface-container-lowest text-on-surface focus:outline-none focus:ring-1 focus:ring-primary pr-12" id="form-mat-stock" required="" step="any" type="number" value="18500"/>
+<span class="absolute right-3 font-data-mono-sm text-data-mono-sm text-on-surface-variant">unit</span>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Physically confirmed in current shift</span>
+</div>
+<!-- Minimum Safety Buffer Level -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface">Minimum Safety Buffer Level</label>
+<div class="relative flex items-center">
+<input class="w-full px-space-sm py-2 font-data-mono-md text-data-mono-md rounded bg-surface-container-lowest text-on-surface focus:outline-none focus:ring-1 focus:ring-primary pr-12" id="form-mat-safety" required="" step="any" type="number" value="5000"/>
+<span class="absolute right-3 font-data-mono-sm text-data-mono-sm text-on-surface-variant">unit</span>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Triggers automated purchase order notification</span>
+</div>
+</div>
+<!-- Section 3: Financial Basis -->
+<div class="flex flex-col gap-1 pt-space-xs">
+<label class="font-label-md text-label-md text-on-surface">Unit Cost Basis (INR / ₹)</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 font-data-mono-sm text-data-mono-sm text-on-surface-variant">₹</span>
+<input class="w-full pl-8 pr-space-md py-2 font-data-mono-md text-data-mono-md rounded bg-surface-container-lowest text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="form-mat-cost" required="" step="0.01" type="number" value="22.50"/>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Landed landed rate including freight and transit insurance</span>
+</div>
+</div>
+<!-- Section 4: Specifications & Quality Control Notes -->
+<div class="p-space-md bg-surface-container-low rounded space-y-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">3. QC Attributes &amp; Silo Directives</span>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface">Storage Facility / Operational Notes</label>
+<textarea class="w-full p-space-sm font-body-md text-body-md rounded bg-surface-container-lowest text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="form-mat-notes" rows="3">Ambient ventilated potato silo, batch moisture max 78.5%. Checked against incoming farm gate dispatch.</textarea>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Visible on Floor Terminal Dispatch console for Shift Supervisors</span>
+</div>
+</div>
+</form>
+<!-- Drawer Footer Actions -->
+<div class="p-space-md bg-surface-container flex items-center justify-between">
+<button class="px-space-lg py-2 font-label-md text-label-md text-on-surface-variant hover:text-on-surface bg-surface-container-high rounded transition-colors cursor-pointer" onclick="closeMaterialDrawer()" type="button">
+        Cancel
+      </button>
+<button class="flex items-center gap-space-xs px-space-lg py-2 font-label-md text-label-md text-on-primary bg-primary-container hover:bg-primary rounded shadow-md transition-all active:scale-[0.98] cursor-pointer" form="material-form" id="drawer-submit-btn" type="submit"><span class="material-symbols-outlined text-[18px]">save</span><span>Save Material Changes</span></button>
+</div>
+</aside>
+</div></main></div>
+</body></html>

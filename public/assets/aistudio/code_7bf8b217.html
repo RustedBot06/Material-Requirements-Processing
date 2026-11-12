@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary": "#4059aa",
+            "surface-container": "#e5eeff",
+            "surface": "#f8f9ff",
+            "on-tertiary-fixed-variant": "#3a485b",
+            "background": "#f8f9ff",
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#021c39",
+            "tertiary-fixed-dim": "#b9c7df",
+            "outline-variant": "#c4c6ce",
+            "surface-tint": "#4a5f7f",
+            "primary-fixed-dim": "#b2c8ed",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#0b1c30",
+            "on-error": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "surface-bright": "#f8f9ff",
+            "outline": "#74777e",
+            "on-secondary-container": "#1d3989",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#264191",
+            "inverse-primary": "#b2c8ed",
+            "secondary-container": "#8fa7fe",
+            "on-secondary-fixed": "#00164e",
+            "surface-container-low": "#eff4ff",
+            "on-primary-container": "#798fb1",
+            "inverse-on-surface": "#eaf1ff",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed": "#0d1c2e",
+            "on-tertiary-container": "#808ea4",
+            "on-primary-fixed-variant": "#324866",
+            "inverse-surface": "#213145",
+            "surface-variant": "#d3e4fe",
+            "primary-fixed": "#d4e3ff",
+            "primary-container": "#0f2744",
+            "tertiary": "#041223",
+            "surface-container-high": "#dce9ff",
+            "secondary-fixed-dim": "#b6c4ff",
+            "on-tertiary": "#ffffff",
+            "on-surface": "#0b1c30",
+            "tertiary-container": "#192739",
+            "on-surface-variant": "#44474d",
+            "on-error-container": "#93000a",
+            "tertiary-fixed": "#d5e3fc",
+            "primary": "#001229",
+            "secondary-fixed": "#dce1ff",
+            "surface-container-highest": "#d3e4fe"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "space-lg": "1.25rem",
+            "gutter-compact": "0.5rem",
+            "margin": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "gutter": "1rem"
+          },
+          fontFamily: {
+            "data-mono-lg": ["JetBrains Mono"],
+            "body-lg": ["Hanken Grotesk"],
+            "body-sm": ["Hanken Grotesk"],
+            "display-lg": ["Hanken Grotesk"],
+            "display-sm": ["Hanken Grotesk"],
+            "label-md": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"],
+            "data-mono-sm": ["JetBrains Mono"],
+            "headline-md": ["Hanken Grotesk"],
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "data-mono-md": ["JetBrains Mono"],
+            "label-sm": ["Hanken Grotesk"]
+          },
+          fontSize: {
+            "data-mono-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-sm": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "data-mono-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+            "headline-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "data-mono-md": ["13px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- Desktop Sidebar -->
+<aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex flex-col justify-between select-none">
+<div class="flex flex-col">
+<!-- App Brand Header -->
+<div class="h-14 px-gutter flex items-center justify-between bg-surface-container border-b border-surface-container">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-surface text-[18px]">precision_manufacturing</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md tracking-tight text-primary leading-none font-bold">Chips MRP</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold">PLANT 1 • PUNE</span>
+</div>
+</div>
+</div>
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+</div>
+<!-- Navigation Label -->
+<div class="px-gutter-compact py-space-sm">
+<div class="px-space-sm py-space-xs">
+<span class="font-label-sm text-[10px] uppercase tracking-wider text-on-surface-variant font-bold">CORE MRP OPERATIONS</span>
+</div>
+<nav class="flex flex-col gap-space-xs mt-space-xs">
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="raw-materials" href="#">
+<span class="material-symbols-outlined text-[18px]">layers</span>
+<span>Raw Materials</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="products" href="#">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+<span>Products</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="bill-of-materials" href="#">
+<span class="material-symbols-outlined text-[18px]">description</span>
+<span>Bill of Materials</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="production-schedule" href="#">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>Production Schedule</span>
+</a>
+<a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm shadow-sm transition-all bg-primary-container text-on-primary font-headline-md rounded font-semibold" data-path="material-feasibility" href="#">
+<span class="material-symbols-outlined text-[18px]">fact_check</span>
+<span>Material Feasibility</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Profile Card Bottom -->
+<div class="p-gutter-compact bg-surface-container-low border-t border-surface-container">
+<div class="p-space-sm bg-surface-container rounded flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Rahul Desai</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] truncate">Operations Manager</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs px-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant text-[10px]">Shift A (06:00–14:00)</span>
+</div>
+<span class="font-label-sm text-[10px] text-secondary uppercase font-bold bg-secondary-fixed px-1.5 py-0.5 rounded">Active</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="pl-60 min-h-screen flex flex-col">
+<!-- Top Header Bar -->
+<header class="fixed top-0 left-60 right-0 h-14 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-30 flex items-center justify-between px-margin border-b border-surface-container">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant">
+<span class="hover:text-on-surface cursor-pointer">Operations</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="hover:text-on-surface cursor-pointer">Inventory Intelligence</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Material Feasibility</span>
+</div>
+<div class="h-4 w-[1px] bg-surface-container-highest"></div>
+<div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container rounded">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface font-semibold">• LIVE PLANT DATA</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container-low rounded">
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">SYS: ONLINE (0.12s)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-sm font-data-mono-md text-data-mono-md text-on-surface-variant bg-surface-container px-space-md py-space-xs rounded">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>24 OCT • 09:42:15 IST</span>
+</div>
+<button class="relative p-space-xs rounded hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface" title="Notifications">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span>
+</button>
+<button class="p-space-xs rounded hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface" onclick="refreshReport()" title="Sync Telemetry">
+<span class="material-symbols-outlined text-[20px]" id="refreshIcon">refresh</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+</div>
+</div>
+</header>
+<!-- Page Body -->
+<main class="relative pt-14 w-full px-gutter min-h-screen bg-surface flex-1">
+<div class="flex flex-col w-full pb-margin">
+<!-- Toast Notification Stack -->
+<div class="fixed top-16 right-6 z-50 flex items-center gap-space-sm bg-primary-container text-on-primary px-space-md py-space-sm rounded-lg shadow-xl translate-x-[120%] transition-transform duration-300 pointer-events-none" id="toastNotification">
+<span class="material-symbols-outlined text-[20px] text-secondary-container" id="toastIcon">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold" id="toastTitle">Feasibility Synced</span>
+<span class="font-body-sm text-body-sm text-on-primary-container" id="toastMessage">Material requirements evaluated against floor inventory.</span>
+</div>
+</div>
+<!-- Page Header & Action Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md py-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<span>Operations</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Inventory Intelligence</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Material Feasibility</span>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-display-sm text-display-sm text-primary tracking-tight font-bold">Material Feasibility</h1>
+<span class="inline-flex items-center px-space-xs py-0.5 rounded bg-surface-container font-data-mono-sm text-data-mono-sm text-secondary font-semibold">
+                FEASIBILITY ENGINE v2.4
+              </span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+                Line 01-04 Pune Plant
+              </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+              Check whether current inventory can fulfil remaining planned production across active processing batches and packaging shifts.
+            </p>
+</div>
+<!-- Header Actions -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md shadow-sm transition-all" id="toggleEmptyBtn" onclick="toggleSimulatedZeroDeficit()">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span id="toggleEmptyBtnText">Simulate Zero Deficit</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md shadow-sm transition-all" onclick="exportFeasibilityCSV()">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Feasibility (CSV)</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded bg-primary-container hover:bg-tertiary-container text-on-primary font-headline-md text-headline-md shadow-sm transition-all" onclick="window.print()">
+<span class="material-symbols-outlined text-[18px]">print</span>
+<span>Print Summary</span>
+</button>
+</div>
+</div>
+<!-- Calculation Logic Callout Banner -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm border border-surface-container flex items-start gap-space-md mb-space-md">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">calculate</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md font-bold text-primary uppercase tracking-wide">Calculation Logic</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              This intelligence report compares current warehouse inventory against the aggregate raw material requirements needed to complete all remaining planned production schedules within the selected date window. Suggested procurement accounts for minimum safety buffers and line hydration shrinkages.
+            </p>
+</div>
+</div>
+<!-- Date Range & Report Controls Bar -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm mb-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<!-- Left: Start/End Dates & Presets -->
+<div class="flex flex-wrap items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<!-- Start Date -->
+<div class="flex flex-col">
+<label class="font-label-sm text-[11px] text-on-surface-variant uppercase font-semibold mb-1" for="startDateInput">Start Date</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-on-surface-variant text-[16px]">calendar_today</span>
+<input class="h-9 pl-8 pr-3 bg-surface-container-low rounded font-data-mono-sm text-data-mono-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary w-36 border-0" id="startDateInput" type="text" value="24 Oct 2024"/>
+</div>
+</div>
+<span class="text-on-surface-variant font-data-mono-sm self-end pb-2">→</span>
+<!-- End Date -->
+<div class="flex flex-col">
+<label class="font-label-sm text-[11px] text-on-surface-variant uppercase font-semibold mb-1" for="endDateInput">End Date</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-on-surface-variant text-[16px]">calendar_today</span>
+<input class="h-9 pl-8 pr-3 bg-surface-container-low rounded font-data-mono-sm text-data-mono-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary w-36 border-0" id="endDateInput" type="text" value="31 Oct 2024"/>
+</div>
+</div>
+</div>
+<div class="h-8 w-[1px] bg-surface-container hidden sm:block"></div>
+<!-- Presets -->
+<div class="flex flex-col">
+<span class="font-label-sm text-[11px] text-on-surface-variant uppercase font-semibold mb-1">Quick Horizon Presets</span>
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded">
+<button class="px-2.5 py-1 rounded font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" onclick="setHorizonPreset('Next 3 Days', '24 Oct 2024', '27 Oct 2024')">Next 3 Days</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest text-primary font-bold shadow-xs text-label-sm" id="presetBtn7" onclick="setHorizonPreset('Next 7 Days', '24 Oct 2024', '31 Oct 2024')">Next 7 Days (Selected)</button>
+<button class="px-2.5 py-1 rounded font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" onclick="setHorizonPreset('Next 14 Days', '24 Oct 2024', '07 Nov 2024')">Next 14 Days</button>
+<button class="px-2.5 py-1 rounded font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" onclick="setHorizonPreset('Full Month', '24 Oct 2024', '24 Nov 2024')">Full Month</button>
+</div>
+</div>
+</div>
+<!-- Right: Generate Report Action -->
+<div class="flex items-center gap-space-sm self-end xl:self-center">
+<button class="px-space-lg py-2 rounded bg-primary-container hover:bg-tertiary-container text-on-primary font-headline-md text-headline-md font-bold shadow-sm flex items-center gap-space-xs transition-all active:scale-98" onclick="refreshReport()">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+<span>+ Generate Report</span>
+</button>
+</div>
+</div>
+<!-- Context Tag Strip -->
+<div class="pt-space-xs border-t border-surface-container flex flex-wrap items-center justify-between gap-space-sm text-on-surface-variant font-data-mono-sm text-[11px]">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
+<span>Active Evaluation Window: <strong class="text-on-surface" id="contextHorizonText">24 Oct 2024 – 31 Oct 2024 (7 Days)</strong></span>
+<span class="text-outline-variant">•</span>
+<span class="font-semibold text-on-surface">6 Scheduled Shifts</span>
+<span class="text-outline-variant">•</span>
+<span class="text-secondary font-medium">Inventory Snapshot: Live SCADA</span>
+</div>
+<span class="text-on-surface-variant" id="reportGeneratedStamp">Report Synced: 24 Oct 2024, 09:42 IST</span>
+</div>
+</div>
+<!-- Compact Summary KPI Cards (4 columns) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-lg">
+<!-- Card 1: Materials Checked -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">MATERIALS CHECKED</span>
+<div class="w-7 h-7 rounded bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">fact_check</span>
+</div>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-data-mono-lg text-data-mono-lg text-primary font-bold" id="kpiMaterialsChecked">14 Items</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>100% BOM Coverage (8 Finished SKUs)</span>
+</div>
+</div>
+<!-- Card 2: Procurement Required -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between border-l-4 border-error" id="kpiCardProcurement">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-error font-semibold">PROCUREMENT REQUIRED</span>
+<span class="px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-[10px] font-bold">
+                Critical Action Needed
+              </span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-data-mono-lg text-data-mono-lg text-error font-bold" id="kpiDeficitsCount">3 Deficits</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs font-body-sm text-body-sm text-error">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span class="truncate">Immediate orders required to avoid line stoppage</span>
+</div>
+</div>
+<!-- Card 3: Exactly Sufficient -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between border-l-4 border-amber-500" id="kpiCardExact">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-amber-800 font-semibold">EXACTLY SUFFICIENT</span>
+<span class="px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 font-label-sm text-[10px] font-bold">
+                Zero Buffer Warning
+              </span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-data-mono-lg text-data-mono-lg text-amber-800 font-bold" id="kpiExactCount">2 At Threshold</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs font-body-sm text-body-sm text-amber-800">
+<span class="material-symbols-outlined text-[14px]">info</span>
+<span class="truncate">Zero Buffer • Will exhaust to 0 upon completion</span>
+</div>
+</div>
+<!-- Card 4: Sufficient -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between border-l-4 border-emerald-600" id="kpiCardSufficient">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-emerald-800 font-semibold">SUFFICIENT</span>
+<span class="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-label-sm text-[10px] font-bold">
+                Healthy Buffer
+              </span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-data-mono-lg text-data-mono-lg text-emerald-700 font-bold" id="kpiSufficientCount">9 Covered</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs font-body-sm text-body-sm text-emerald-800">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="truncate">Inventory exceeds planned production run demand</span>
+</div>
+</div>
+</div>
+<!-- Filter & Search Toolbar -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm mb-space-md flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<div class="flex-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-space-md">
+<!-- Search Input -->
+<div class="relative flex-1 min-w-[260px]">
+<span class="material-symbols-outlined absolute left-space-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full pl-9 pr-space-md py-1.5 bg-surface-container-low focus:bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded focus:outline-none focus:ring-1 focus:ring-secondary transition-all placeholder:text-on-surface-variant border-0" id="tableSearchInput" oninput="applyFilters()" placeholder="Search material SKU or name..." type="text"/>
+</div>
+<!-- Category Filter -->
+<div class="min-w-[180px]">
+<select class="w-full py-1.5 px-space-sm bg-surface-container-low focus:bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded focus:outline-none focus:ring-1 focus:ring-secondary cursor-pointer transition-all border-0" id="categoryFilter" onchange="applyFilters()">
+<option value="ALL">All Categories</option>
+<option value="Agricultural">Agricultural</option>
+<option value="Oils &amp; Fats">Oils &amp; Fats</option>
+<option value="Seasonings">Seasonings</option>
+<option value="Packaging">Packaging</option>
+</select>
+</div>
+<!-- Status Filter -->
+<div class="min-w-[190px]">
+<select class="w-full py-1.5 px-space-sm bg-surface-container-low focus:bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded focus:outline-none focus:ring-1 focus:ring-secondary cursor-pointer transition-all border-0" id="statusFilter" onchange="applyFilters()">
+<option value="ALL">All Statuses</option>
+<option value="critical">Procurement Required</option>
+<option value="buffer">Exactly Sufficient</option>
+<option value="sufficient">Sufficient</option>
+<option value="none">No Pending Requirement</option>
+</select>
+</div>
+</div>
+<!-- Right Controls -->
+<div class="flex items-center gap-space-sm self-end lg:self-center">
+<button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" onclick="resetFilters()">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Reset Filters</span>
+</button>
+<div class="h-4 w-[1px] bg-surface-container-highest"></div>
+<div class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">
+              Showing <span class="font-semibold text-primary" id="filteredCount">10</span> materials
+            </div>
+</div>
+</div>
+<!-- Primary Interactive Feasibility Report Table -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col" id="tableViewCard">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse" id="feasibilityTable">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm tracking-wider select-none">
+<th class="py-space-sm px-space-md cursor-pointer hover:bg-surface-container transition-colors group" onclick="sortTable('name')">
+<div class="flex items-center gap-space-xs">
+<span>RAW MATERIAL / SKU SPEC</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary">unfold_more</span>
+</div>
+</th>
+<th class="py-space-sm px-space-md text-right cursor-pointer hover:bg-surface-container transition-colors group" onclick="sortTable('available')">
+<div class="flex items-center justify-end gap-space-xs">
+<span>AVAILABLE STOCK</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary">unfold_more</span>
+</div>
+</th>
+<th class="py-space-sm px-space-md text-right cursor-pointer hover:bg-surface-container transition-colors group" onclick="sortTable('required')">
+<div class="flex items-center justify-end gap-space-xs">
+<span>REMAINING REQUIREMENT</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary">unfold_more</span>
+</div>
+</th>
+<th class="py-space-sm px-space-md text-right cursor-pointer hover:bg-surface-container transition-colors group" onclick="sortTable('shortage')">
+<div class="flex items-center justify-end gap-space-xs text-error">
+<span>SHORTAGE (DEFICIT)</span>
+<span class="material-symbols-outlined text-[16px] text-error">unfold_more</span>
+</div>
+</th>
+<th class="py-space-sm px-space-md text-right cursor-pointer hover:bg-surface-container transition-colors group" onclick="sortTable('surplus')">
+<div class="flex items-center justify-end gap-space-xs text-emerald-800">
+<span>SURPLUS STOCK</span>
+<span class="material-symbols-outlined text-[16px] text-emerald-800">unfold_more</span>
+</div>
+</th>
+<th class="py-space-sm px-space-md text-right bg-surface-container-high/80">
+<span class="text-primary font-bold">SUGGESTED PROCUREMENT QTY</span>
+</th>
+<th class="py-space-sm px-space-md text-center">
+<span>STATUS</span>
+</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y divide-surface-container-low" id="feasibilityTableBody">
+<!-- Javascript populated rows matching the prompt specification -->
+</tbody>
+<tfoot>
+<tr class="bg-surface-container-low font-data-mono-md text-data-mono-md text-primary">
+<td class="py-space-sm px-space-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" colspan="2">
+<div class="flex items-center gap-2">
+<span class="text-secondary font-bold">Aggregate Feasibility Overview</span>
+<span class="font-data-mono-sm text-data-mono-sm bg-surface-container px-1.5 py-0.5 rounded text-on-surface" id="footerActiveItems">10 Materials Active in Window</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right font-data-mono-sm text-on-surface-variant">
+                    Net Shortfalls:
+                  </td>
+<td class="py-space-sm px-space-md text-right font-bold text-error" id="footerDeficitSummary">
+                    3 Net Deficits
+                  </td>
+<td class="py-space-sm px-space-md text-right font-bold text-emerald-800" id="footerSurplusSummary">
+                    5 Net Surplus
+                  </td>
+<td class="py-space-sm px-space-md text-right bg-surface-container-high font-bold text-primary" id="footerProcTotal">
+                    12,700 kg/L eqv.
+                  </td>
+<td class="py-space-sm px-space-md text-center text-on-surface-variant font-data-mono-sm text-data-mono-sm">
+                    Verified SCADA
+                  </td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<!-- Empty State Container (Hidden by default) -->
+<div class="hidden bg-surface-container-lowest rounded-lg shadow-sm p-space-xl text-center flex-col items-center justify-center my-space-sm" id="emptyStateCard">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-space-md text-secondary">
+<span class="material-symbols-outlined text-[36px]">inventory_2</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-primary font-bold mb-space-xs">No Materials Matching Criteria</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-lg">
+            There are no raw materials matching your category or status filter parameters for this planned production schedule window.
+          </p>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-space-sm rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" onclick="resetFilters()">
+              Clear All Filters
+            </button>
+</div>
+</div>
+<!-- Bottom Insights Strip (3 clean insight cards matching BOM & Production Schedule) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mt-space-lg">
+<!-- Card A -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="material-symbols-outlined text-[18px] text-error">local_shipping</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">Procurement Lead Time Impact</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+                Farm-gate dispatch for Chip-Grade Potatoes requires a strict 48h drying and sorting transit window from Nashik hub. Immediate PO trigger needed to prevent Line 1 continuous fryer stoppage on 27 Oct.
+              </p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded flex items-center justify-between font-data-mono-sm text-data-mono-sm">
+<span class="text-on-surface-variant">Min Dispatch Lead: 48h</span>
+<span class="text-error font-semibold">Shortage: -4,500 kg</span>
+</div>
+</div>
+<!-- Card B -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="material-symbols-outlined text-[18px] text-amber-800">warning</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">Critical Zero-Buffer Alert</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+                Iodised Salt and Nitrogen gas supplies exactly match scheduled runs and will hit 0 buffer by the 28 Oct packaging shift. Any standard line scrap or moisture purge will halt downstream sealing jaws.
+              </p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded flex items-center justify-between font-data-mono-sm text-data-mono-sm">
+<span class="text-on-surface-variant">Exhaustion Risk: High</span>
+<span class="text-amber-800 font-semibold">2 Items at Threshold</span>
+</div>
+</div>
+<!-- Card C -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">tune</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">SCADA Inventory Accuracy</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+                Physical silos and cold storage bins calibrated against ultrasonic bulk weigh-cells. Continuous sensor feed verifies 99.8% precision with no unrecorded moisture loss or scrap drift.
+              </p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded flex items-center justify-between font-data-mono-sm text-data-mono-sm">
+<span class="text-on-surface-variant">Telemetry Drift: &lt;0.02%</span>
+<span class="text-secondary font-semibold">Calibration: OK</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Operational Vanilla JS Logic -->
+<script>
+    // Master Dataset for Material Feasibility matching prompt specs
+    const baseFeasibilityData = [
+      {
+        id: "RM-POT-001",
+        name: "Chip-Grade Potatoes (Grade A Atlantic)",
+        sku: "RM-POT-001",
+        category: "Agricultural",
+        unit: "kg",
+        available: 22000,
+        required: 26500,
+        shortage: -4500,
+        surplus: null,
+        suggestedProcurement: 9500,
+        procurementBufferText: "Deficit + 5,000 kg safety buffer",
+        status: "critical",
+        statusLabel: "Procurement Required"
+      },
+      {
+        id: "RM-OIL-002",
+        name: "Refined Palm Olein Oil",
+        sku: "RM-OIL-002",
+        category: "Oils & Fats",
+        unit: "L",
+        available: 5200,
+        required: 6450,
+        shortage: -1250,
+        surplus: null,
+        suggestedProcurement: 2750,
+        procurementBufferText: "Deficit + 1,500 L safety buffer",
+        status: "critical",
+        statusLabel: "Procurement Required"
+      },
+      {
+        id: "RM-SEA-004",
+        name: "Sour Cream & Onion Seasoning",
+        sku: "RM-SEA-004",
+        category: "Seasonings",
+        unit: "kg",
+        available: 320,
+        required: 500,
+        shortage: -180,
+        surplus: null,
+        suggestedProcurement: 450,
+        procurementBufferText: "Deficit + 270 kg safety buffer",
+        status: "critical",
+        statusLabel: "Procurement Required"
+      },
+      {
+        id: "RM-SEA-001",
+        name: "Iodised Fine Salt (Vacuum Evaporated)",
+        sku: "RM-SEA-001",
+        category: "Seasonings",
+        unit: "kg",
+        available: 480,
+        required: 480,
+        shortage: null,
+        surplus: 0,
+        suggestedProcurement: 200,
+        procurementBufferText: "Recommended buffer reorder",
+        status: "buffer",
+        statusLabel: "Exactly Sufficient - No Buffer"
+      },
+      {
+        id: "RM-GAS-001",
+        name: "Nitrogen Gas (Food Grade 99.9%)",
+        sku: "RM-GAS-001",
+        category: "Packaging",
+        unit: "cyl",
+        available: 45,
+        required: 45,
+        shortage: null,
+        surplus: 0,
+        suggestedProcurement: 15,
+        procurementBufferText: "Buffer safety replenishment",
+        status: "buffer",
+        statusLabel: "Exactly Sufficient - No Buffer"
+      },
+      {
+        id: "RM-SEA-002",
+        name: "Deggi Red Chilli Seasoning",
+        sku: "RM-SEA-002",
+        category: "Seasonings",
+        unit: "kg",
+        available: 1250,
+        required: 620,
+        shortage: null,
+        surplus: 630,
+        suggestedProcurement: 0,
+        procurementBufferText: "Stock buffer optimal",
+        status: "sufficient",
+        statusLabel: "Sufficient"
+      },
+      {
+        id: "RM-FLM-025",
+        name: "Multi-Layer Metallised Film (25g)",
+        sku: "RM-FLM-025",
+        category: "Packaging",
+        unit: "pcs",
+        available: 42000,
+        required: 28000,
+        shortage: null,
+        surplus: 14000,
+        suggestedProcurement: 0,
+        procurementBufferText: "Optimal batch buffer",
+        status: "sufficient",
+        statusLabel: "Sufficient"
+      },
+      {
+        id: "RM-FLM-050",
+        name: "Multi-Layer Metallised Film (50g)",
+        sku: "RM-FLM-050",
+        category: "Packaging",
+        unit: "pcs",
+        available: 38500,
+        required: 35000,
+        shortage: null,
+        surplus: 3500,
+        suggestedProcurement: 0,
+        procurementBufferText: "Sufficient run stock",
+        status: "sufficient",
+        statusLabel: "Sufficient"
+      },
+      {
+        id: "RM-BOX-001",
+        name: "Corrugated Shipping Cartons (Standard)",
+        sku: "RM-BOX-001",
+        category: "Packaging",
+        unit: "pcs",
+        available: 4800,
+        required: 3200,
+        shortage: null,
+        surplus: 1600,
+        suggestedProcurement: 0,
+        procurementBufferText: "Sufficient for 6 shifts",
+        status: "sufficient",
+        statusLabel: "Sufficient"
+      },
+      {
+        id: "RM-SEA-003",
+        name: "Tangy Tomato Seasoning",
+        sku: "RM-SEA-003",
+        category: "Seasonings",
+        unit: "kg",
+        available: 850,
+        required: 0,
+        shortage: null,
+        surplus: 850,
+        suggestedProcurement: 0,
+        procurementBufferText: "No scheduled Tomato run in window",
+        status: "none",
+        statusLabel: "No Pending Requirement"
+      }
+    ];
+
+    let currentDataset = JSON.parse(JSON.stringify(baseFeasibilityData));
+    let isSimulatedEmpty = false;
+    let currentSort = { column: 'name', ascending: true };
+
+    function formatNumber(num) {
+      if (num === null || num === undefined) return "—";
+      return new Intl.NumberFormat('en-IN').format(num);
+    }
+
+    function renderTable(dataToRender) {
+      const tbody = document.getElementById("feasibilityTableBody");
+      const tableViewCard = document.getElementById("tableViewCard");
+      const emptyStateCard = document.getElementById("emptyStateCard");
+      const filteredCount = document.getElementById("filteredCount");
+
+      if (dataToRender.length === 0) {
+        tableViewCard.classList.add("hidden");
+        emptyStateCard.classList.remove("hidden");
+        emptyStateCard.classList.add("flex");
+        filteredCount.innerText = "0";
+        return;
+      }
+
+      tableViewCard.classList.remove("hidden");
+      emptyStateCard.classList.add("hidden");
+      emptyStateCard.classList.remove("flex");
+      filteredCount.innerText = dataToRender.length;
+
+      tbody.innerHTML = "";
+
+      dataToRender.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-surface-container-low/70 transition-colors group";
+
+        // Category badge color
+        let catBadgeClass = "bg-surface-container-low text-on-surface-variant";
+        if (row.category === "Agricultural") catBadgeClass = "bg-surface-container text-primary font-semibold";
+        if (row.category === "Oils & Fats") catBadgeClass = "bg-amber-100 text-amber-900";
+        if (row.category === "Seasonings") catBadgeClass = "bg-secondary-fixed text-on-secondary-fixed";
+        if (row.category === "Packaging") catBadgeClass = "bg-surface-container-high text-on-surface";
+
+        // Status badge formatting
+        let statusBadge = "";
+        let rowLeftAccent = "w-1.5 h-7 rounded-full shrink-0 ";
+        if (row.status === "critical") {
+          rowLeftAccent += "bg-error";
+          statusBadge = `
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-bold whitespace-nowrap">
+              <span class="material-symbols-outlined text-[13px]">warning</span>
+              <span>Procurement Required</span>
+            </span>
+          `;
+        } else if (row.status === "buffer") {
+          rowLeftAccent += "bg-amber-500";
+          statusBadge = `
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-amber-100 text-amber-800 font-label-sm text-label-sm font-bold whitespace-nowrap">
+              <span class="material-symbols-outlined text-[13px]">info</span>
+              <span>Exactly Sufficient - No Buffer</span>
+            </span>
+          `;
+        } else if (row.status === "sufficient") {
+          rowLeftAccent += "bg-emerald-600";
+          statusBadge = `
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 font-label-sm text-label-sm font-bold whitespace-nowrap">
+              <span class="material-symbols-outlined text-[13px]">check_circle</span>
+              <span>Sufficient</span>
+            </span>
+          `;
+        } else {
+          rowLeftAccent += "bg-surface-variant";
+          statusBadge = `
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-medium whitespace-nowrap">
+              <span class="material-symbols-outlined text-[13px]">do_not_disturb_on</span>
+              <span>No Pending Requirement</span>
+            </span>
+          `;
+        }
+
+        // Shortage cell
+        let shortageHtml = "";
+        if (row.shortage !== null) {
+          shortageHtml = `<span class="font-data-mono-md text-data-mono-md font-bold text-error bg-error-container/30 px-1.5 py-0.5 rounded">${formatNumber(row.shortage)} ${row.unit}</span>`;
+        } else {
+          shortageHtml = `<span class="font-data-mono-md text-data-mono-md text-outline">—</span>`;
+        }
+
+        // Surplus cell
+        let surplusHtml = "";
+        if (row.surplus !== null) {
+          if (row.surplus === 0) {
+            surplusHtml = `<span class="font-data-mono-md text-data-mono-md font-bold text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded">0 ${row.unit}</span>`;
+          } else {
+            surplusHtml = `<span class="font-data-mono-md text-data-mono-md font-bold text-emerald-800 bg-emerald-50 px-1.5 py-0.5 rounded">+${formatNumber(row.surplus)} ${row.unit}</span>`;
+          }
+        } else {
+          surplusHtml = `<span class="font-data-mono-md text-data-mono-md text-outline">—</span>`;
+        }
+
+        // Procurement column
+        let procHtml = "";
+        if (row.suggestedProcurement > 0) {
+          const colorClass = row.status === "critical" ? "text-error font-bold" : "text-amber-800 font-bold";
+          procHtml = `
+            <div class="flex flex-col items-end">
+              <span class="font-data-mono-md text-data-mono-md ${colorClass}">${formatNumber(row.suggestedProcurement)} ${row.unit}</span>
+              <span class="font-data-mono-sm text-[10px] text-on-surface-variant">${row.procurementBufferText}</span>
+            </div>
+          `;
+        } else {
+          procHtml = `
+            <div class="flex flex-col items-end">
+              <span class="font-data-mono-md text-data-mono-md text-on-surface-variant font-medium">0 ${row.unit}</span>
+              <span class="font-data-mono-sm text-[10px] text-on-surface-variant">${row.procurementBufferText}</span>
+            </div>
+          `;
+        }
+
+        tr.innerHTML = `
+          <td class="py-space-sm px-space-md">
+            <div class="flex items-center gap-space-sm">
+              <span class="${rowLeftAccent}"></span>
+              <div>
+                <div class="flex items-center gap-space-xs flex-wrap">
+                  <span class="font-headline-md text-body-md font-bold text-primary">${row.name}</span>
+                  <span class="font-data-mono-sm text-[10px] text-on-surface-variant">(${row.sku})</span>
+                  <span class="px-1.5 py-0.5 rounded font-label-sm text-[10px] ${catBadgeClass}">${row.category}</span>
+                </div>
+                <span class="font-body-sm text-[11px] text-on-surface-variant block mt-0.5">Unit Specification: ${row.unit}</span>
+              </div>
+            </div>
+          </td>
+          <td class="py-space-sm px-space-md text-right font-data-mono-md text-data-mono-md font-medium text-on-surface">
+            ${formatNumber(row.available)} <span class="text-on-surface-variant text-[11px]">${row.unit}</span>
+          </td>
+          <td class="py-space-sm px-space-md text-right font-data-mono-md text-data-mono-md font-medium text-on-surface">
+            ${formatNumber(row.required)} <span class="text-on-surface-variant text-[11px]">${row.unit}</span>
+          </td>
+          <td class="py-space-sm px-space-md text-right">
+            ${shortageHtml}
+          </td>
+          <td class="py-space-sm px-space-md text-right">
+            ${surplusHtml}
+          </td>
+          <td class="py-space-sm px-space-md text-right bg-surface-container-low/70">
+            ${procHtml}
+          </td>
+          <td class="py-space-sm px-space-md text-center">
+            ${statusBadge}
+          </td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    function applyFilters() {
+      const searchVal = document.getElementById("tableSearchInput").value.trim().toLowerCase();
+      const catVal = document.getElementById("categoryFilter").value;
+      const statusVal = document.getElementById("statusFilter").value;
+
+      const filtered = currentDataset.filter(item => {
+        const matchesSearch = item.name.toLowerCase().includes(searchVal) ||
+                              item.sku.toLowerCase().includes(searchVal) ||
+                              item.category.toLowerCase().includes(searchVal);
+        const matchesCat = (catVal === "ALL" || item.category === catVal);
+        const matchesStatus = (statusVal === "ALL" || item.status === statusVal);
+
+        return matchesSearch && matchesCat && matchesStatus;
+      });
+
+      // Apply current sort
+      filtered.sort((a, b) => {
+        let valA, valB;
+        if (currentSort.column === 'name') {
+          valA = a.name;
+          valB = b.name;
+          return currentSort.ascending ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        } else if (currentSort.column === 'available') {
+          valA = a.available;
+          valB = b.available;
+        } else if (currentSort.column === 'required') {
+          valA = a.required;
+          valB = b.required;
+        } else if (currentSort.column === 'shortage') {
+          valA = a.shortage || 0;
+          valB = b.shortage || 0;
+        } else if (currentSort.column === 'surplus') {
+          valA = a.surplus || 0;
+          valB = b.surplus || 0;
+        }
+        return currentSort.ascending ? valA - valB : valB - valA;
+      });
+
+      renderTable(filtered);
+    }
+
+    function sortTable(colKey) {
+      if (currentSort.column === colKey) {
+        currentSort.ascending = !currentSort.ascending;
+      } else {
+        currentSort.column = colKey;
+        currentSort.ascending = true;
+      }
+      applyFilters();
+    }
+
+    function resetFilters() {
+      document.getElementById("tableSearchInput").value = "";
+      document.getElementById("categoryFilter").value = "ALL";
+      document.getElementById("statusFilter").value = "ALL";
+      applyFilters();
+      showToast("Filters Reset", "Showing full list of evaluated raw materials.");
+    }
+
+    function setHorizonPreset(label, start, end) {
+      document.getElementById("startDateInput").value = start;
+      document.getElementById("endDateInput").value = end;
+      document.getElementById("contextHorizonText").innerText = `${start} – ${end} (${label})`;
+      showToast("Horizon Updated", `Planning window adjusted to ${label}. Recalculating MRP...`);
+      refreshReport();
+    }
+
+    function refreshReport() {
+      const refreshIcon = document.getElementById("refreshIcon");
+      if (refreshIcon) refreshIcon.classList.add("animate-spin");
+      setTimeout(() => {
+        if (refreshIcon) refreshIcon.classList.remove("animate-spin");
+        const now = new Date();
+        const stamp = `Report Synced: ${now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}, ${now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })} IST`;
+        document.getElementById("reportGeneratedStamp").innerText = stamp;
+        showToast("Feasibility Synced", "All SCADA weights and BOM run schedules re-computed.");
+      }, 400);
+    }
+
+    function toggleSimulatedZeroDeficit() {
+      isSimulatedEmpty = !isSimulatedEmpty;
+      const btn = document.getElementById("toggleEmptyBtnText");
+      const kpiProc = document.getElementById("kpiDeficitsCount");
+      const kpiExact = document.getElementById("kpiExactCount");
+      const kpiSuff = document.getElementById("kpiSufficientCount");
+      const footerDeficit = document.getElementById("footerDeficitSummary");
+      const footerSurplus = document.getElementById("footerSurplusSummary");
+      const footerProc = document.getElementById("footerProcTotal");
+
+      if (isSimulatedEmpty) {
+        btn.innerText = "Restore Deficit Baseline";
+        currentDataset.forEach(row => {
+          if (row.status === "critical" || row.status === "buffer") {
+            row.shortage = null;
+            row.surplus = 1200;
+            row.status = "sufficient";
+            row.statusLabel = "Sufficient";
+            row.suggestedProcurement = 0;
+            row.procurementBufferText = "Zero deficit simulated run";
+          }
+        });
+        kpiProc.innerText = "0 Deficits";
+        kpiExact.innerText = "0 At Threshold";
+        kpiSuff.innerText = "14 Covered";
+        footerDeficit.innerText = "0 Deficits";
+        footerSurplus.innerText = "10 Net Surplus";
+        footerProc.innerText = "0 kg/L eqv.";
+        showToast("Zero Deficit Simulated", "All materials modeled with sufficient safety stock.");
+      } else {
+        btn.innerText = "Simulate Zero Deficit";
+        currentDataset = JSON.parse(JSON.stringify(baseFeasibilityData));
+        kpiProc.innerText = "3 Deficits";
+        kpiExact.innerText = "2 At Threshold";
+        kpiSuff.innerText = "9 Covered";
+        footerDeficit.innerText = "3 Net Deficits";
+        footerSurplus.innerText = "5 Net Surplus";
+        footerProc.innerText = "12,700 kg/L eqv.";
+        showToast("Baseline Restored", "Live factory shortage profile reactivated.");
+      }
+      applyFilters();
+    }
+
+    function exportFeasibilityCSV() {
+      let csv = "SKU,Material Name,Category,Unit,Available Stock,Remaining Requirement,Shortage,Surplus,Suggested Procurement,Status\n";
+      currentDataset.forEach(r => {
+        csv += `"${r.sku}","${r.name}","${r.category}","${r.unit}",${r.available},${r.required},${r.shortage || 0},${r.surplus || 0},${r.suggestedProcurement},"${r.statusLabel}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `ChipsMRP_Material_Feasibility_Report_${new Date().toISOString().slice(0, 10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast("Export Successful", "Material Feasibility Matrix exported to CSV.");
+    }
+
+    function showToast(title, message, icon = 'check_circle') {
+      const toast = document.getElementById('toastNotification');
+      const tTitle = document.getElementById('toastTitle');
+      const tMsg = document.getElementById('toastMessage');
+      const tIcon = document.getElementById('toastIcon');
+
+      tTitle.textContent = title;
+      tMsg.textContent = message;
+      tIcon.textContent = icon;
+
+      toast.classList.remove('translate-x-[120%]');
+      setTimeout(() => {
+        toast.classList.add('translate-x-[120%]');
+      }, 3200);
+    }
+
+    // Initial render
+    document.addEventListener("DOMContentLoaded", () => {
+      applyFilters();
+    });
+    applyFilters();
+  </script>
+</body></html>

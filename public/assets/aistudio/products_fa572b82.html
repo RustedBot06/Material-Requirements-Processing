@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Products - Chips MRP</title>
+</head>
+
+<body>
+
+    <h1>Products Inventory</h1>
+
+    <!-- ADD NEW PRODUCT -->
+
+    <h2>Add New Product</h2>
+
+    <form method="POST">
+
+        <label>Product Name:</label>
+        <input type="text" name="name" required>
+
+        <br><br>
+
+        <label>Packet Size:</label>
+        <select name="packet_size" required>
+            <option value="25">25 grams</option>
+            <option value="50">50 grams</option>
+        </select>
+
+        <br><br>
+
+        <label>Available Stock:</label>
+        <input type="number" name="stock_qty"
+               min="0" step="1" required>
+
+        <br><br>
+
+        <label>MRP:</label>
+        <input type="number" name="mrp"
+               min="0" step="any" required>
+
+        <br><br>
+
+        <button type="submit">Add Product</button>
+
+    </form>
+
+    <hr>
+
+    <!-- DISPLAY AND EDIT INVENTORY -->
+
+    <h2>Current Inventory</h2>
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>ID</th>
+            <th>Product</th>
+            <th>Packet Size</th>
+            <th>Available Stock</th>
+            <th>MRP</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for product in products %}
+
+        <tr>
+
+            <!-- EDIT FORM ASSOCIATED WITH THIS ROW -->
+
+            <td>
+                <form id="edit-{{ product['id'] }}"
+                      method="POST"
+                      action="{{ url_for('update_product_route', product_id=product['id']) }}">
+                </form>
+
+                {{ product["id"] }}
+            </td>
+
+            <td>
+                <input form="edit-{{ product['id'] }}"
+                       type="text"
+                       name="name"
+                       value="{{ product['name'] }}"
+                       required>
+            </td>
+
+            <td>
+                <select form="edit-{{ product['id'] }}"
+                        name="packet_size" required>
+
+                    <option value="25"
+                        {% if product["packet_size"] == 25 %}selected{% endif %}>
+                        25 grams
+                    </option>
+
+                    <option value="50"
+                        {% if product["packet_size"] == 50 %}selected{% endif %}>
+                        50 grams
+                    </option>
+
+                </select>
+            </td>
+
+            <td>
+                <input form="edit-{{ product['id'] }}"
+                       type="number"
+                       name="stock_qty"
+                       value="{{ product['stock_qty'] }}"
+                       min="0" step="1" required>
+            </td>
+
+            <td>
+                <input form="edit-{{ product['id'] }}"
+                       type="number"
+                       name="mrp"
+                       value="{{ product['mrp'] }}"
+                       min="0" step="any" required>
+            </td>
+
+            <!-- ACTION BUTTONS -->
+
+            <td>
+
+                <button type="submit"
+                        form="edit-{{ product['id'] }}">
+                    Update
+                </button>
+
+                <form method="POST"
+                      action="{{ url_for('delete_product_route', product_id=product['id']) }}"
+                      onsubmit="return confirm('Are you sure you want to delete this product?');">
+
+                    <button type="submit">Delete</button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>

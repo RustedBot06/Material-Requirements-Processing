@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary":"#4059aa","surface-container":"#e5eeff","surface":"#f8f9ff","on-tertiary-fixed-variant":"#3a485b","background":"#f8f9ff","error":"#ba1a1a","on-primary-fixed":"#021c39","tertiary-fixed-dim":"#b9c7df","outline-variant":"#c4c6ce","surface-tint":"#4a5f7f","primary-fixed-dim":"#b2c8ed","surface-container-lowest":"#ffffff","on-background":"#0b1c30","on-error":"#ffffff","surface-dim":"#cbdbf5","surface-bright":"#f8f9ff","outline":"#74777e","on-secondary-container":"#1d3989","on-primary":"#ffffff","on-secondary-fixed-variant":"#264191","inverse-primary":"#b2c8ed","secondary-container":"#8fa7fe","on-secondary-fixed":"#00164e","surface-container-low":"#eff4ff","on-primary-container":"#798fb1","inverse-on-surface":"#eaf1ff","on-secondary":"#ffffff","error-container":"#ffdad6","on-tertiary-fixed":"#0d1c2e","on-tertiary-container":"#808ea4","on-primary-fixed-variant":"#324866","inverse-surface":"#213145","surface-variant":"#d3e4fe","primary-fixed":"#d4e3ff","primary-container":"#0f2744","tertiary":"#041223","surface-container-high":"#dce9ff","secondary-fixed-dim":"#b6c4ff","on-tertiary":"#ffffff","on-surface":"#0b1c30","tertiary-container":"#192739","on-surface-variant":"#44474d","on-error-container":"#93000a","tertiary-fixed":"#d5e3fc","primary":"#001229","secondary-fixed":"#dce1ff","surface-container-highest":"#d3e4fe"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-lg":"1.25rem","gutter-compact":"0.5rem","margin":"1.5rem","margin-mobile":"1rem","space-sm":"0.5rem","space-md":"0.75rem","space-xs":"0.25rem","space-xl":"2rem","gutter":"1rem"},fontFamily:{"data-mono-lg":["JetBrains Mono"],"body-lg":["Hanken Grotesk"],"body-sm":["Hanken Grotesk"],"display-lg":["Hanken Grotesk"],"display-sm":["Hanken Grotesk"],"label-md":["Hanken Grotesk"],"body-md":["Hanken Grotesk"],"headline-lg":["Hanken Grotesk"],"data-mono-sm":["JetBrains Mono"],"headline-md":["Hanken Grotesk"],"headline-lg-mobile":["Hanken Grotesk"],"data-mono-md":["JetBrains Mono"],"label-sm":["Hanken Grotesk"]},fontSize:{"data-mono-lg":["16px",{"lineHeight":"20px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"display-sm":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["20px",{"lineHeight":"28px","fontWeight":"600"}],"data-mono-sm":["11px",{"lineHeight":"14px","fontWeight":"500"}],"headline-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["18px",{"lineHeight":"24px","fontWeight":"600"}],"data-mono-md":["13px",{"lineHeight":"16px","fontWeight":"500"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-60 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="h-14 px-gutter flex items-center justify-between bg-surface-container"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-surface text-[18px]">precision_manufacturing</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md tracking-tight text-primary leading-none">Chips MRP</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-0.5">Plant 1 • Pune</span></div></div><div class="w-2 h-2 rounded-full bg-secondary"></div></div><div class="px-gutter-compact py-space-sm"><div class="px-space-sm py-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Core MRP Operations</span></div><nav class="flex flex-col gap-space-xs mt-space-xs" data-active-classes="bg-primary-container text-on-primary font-headline-md rounded"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-all bg-primary-container text-on-primary font-headline-md rounded" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[18px]">dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="raw-materials" href="#"><span class="material-symbols-outlined text-[18px]">inventory_2</span><span>Raw Materials</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="products" href="#"><span class="material-symbols-outlined text-[18px]">layers</span><span>Products</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="bill-of-materials" href="#"><span class="material-symbols-outlined text-[18px]">account_tree</span><span>Bill of Materials</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="production-schedule" href="#"><span class="material-symbols-outlined text-[18px]">calendar_clock</span><span>Production Schedule</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="material-feasibility" href="#"><span class="material-symbols-outlined text-[18px]">flaky</span><span>Material Feasibility</span></a></nav></div></div><div class="p-gutter-compact bg-surface-container-low"><div class="p-space-sm bg-surface-container rounded flex flex-col gap-space-xs"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-label-md text-label-md text-on-surface truncate">Rahul Desai</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Operations Manager</span></div></div><div class="flex items-center justify-between pt-space-xs px-space-xs"><div class="flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">Shift A (06:00-14:00)</span></div><span class="font-label-sm text-label-sm text-secondary uppercase font-semibold">Active</span></div></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-14 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-margin"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant"><span class="font-body-sm text-body-sm text-on-surface-variant">Operations</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="font-label-md text-label-md text-on-surface">MRP Dispatch Console</span></div><div class="h-4 w-[1px] bg-surface-container-highest"></div><div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container rounded"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-data-mono-sm text-data-mono-sm text-on-surface font-semibold">LIVE PLANT DATA</span></div><div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container-low rounded"><span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">SYS: ONLINE (0.12s)</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm font-data-mono-md text-data-mono-md text-on-surface-variant bg-surface-container px-space-md py-space-xs rounded"><span class="material-symbols-outlined text-[16px]">schedule</span><span>24 OCT • 09:42:15 IST</span></div><button class="relative p-space-xs rounded hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><button class="p-space-xs rounded hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[20px]">refresh</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-14 w-full px-gutter min-h-screen bg-surface"><div class="flex flex-col w-full">
+<!-- Section 1: Compact Page Header with Plant Status -->
+<div class="py-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Dashboard</h1>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+          Pune Plant 1 • Continuous &amp; Kettle Lines
+        </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Manufacturing overview, batch yield telemetry &amp; raw material feasibility</p>
+</div>
+<!-- Controls Strip -->
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-space-xs bg-surface-container-lowest shadow-sm px-space-sm py-1.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">event</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface font-semibold">Today: 25 Oct 2024</span>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container-lowest shadow-sm px-space-sm py-1.5 rounded">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface font-medium">Shift A (06:00 - 14:00)</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase font-bold ml-1">LIVE</span>
+</div>
+<button class="flex items-center justify-center p-1.5 rounded bg-surface-container-lowest shadow-sm hover:bg-surface-container transition-colors text-on-surface-variant hover:text-on-surface" id="refreshDataBtn" title="Refresh Live Feeds">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-1.5 bg-primary text-on-primary rounded font-label-md text-label-md hover:bg-secondary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export Shift MRP Report</span>
+</button>
+</div>
+</div>
+<!-- Section 2: Five Compact KPI Cards -->
+<div class="grid grid-cols-5 gap-space-md pb-space-md">
+<!-- Card 1: Total SKUs -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Active Products</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">layers</span>
+</div>
+<div class="mt-space-xs flex items-baseline justify-between">
+<span class="font-data-mono-lg text-data-mono-lg text-primary font-bold">8 SKUs</span>
+<span class="font-data-mono-sm text-data-mono-sm text-secondary font-medium">100% Active</span>
+</div>
+<div class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">
+        6 Fried Potato • 2 Kettle Extruded
+      </div>
+</div>
+<!-- Card 2: Raw Materials Tracked -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Raw Materials</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">inventory_2</span>
+</div>
+<div class="mt-space-xs flex items-baseline justify-between">
+<span class="font-data-mono-lg text-data-mono-lg text-primary font-bold">14 Items</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">4 Silos + Cold</span>
+</div>
+<div class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">
+        Potatoes, Olein Oil, Seasonings, Foil
+      </div>
+</div>
+<!-- Card 3: Planned Production Target -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Planned Production</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">calendar_month</span>
+</div>
+<div class="mt-space-xs flex items-baseline justify-between">
+<span class="font-data-mono-lg text-data-mono-lg text-primary font-bold">48,000 pkts</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant font-semibold">1,200 kg net</span>
+</div>
+<div class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">
+        Shift A Schedule across Line 1 &amp; 2
+      </div>
+</div>
+<!-- Card 4: Actual Production Realized -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Actual Output</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">fact_check</span>
+</div>
+<div class="mt-space-xs flex items-baseline justify-between">
+<span class="font-data-mono-lg text-data-mono-lg text-secondary font-bold">44,200 pkts</span>
+<span class="font-data-mono-sm text-data-mono-sm text-secondary font-medium">92.1% Packout</span>
+</div>
+<div class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant truncate">
+        Dispatched to primary pack buffer
+      </div>
+</div>
+<!-- Card 5: Production Achievement Rate -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Achievement Rate</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-surface-container-high text-secondary font-data-mono-sm text-data-mono-sm font-bold">
+          ON TRACK
+        </span>
+</div>
+<div class="mt-space-xs flex items-baseline justify-between">
+<span class="font-data-mono-lg text-data-mono-lg text-primary font-bold">92.1%</span>
+<span class="font-data-mono-sm text-data-mono-sm text-secondary font-semibold">+1.4% vs yday</span>
+</div>
+<!-- Mini Achievement Bar -->
+<div class="mt-space-xs w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 92.1%;"></div>
+</div>
+</div>
+</div>
+<!-- Section 3: Desktop Main Data Grid (Left ~63% / Right ~37%) -->
+<div class="grid grid-cols-12 gap-space-md pb-space-md items-start">
+<!-- LEFT COLUMN: Planned vs Actual + Shortfall Analysis -->
+<div class="col-span-12 xl:col-span-7 flex flex-col gap-space-md">
+<!-- Sub-panel A: Planned vs Actual Production Chart -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col">
+<div class="flex flex-wrap items-center justify-between pb-space-sm border-b-0">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Planned vs Actual Production</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Daily finished packet output tracking vs ERP line scheduling</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Window:</span>
+<div class="bg-surface-container px-2 py-1 rounded font-data-mono-sm text-data-mono-sm text-on-surface font-semibold flex items-center gap-1">
+<span>Past 7 Days (Oct 19 - Oct 25)</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Filter Pills Bar -->
+<div class="flex items-center justify-between py-space-xs my-space-xs">
+<div class="flex items-center gap-1.5 overflow-x-auto">
+<button class="px-2.5 py-1 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-semibold transition-colors">
+              All Products (8)
+            </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors">
+              Classic Salted 25g
+            </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors">
+              Masala Magic 25g
+            </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors">
+              Cream &amp; Onion 50g
+            </button>
+</div>
+<!-- Legend -->
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-tint"></span>
+<span>Planned (Target)</span>
+</div>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-bold">Actual Output</span>
+</div>
+</div>
+</div>
+<!-- Line Chart SVG Canvas -->
+<div class="relative w-full h-[220px] bg-surface-container-low rounded p-2 flex flex-col justify-between overflow-hidden">
+<!-- Background Grid Lines & Y-axis labels -->
+<div class="absolute inset-x-8 top-4 bottom-7 flex flex-col justify-between pointer-events-none opacity-40">
+<div class="w-full flex items-center"><span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant w-10 text-right pr-2">8k</span><div class="flex-1 h-[1px] bg-surface-container-highest"></div></div>
+<div class="w-full flex items-center"><span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant w-10 text-right pr-2">6k</span><div class="flex-1 h-[1px] bg-surface-container-highest"></div></div>
+<div class="w-full flex items-center"><span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant w-10 text-right pr-2">4k</span><div class="flex-1 h-[1px] bg-surface-container-highest"></div></div>
+<div class="w-full flex items-center"><span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant w-10 text-right pr-2">2k</span><div class="flex-1 h-[1px] bg-surface-container-highest"></div></div>
+</div>
+<!-- Dual Line Chart SVG -->
+<svg class="w-full h-[180px] overflow-visible relative z-10" preserveaspectratio="none" viewbox="0 0 700 200">
+<defs>
+<lineargradient id="actualGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#4059aa" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#4059aa" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Planned Path (Dashed subtle) -->
+<!-- Oct 19: 6800, Oct 20: 7000, Oct 21: 7200, Oct 22: 7400, Oct 23: 7200, Oct 24: 7500, Oct 25: 7800 -->
+<!-- Coordinates: X: 45, 145, 245, 345, 445, 545, 645 -->
+<!-- Y mapping: 8000=20, 6000=65, 4000=110, 2000=155 -->
+<path d="M 45 47 L 145 42 L 245 38 L 345 33 L 445 38 L 545 31 L 645 25" fill="none" opacity="0.7" stroke="#74777e" stroke-dasharray="4,4" stroke-width="2"></path>
+<!-- Actual Area Fill -->
+<polygon fill="url(#actualGrad)" points="45,58 145,45 245,49 345,39 445,42 545,40 645,34 645,185 45,185"></polygon>
+<!-- Actual Path (Solid vibrant) -->
+<!-- Actual Values: 6300 (y=58), 6900 (y=45), 6700 (y=49), 7150 (y=39), 7050 (y=42), 7100 (y=40), 7400 (y=34) -->
+<path d="M 45 58 L 145 45 L 245 49 L 345 39 L 445 42 L 545 40 L 645 34" fill="none" stroke="#4059aa" stroke-linecap="round" stroke-width="3"></path>
+<!-- Nodes & Points -->
+<circle cx="45" cy="58" fill="#ffffff" r="4" stroke="#4059aa" stroke-width="2.5"></circle>
+<circle cx="145" cy="45" fill="#ffffff" r="4" stroke="#4059aa" stroke-width="2.5"></circle>
+<circle cx="245" cy="49" fill="#ffffff" r="4" stroke="#4059aa" stroke-width="2.5"></circle>
+<circle cx="345" cy="39" fill="#ffffff" r="4" stroke="#4059aa" stroke-width="2.5"></circle>
+<circle cx="445" cy="42" fill="#ffffff" r="4" stroke="#4059aa" stroke-width="2.5"></circle>
+<!-- Oct 24 Highlight Indicator (X=545) -->
+<line stroke="#4059aa" stroke-dasharray="2,2" stroke-width="1.5" x1="545" x2="545" y1="20" y2="185"></line>
+<circle cx="545" cy="31" fill="#74777e" r="4"></circle>
+<circle cx="545" cy="40" fill="#4059aa" r="5" stroke="#ffffff" stroke-width="2"></circle>
+<!-- Oct 25 (Today) -->
+<circle cx="645" cy="34" fill="#4059aa" r="5" stroke="#ffffff" stroke-width="2"></circle>
+</svg>
+<!-- Inspection Tooltip Callout Overlay (Oct 24 pinned inspection) -->
+<div class="absolute right-28 top-2 bg-primary text-on-primary rounded p-2 shadow-md text-left z-20 pointer-events-none">
+<div class="flex items-center justify-between gap-space-sm pb-1">
+<span class="font-data-mono-sm text-data-mono-sm font-bold text-secondary-fixed">Oct 24 • Shift A/B</span>
+<span class="font-label-sm text-label-sm bg-surface-container-highest/20 text-on-primary px-1 rounded">94.7% Hit</span>
+</div>
+<div class="grid grid-cols-2 gap-x-3 gap-y-0.5 font-data-mono-sm text-data-mono-sm">
+<span class="text-surface-variant">Planned: <b class="text-on-primary">7,500</b></span>
+<span class="text-surface-variant">Actual: <b class="text-on-primary">7,100</b></span>
+<span class="col-span-2 text-error-container">Shortfall: -400 pkts (Slicer recalibration)</span>
+</div>
+</div>
+<!-- X-Axis Labels -->
+<div class="flex justify-between px-6 pt-1 font-data-mono-sm text-data-mono-sm text-on-surface-variant">
+<span>19 Oct</span>
+<span>20 Oct</span>
+<span>21 Oct</span>
+<span>22 Oct</span>
+<span>23 Oct</span>
+<span class="text-secondary font-bold">24 Oct</span>
+<span class="text-primary font-bold">25 Oct (Today)</span>
+</div>
+</div>
+</div>
+<!-- Sub-panel B: Production Shortfall Analysis Bar Chart -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col">
+<div class="flex flex-wrap items-center justify-between pb-space-xs">
+<div>
+<div class="flex items-center gap-space-sm">
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Production Shortfall Analysis</h2>
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-data-mono-sm text-data-mono-sm font-semibold">
+                Cumulative Shortfall: 3,800 pkts (-5.4% Var)
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+<span class="font-semibold text-secondary">Operational Rule:</span> Production shortfall denotes unfulfilled daily scheduled target, not fryer waste or rejected packets.
+            </p>
+</div>
+<!-- Bar Legend -->
+<div class="flex items-center gap-space-sm mt-1 sm:mt-0 font-label-sm text-label-sm">
+<span class="flex items-center gap-1 text-on-surface"><span class="w-3 h-3 rounded-sm bg-secondary"></span>Achieved Output</span>
+<span class="flex items-center gap-1 text-error"><span class="w-3 h-3 rounded-sm bg-error"></span>Target Shortfall</span>
+</div>
+</div>
+<!-- 5-Day Stacked Bars -->
+<div class="mt-space-sm grid grid-cols-5 gap-space-sm pt-space-xs">
+<!-- 21 Oct -->
+<div class="bg-surface-container-low p-space-sm rounded flex flex-col justify-end h-44">
+<div class="w-full flex-1 flex flex-col justify-end gap-1">
+<div class="w-full bg-error rounded-t text-center py-0.5" style="height: 12%;">
+<span class="font-data-mono-sm text-[10px] text-on-error block leading-none">-500</span>
+</div>
+<div class="w-full bg-secondary rounded-b text-center py-1 flex items-center justify-center" style="height: 88%;">
+<span class="font-data-mono-sm text-data-mono-sm text-on-secondary font-bold">6.7k</span>
+</div>
+</div>
+<div class="pt-2 text-center">
+<span class="font-data-mono-sm text-data-mono-sm font-semibold text-on-surface block">21 Oct</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">93.0%</span>
+</div>
+</div>
+<!-- 22 Oct -->
+<div class="bg-surface-container-low p-space-sm rounded flex flex-col justify-end h-44">
+<div class="w-full flex-1 flex flex-col justify-end gap-1">
+<div class="w-full bg-error rounded-t text-center py-0.5" style="height: 8%;">
+<span class="font-data-mono-sm text-[10px] text-on-error block leading-none">-250</span>
+</div>
+<div class="w-full bg-secondary rounded-b text-center py-1 flex items-center justify-center" style="height: 92%;">
+<span class="font-data-mono-sm text-data-mono-sm text-on-secondary font-bold">7.1k</span>
+</div>
+</div>
+<div class="pt-2 text-center">
+<span class="font-data-mono-sm text-data-mono-sm font-semibold text-on-surface block">22 Oct</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">96.6%</span>
+</div>
+</div>
+<!-- 23 Oct -->
+<div class="bg-surface-container-low p-space-sm rounded flex flex-col justify-end h-44">
+<div class="w-full flex-1 flex flex-col justify-end gap-1">
+<div class="w-full bg-error rounded-t text-center py-0.5" style="height: 6%;">
+<span class="font-data-mono-sm text-[10px] text-on-error block leading-none">-150</span>
+</div>
+<div class="w-full bg-secondary rounded-b text-center py-1 flex items-center justify-center" style="height: 94%;">
+<span class="font-data-mono-sm text-data-mono-sm text-on-secondary font-bold">7.0k</span>
+</div>
+</div>
+<div class="pt-2 text-center">
+<span class="font-data-mono-sm text-data-mono-sm font-semibold text-on-surface block">23 Oct</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">97.9%</span>
+</div>
+</div>
+<!-- 24 Oct -->
+<div class="bg-surface-container-low p-space-sm rounded flex flex-col justify-end h-44 ring-2 ring-secondary/30">
+<div class="w-full flex-1 flex flex-col justify-end gap-1">
+<div class="w-full bg-error rounded-t text-center py-0.5" style="height: 10%;">
+<span class="font-data-mono-sm text-[10px] text-on-error block leading-none">-400</span>
+</div>
+<div class="w-full bg-secondary rounded-b text-center py-1 flex items-center justify-center" style="height: 90%;">
+<span class="font-data-mono-sm text-data-mono-sm text-on-secondary font-bold">7.1k</span>
+</div>
+</div>
+<div class="pt-2 text-center">
+<span class="font-data-mono-sm text-data-mono-sm font-bold text-secondary block">24 Oct</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">94.7%</span>
+</div>
+</div>
+<!-- 25 Oct (Today In-Progress) -->
+<div class="bg-surface-container p-space-sm rounded flex flex-col justify-end h-44">
+<div class="w-full flex-1 flex flex-col justify-end gap-1">
+<div class="w-full bg-error/70 rounded-t text-center py-0.5" style="height: 9%;">
+<span class="font-data-mono-sm text-[10px] text-on-error block leading-none">-380</span>
+</div>
+<div class="w-full bg-secondary rounded-b text-center py-1 flex items-center justify-center" style="height: 91%;">
+<span class="font-data-mono-sm text-data-mono-sm text-on-secondary font-bold">7.4k</span>
+</div>
+</div>
+<div class="pt-2 text-center">
+<span class="font-data-mono-sm text-data-mono-sm font-bold text-primary block">25 Oct (Live)</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">95.1% Est.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Raw Material Requirement vs Stock Holding -->
+<div class="col-span-12 xl:col-span-5 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-col">
+<!-- Header & Material Tabs -->
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">analytics</span>
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Raw Material Requirement</h2>
+</div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Live Feeder</span>
+</div>
+<!-- Material Switcher Tabs -->
+<div class="grid grid-cols-4 gap-1 pt-space-sm pb-space-xs">
+<button class="px-2 py-1.5 rounded bg-primary text-on-primary font-label-sm text-label-sm font-medium text-center truncate">
+            Potatoes (kg)
+          </button>
+<button class="px-2 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm text-center truncate">
+            Palm Oil (L)
+          </button>
+<button class="px-2 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm text-center truncate">
+            Salt (kg)
+          </button>
+<button class="px-2 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm text-center truncate">
+            Seasoning (kg)
+          </button>
+</div>
+<!-- Selected Material Header Telemetry Card -->
+<div class="mt-space-sm p-space-sm bg-surface-container-low rounded flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-headline-md text-primary font-bold">Chip-Grade Potatoes</span>
+<span class="font-data-mono-sm text-data-mono-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-semibold">Grade A Atlantic</span>
+</div>
+<div class="flex items-center justify-between font-data-mono-sm text-data-mono-sm text-on-surface-variant">
+<span>SKU: RM-POT-01</span>
+<span>Batch Moisture Window: 78.2%</span>
+</div>
+<!-- Benchmark Stock Holding Gauge Card -->
+<div class="mt-space-xs bg-surface-container-lowest p-space-sm rounded shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Silo Holding vs Scheduled Run</span>
+<span class="font-data-mono-md text-data-mono-md font-bold text-primary">18,500 kg in Silo A1 &amp; A2</span>
+</div>
+<!-- Prominent Benchmark Progress Bar -->
+<div class="mt-2 relative">
+<div class="h-4 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="bg-secondary h-full" style="width: 87.5%;" title="Weekly Demand: 16,200 kg"></div>
+<div class="bg-surface-container-high h-full" style="width: 12.5%;" title="Safety Buffer: 2,300 kg"></div>
+</div>
+<!-- Prominent Reference Benchmark Line Indicator -->
+<div class="absolute -top-1 bottom-0 left-[87.5%] w-0.5 bg-primary flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-primary -mt-1"></div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 font-data-mono-sm text-data-mono-sm">
+<span class="text-on-surface-variant">Scheduled: <b class="text-on-surface">16,200 kg</b> (87.5% capacity)</span>
+<span class="text-secondary font-bold">Buffer: +2,300 kg Reserve</span>
+</div>
+</div>
+<!-- Daily Consumption & Yield Metrics -->
+<div class="grid grid-cols-2 gap-space-xs mt-space-xs">
+<div class="bg-surface-container-lowest p-space-sm rounded">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Burn Rate</span>
+<span class="font-data-mono-md text-data-mono-md text-primary font-bold">3,200 kg/day</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Line 1: 180 kg/hr slice</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Finished BOM Yield</span>
+<span class="font-data-mono-md text-data-mono-md text-secondary font-bold">24.8% Finish Yield</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">4.03 kg raw = 1 kg fried</span>
+</div>
+</div>
+</div>
+<!-- Daily Material Demand Trend (Oct 20 - 25) -->
+<div class="mt-space-md">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md font-bold text-primary">Daily Potato Consumption History (kg)</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">Baseline: 3,000 kg</span>
+</div>
+<div class="space-y-1.5">
+<!-- 20 Oct -->
+<div class="flex items-center gap-space-sm text-body-sm">
+<span class="font-data-mono-sm text-data-mono-sm w-12 text-on-surface-variant">20 Oct</span>
+<div class="flex-1 bg-surface-container-low rounded-full h-3 overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 78%;"></div>
+</div>
+<span class="font-data-mono-sm text-data-mono-sm w-16 text-right font-medium text-on-surface">3,120 kg</span>
+</div>
+<!-- 21 Oct -->
+<div class="flex items-center gap-space-sm text-body-sm">
+<span class="font-data-mono-sm text-data-mono-sm w-12 text-on-surface-variant">21 Oct</span>
+<div class="flex-1 bg-surface-container-low rounded-full h-3 overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 82%;"></div>
+</div>
+<span class="font-data-mono-sm text-data-mono-sm w-16 text-right font-medium text-on-surface">3,280 kg</span>
+</div>
+<!-- 22 Oct -->
+<div class="flex items-center gap-space-sm text-body-sm">
+<span class="font-data-mono-sm text-data-mono-sm w-12 text-on-surface-variant">22 Oct</span>
+<div class="flex-1 bg-surface-container-low rounded-full h-3 overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 75%;"></div>
+</div>
+<span class="font-data-mono-sm text-data-mono-sm w-16 text-right font-medium text-on-surface">3,000 kg</span>
+</div>
+<!-- 23 Oct -->
+<div class="flex items-center gap-space-sm text-body-sm">
+<span class="font-data-mono-sm text-data-mono-sm w-12 text-on-surface-variant">23 Oct</span>
+<div class="flex-1 bg-surface-container-low rounded-full h-3 overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 84%;"></div>
+</div>
+<span class="font-data-mono-sm text-data-mono-sm w-16 text-right font-medium text-on-surface">3,360 kg</span>
+</div>
+<!-- 24 Oct -->
+<div class="flex items-center gap-space-sm text-body-sm">
+<span class="font-data-mono-sm text-data-mono-sm w-12 text-on-surface-variant">24 Oct</span>
+<div class="flex-1 bg-surface-container-low rounded-full h-3 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 86%;"></div>
+</div>
+<span class="font-data-mono-sm text-data-mono-sm w-16 text-right font-bold text-secondary">3,440 kg</span>
+</div>
+</div>
+</div>
+<!-- Operational Sufficiency Callout Box -->
+<div class="mt-space-md p-space-sm bg-surface-container-high rounded flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-surface text-[16px]">check</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-bold text-primary">Procurement Feasibility: Sufficient Stock Buffer</span>
+<span class="font-data-mono-sm text-data-mono-sm font-bold text-secondary">(+2,300 kg)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Current inventory (18,500 kg) fully covers 7-day cumulative manufacturing schedule (16,200 kg). Next farm dispatch scheduled for 28 Oct (12,000 kg Atlantic).
+            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: Clean Operational Status Bar / Shift Quick Actions -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-md flex flex-wrap items-center justify-between gap-space-md mb-space-lg">
+<!-- Telemetry Status Badges -->
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Line 1 Continuous Fryer -->
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold text-primary">Line 1 • Continuous Fryer</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">RUNNING (98% Cap) • 176°C Oil</span>
+</div>
+</div>
+<div class="h-6 w-[1px] bg-surface-container-highest hidden md:block"></div>
+<!-- Line 2 Kettle Fryer -->
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold text-primary">Line 2 • Batch Kettle</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">RUNNING (86% Cap) • Batch #892</span>
+</div>
+</div>
+<div class="h-6 w-[1px] bg-surface-container-highest hidden md:block"></div>
+<!-- Packaging Lines A & B -->
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold text-primary">Packaging Lines A &amp; B</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">SYNCHRONIZED (120 bags/min)</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-sm ml-auto">
+<button class="flex items-center gap-1.5 px-space-md py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[16px]">print</span>
+<span>Print Batch Run Sheet</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-md py-1.5 rounded bg-primary text-on-primary hover:bg-secondary transition-colors font-label-md text-label-md font-semibold shadow-sm">
+<span class="material-symbols-outlined text-[16px]">assignment_turned_in</span>
+<span>Log Shift Handover</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for interactive demo
+  document.getElementById('refreshDataBtn')?.addEventListener('click', function() {
+    this.classList.add('animate-spin');
+    setTimeout(() => {
+      this.classList.remove('animate-spin');
+    }, 600);
+  });
+</script></main></div></body></html>
