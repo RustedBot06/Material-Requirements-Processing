@@ -1,116 +1,240 @@
 # Chips MRP
+### Material Requirements Planning System for Potato Chips Manufacturing
 
-A web-based **Material Requirements Planning (MRP) system** developed for a potato chips manufacturing unit.
+**Version:** 1.0  
+**Status:** v1 — Local Development Release  
+**Repository:** [RustedBot06/Material-Requirements-Processing](https://github.com/RustedBot06/Material-Requirements-Processing)
 
-Chips MRP helps manage raw materials, finished products, Bills of Materials (BOM), production scheduling and inventory requirements. It connects production planning with material availability, allowing users to assess whether a planned production run can be carried out with the available inventory.
+Chips MRP is a web-based **Material Requirements Planning (MRP) system** developed for a potato chips manufacturing unit.
 
-The project is developed using **React, TypeScript, Python (Flask) and SQLite**.
+The application helps manage raw materials, finished products, Bills of Materials (BOM), production scheduling, and inventory requirements. It connects production planning with material availability, allowing users to assess whether a planned production run can be carried out with the available inventory.
 
-## Features
+The project is developed using React, TypeScript, Python (Flask), and SQLite.
 
-### 1. Raw Material Management
+---
 
-* Add, view, update and delete raw materials.
-* Maintain stock quantities, units and cost per unit.
-* Track inventory adjustments and stock movements.
-* Monitor material availability and low-stock conditions.
+## 1. Project Objectives
 
-### 2. Product Management
+The primary objectives of Chips MRP are to:
 
-* Maintain finished product records.
-* Store product details such as packet size, stock quantity and MRP.
-* Perform standard CRUD operations.
+- Digitise raw material and finished product inventory management.
+- Maintain structured Bills of Materials for manufactured products.
+- Calculate raw material requirements for planned production.
+- Evaluate production feasibility based on available inventory.
+- Manage material reservations and production-related stock movements.
+- Provide analytical insights into inventory and manufacturing performance.
 
-### 3. Bill of Materials (BOM)
+## 2. Features
 
-* Define the raw materials required to manufacture each product.
-* Specify material quantities and wastage percentages.
-* Associate BOM entries with their respective products and raw materials.
+### 2.1 Raw Material Management
 
-### 4. Production Planning
+- Add, view, update, and delete raw materials.
+- Maintain stock quantities, measurement units, and cost per unit.
+- Record inventory adjustments and stock movements.
+- Monitor material availability and low-stock conditions.
 
-* Create and manage production schedules.
-* Calculate material requirements using the BOM.
-* Check inventory feasibility before production.
-* Identify material shortages and manage stock reservations.
-* Update inventory when production is completed.
-* Release reservations when eligible production plans are cancelled.
+### 2.2 Product Management
 
-### 5. Manufacturing Analytics
+- Maintain finished product records.
+- Store product information, including packet size, stock quantity, and MRP.
+- Perform standard CRUD (Create, Read, Update, Delete) operations.
 
-* View production-related graphs and analytical summaries.
-* Compare planned production with actual output.
-* Examine production shortfalls.
-* Monitor raw material inventory and related metrics.
+### 2.3 Bill of Materials (BOM)
 
-The analytics section is being refined as the project develops.
+- Define the raw materials required to manufacture each product.
+- Specify required material quantities and wastage percentages.
+- Associate BOM entries with their respective products and raw materials.
+- Use BOM data as the basis for production material calculations.
 
-## Technology Stack
+### 2.4 Production Planning
 
-| Component     | Technology          |
-| ------------- | ------------------- |
-| Frontend      | React, TypeScript   |
-| Build Tool    | Vite                |
-| Charts        | Recharts            |
-| Backend       | Python, Flask       |
-| Database      | SQLite              |
-| Communication | JSON-based HTTP API |
+- Create and manage production schedules.
+- Calculate raw material requirements using BOM specifications.
+- Evaluate production feasibility against available inventory.
+- Identify material shortages before production.
+- Manage stock reservations for eligible production plans.
+- Update inventory upon production completion.
+- Release reservations when eligible production plans are cancelled.
 
-## System Architecture
+### 2.5 Manufacturing Analytics
 
-The application follows a frontend-backend architecture.
+- View production-related graphs and analytical summaries.
+- Compare planned production with actual output.
+- Examine production shortfalls.
+- Monitor raw material inventory and stock movements.
+- Analyse inventory-related metrics.
 
-* **Frontend:** Handles the user interface, navigation, forms and visualisation of data.
-* **Backend:** Handles business logic, validation, production calculations, inventory operations and API requests.
-* **Database:** Stores product, raw material, BOM, production and inventory-related records.
+## 3. Technology Stack
 
-The frontend communicates with the backend through API requests. Database operations and manufacturing calculations are handled by the backend.
+| Component | Technology |
+|---|---|
+| Frontend | React, TypeScript |
+| Build Tool | Vite |
+| Charts and Visualisation | Recharts |
+| Backend | Python, Flask |
+| Database | SQLite |
+| Application Server | Node.js, Express |
+| API Communication | JSON over HTTP |
 
-## Getting Started
+## 4. System Architecture
+
+Chips MRP follows a frontend-backend architecture.
+
+**Frontend:** The React application handles the user interface, navigation, forms, data presentation, and graphical visualisations.
+
+**Backend:** The Flask application handles API requests, business logic, input validation, production calculations, and inventory operations.
+
+**Database:** SQLite provides persistent storage for raw materials, products, BOM entries, production schedules, and inventory-related records.
+
+**Application Server:** The root Node.js server coordinates the application, starts the Flask backend, serves the Vite frontend, and proxies API requests.
+
+### Application Workflow
+
+1. The user interacts with the React frontend.
+2. The frontend sends HTTP requests to the application server.
+3. The application server forwards API requests to Flask.
+4. Flask executes business logic and database operations.
+5. The backend returns JSON responses.
+6. The frontend updates the interface and visualisations.
+
+## 5. Installation and Setup
 
 ### Prerequisites
 
-* Python 3.10 or later
-* Node.js and npm
-* A modern web browser
+Install the following software:
 
-### Backend Setup
+- **Python 3.10 or later**
+- **Node.js (LTS version)**
+- **npm** (included with Node.js)
+- **Git**
+- A modern web browser
+
+### Step 1: Clone the Repository
+
+Open a terminal and execute:
 
 ```bash
-cd backend
-
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# Linux/macOS
-source venv/bin/activate
-
-pip install -r requirements.txt
+git clone https://github.com/RustedBot06/Material-Requirements-Processing.git
+cd Material-Requirements-Processing
 ```
 
-Start the Flask application using its configured entry point.
+### Step 2: Install Dependencies
 
-### Frontend Setup
+Install the project dependencies from the root directory:
 
 ```bash
-cd frontend
-
 npm install
+```
+
+Ensure that the Python dependencies specified by the backend's `requirements.txt` are installed in the Python environment used by the application.
+
+### Step 3: Launch the Application
+
+From the project root directory, run:
+
+```bash
 npm run dev
 ```
 
-The frontend and backend must both be running for the application to function correctly.
+The root application server automatically starts the Flask backend and the frontend development server.
 
-*Refer to the project configuration and startup scripts for the actual development ports and launch procedure.*
+### Step 4: Open the Application
 
-## Project Status
+Open the following address in your web browser:
 
-The core inventory management and production workflows have been implemented. The project is currently undergoing testing, refinement and expansion of its manufacturing analytics capabilities.
+**http://localhost:3000**
 
-## Development
+The application runs locally on the machine. No separate frontend or backend startup command is required.
 
-This is an individual academic semester project. Development involves manual implementation, AI-assisted code generation, integration, debugging and testing.
+## 6. Database Management
 
-The objective is to build a functional, modular MRP application while understanding the underlying concepts of inventory management, production planning, database design and full-stack development.
+Chips MRP uses **SQLite**, a lightweight relational database that does not require a separate database server.
+
+The database stores information related to:
+
+- Raw materials and their inventory.
+- Finished products.
+- Bill of Materials entries.
+- Production schedules.
+- Inventory movements and reservations.
+
+The backend automatically initialises the database when it contains zero entries, allowing a fresh installation to prepare its database without manual table creation.
+
+Existing database records are retained during normal application use.
+
+**Note:** The SQLite database is stored locally. Cloning the GitHub repository does not transfer another user's local database records.
+
+## 7. Project Structure
+
+The project is organised into frontend and backend components, alongside the root application launcher and configuration files.
+
+```text
+Chips_MRP/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── charts/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── types/
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.ts
+│
+├── backend/
+│   ├── app.py
+│   ├── requirements.txt
+│   └── database/
+│
+├── server.ts
+├── package.json
+├── package-lock.json
+├── README.md
+└── .gitignore
+```
+
+*This is a representative overview; additional files and modules may be present.*
+
+## 8. Project Status — v1
+
+Version 1.0 establishes the core application as a locally hosted MRP system.
+
+The current release focuses on:
+
+- Raw material and finished product management.
+- BOM-based material requirement calculations.
+- Production planning and inventory operations.
+- Manufacturing analytics and graphical representations.
+- Integration between the React frontend, Flask backend, and SQLite database.
+
+The application is intended to run locally at `http://localhost:3000`.
+
+## 9. Future Scope
+
+Potential improvements beyond v1 include:
+
+- Enhanced production cost analysis.
+- More detailed manufacturing performance reports.
+- Improved inventory forecasting.
+- Production scheduling optimisation.
+- Additional reporting and data export facilities.
+- Further application validation and operational safeguards.
+
+These are prospective improvements and are not necessarily included in v1.
+
+## 10. Development and Acknowledgements
+
+Chips MRP is an individual academic semester project.
+
+Development has involved manual programming, AI-assisted development, integration, debugging, and testing.
+
+The project provides practical experience in full-stack development, relational database design, inventory management, and production planning.
+
+---
+
+**Project:** Chips MRP  
+**Version:** 1.0  
+**Category:** Academic Semester Project  
+**Domain:** Manufacturing / Material Requirements Planning  
+**Deployment:** Localhost  
+**Repository:** [GitHub — Material-Requirements-Processing](https://github.com/RustedBot06/Material-Requirements-Processing)
