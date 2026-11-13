@@ -6,3 +6,31 @@ coverage/
 *.log
 .env*
 !.env.example
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+*.log
+
+# Node
+node_modules/
+dist/
+build/
+
+# Environment files
+.env.*
+!.env.example
+
+# SQLite temporary files and backups
+*.db-wal
+*.db-shm
+*.db.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
