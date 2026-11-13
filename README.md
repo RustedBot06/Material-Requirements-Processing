@@ -126,7 +126,7 @@ Install the project dependencies from the root directory:
 npm install
 ```
 
-Ensure that the Python dependencies specified by the backend's `requirements.txt` are installed in the Python environment used by the application.
+Ensure that the Python dependencies specified by the backend's `backend/requirements.txt` are installed in the Python environment used by the application.
 
 ### Step 3: Launch the Application
 
