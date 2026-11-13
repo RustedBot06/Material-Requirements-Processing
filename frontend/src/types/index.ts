@@ -293,7 +293,6 @@ export interface MaterialInventoryResponse {
     adequacy_status: string;
   };
   data: Array<{
-    [x: string]: number;
     date: string;
     procurement_qty: number;
     opening_balance_qty?: number;
