@@ -29,6 +29,7 @@ def create_app() -> Flask:
 
     # Verify database configuration
     try:
+        config.ini_database()
         config.validate_database_exists()
         compat = check_schema_compatibility()
         if not compat["compatible"]:

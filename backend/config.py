@@ -1,3 +1,4 @@
+import sqlite3
 import os
 from pathlib import Path
 
@@ -36,3 +37,34 @@ def validate_database_exists():
             "Please ensure a valid SQLite database with the expected schema exists, "
             "or set the CHIPS_MRP_DB_PATH environment variable."
         )
+
+def ini_database():
+    """
+    Creates the database from schema.sql if it does not exist.
+    Leaves an existing database untouched.
+    """
+    if not DB_PATH.exists():
+        schema_path = BACKEND_DIR / "database" / "schema.sql"
+
+        if not schema_path.exists():
+            raise FileNotFoundError(
+                f"Database schema not found: {schema_path}"
+            )
+
+        DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+        conn = sqlite3.connect(str(DB_PATH))
+
+        try:
+            conn.executescript(schema_path.read_text(encoding="utf-8"))
+            conn.commit()
+        except Exception:
+            conn.close()
+            if DB_PATH.exists():
+                DB_PATH.unlink()
+            raise
+        else:
+            conn.close()
+            print("[Database] Fresh database created successfully.")
+    else:
+        print(f"[Database] Existing database found: {DB_PATH}")
