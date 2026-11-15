@@ -6,9 +6,12 @@ coverage/
 *.log
 .env*
 !.env.example
-# Python
+# Python cache
 __pycache__/
 *.py[cod]
+
+# Python environments
+.venv/
 venv/
 .env
 *.log
@@ -26,6 +29,7 @@ build/
 *.db-wal
 *.db-shm
 *.db.bak
+*.db
 
 # OS files
 .DS_Store
